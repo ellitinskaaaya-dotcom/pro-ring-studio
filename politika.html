@@ -38,10 +38,12 @@ a{color:inherit}
 .lang-b{font:inherit;font-size:var(--t-ui);color:var(--dust);background:none;border:0;cursor:pointer;min-width:40px;min-height:44px;padding:var(--s1)}
 .lang-b[aria-pressed="true"]{color:var(--wrap);font-weight:600}
 .rule{height:1px;background:var(--rope)}
-.doc{max-width:720px;padding:var(--s5) 0 var(--s6)}
+.doc{max-width:720px;padding:var(--s5) 0 var(--s6);container-type:inline-size}
 .doc[hidden]{display:none}
-h1{font-stretch:var(--narrow);font-weight:850;text-transform:uppercase;font-size:var(--h1);line-height:.95;letter-spacing:-.005em;overflow-wrap:break-word;hyphens:auto}
+h1{font-stretch:var(--narrow);font-weight:850;text-transform:uppercase;font-size:var(--h1);line-height:.95;letter-spacing:-.005em;overflow-wrap:break-word;hyphens:manual}
 html[lang="hy"] h1{font-size:var(--h1-hy)}
+/* «конфиденциальности» — без переноса: заголовок уменьшается, пока слово не влезет в колонку */
+.doc[lang="ru"] h1{font-size:min(var(--h1),100cqi / 10.6)}
 :root{--h1-hy:58px}
 .date{font-size:var(--small);color:var(--dust);margin-top:var(--s2)}
 h2{font-weight:600;font-size:var(--h3);line-height:1.3;margin-top:var(--s4)}
@@ -78,10 +80,10 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
 <!-- ===================== HY (черновой перевод) ===================== -->
 <article class="doc" lang="hy" data-doc="hy">
   <h1>Գաղտնիության քաղաքականություն</h1>
-  <p class="date">Գործում է <span class="stub">կայքի գործարկման ամսաթիվը</span>-ից։ <span class="stub">սևագիր, թարգմանությունը կստուգի մայրենի լեզվով խոսող, տեքստը՝ իրավաբան</span></p>
+  <p class="date">Գործում է 2026 թ. նոյեմբերի 11-ից։</p>
 
   <h2>Ով ենք մենք</h2>
-  <p>Սա PRO RING STUDIO ստուդիայի կայքն է։ Տիրապետողը՝ Ա/Ձ Եժակ Ալեքսանդրա Իգորի, ՀՎՀՀ 20446405, Երևան, Կաջազնունու 1։ Կապ՝ <a href="tel:+37495122932">+374 95 122 932</a>, <a href="mailto:sasha_belyaeva01@bk.ru">sasha_belyaeva01@bk.ru</a>, Instagram @pro_ring_studio։</p>
+  <p>Սա PRO RING STUDIO ստուդիայի կայքն է։ Տիրապետողը՝ Ա/Ձ Եժակ Ալեքսանդրա Իգորի, ՀՎՀՀ 20446405, Երևան, Կաջազնունու 1։ Կապ՝ <a href="tel:+37495122932">+374&nbsp;95&nbsp;122&nbsp;932</a>, <a href="mailto:sasha_belyaeva01@bk.ru">sasha_belyaeva01@bk.ru</a>, Instagram @pro_ring_studio։</p>
 
   <h2>Ինչ է հավաքում կայքը</h2>
   <p>Կայքում չկան ձևեր, գրանցում, այցելությունների հաշվիչներ կամ գովազդային հետևողներ։ Կայքը cookie չի օգտագործում։ Տառատեսակները բեռնվում են հենց կայքից, ոչ թե արտաքին ծառայություններից։</p>
@@ -90,7 +92,7 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
   <p>Կայքը հիշում է ընտրած լեզուն (HY, RU կամ EN) քո դիտարկիչի հիշողության մեջ։ Այն մեզ չի ուղարկվում, և կարող ես ջնջել դիտարկիչի կարգավորումներում։</p>
 
   <h2>Հոսթինգ</h2>
-  <p>Կայքը տեղադրված է հոսթինգ մատակարարի մոտ <span class="stub">անվանումը և երկիրը՝ գործարկելիս</span>։ Ինչպես ցանկացած սերվեր, այն ավտոմատ գրանցում է այցելությունների տեխնիկական տվյալները՝ IP հասցե, ժամ, դիտարկիչի տեսակ, խափանումներից և հարձակումներից պաշտպանվելու համար։ Մենք այդ գրառումները չենք ստանում և չենք օգտագործում։</p>
+  <p>Կայքը տեղադրված է հոսթինգ մատակարարի մոտ՝ GitHub Pages (GitHub, Inc., ԱՄՆ)։ Ինչպես ցանկացած սերվեր, այն ավտոմատ գրանցում է այցելությունների տեխնիկական տվյալները՝ IP հասցե, ժամ, դիտարկիչի տեսակ, խափանումներից և հարձակումներից պաշտպանվելու համար։ Մենք այդ գրառումները չենք ստանում և չենք օգտագործում։</p>
 
   <h2>Երբ գրում ես մեզ մեսենջերում</h2>
   <p>«Գրանցվել» կոճակները բացում են WhatsApp-ը, Telegram-ը կամ Instagram-ը պատրաստի տեքստով։ Ուղարկել հաղորդագրությունը, թե ոչ, որոշում ես դու։ Եթե գրես, Ալեքսանդրան կտեսնի քո անունը կամ մականունը, հեռախոսահամարը (WhatsApp-ում) և հաղորդագրության տեքստը։ Մենք դրանք օգտագործում ենք միայն քեզ մարզման գրանցելու և ժամանակացույցի փոփոխությունների մասին տեղեկացնելու համար, և ոչ մեկին չենք փոխանցում։ Նամակագրության վրա տարածվում են նաև մեսենջերի կանոնները։</p>
@@ -114,10 +116,10 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
 <!-- ===================== RU ===================== -->
 <article class="doc" lang="ru" data-doc="ru" hidden>
   <h1>Политика конфиденциальности</h1>
-  <p class="date">Действует с <span class="stub">дата запуска сайта</span>. <span class="stub">черновик — проверит юрист</span></p>
+  <p class="date">Действует с 11 ноября 2026 года.</p>
 
   <h2>Кто мы</h2>
-  <p>Это сайт студии PRO RING STUDIO. Владелец — ИП Ежак Александра Игоревна, налоговый номер (ՀՎՀՀ) 20446405, Ереван, ул. Каджазнуни 1. Связаться: <a href="tel:+37495122932">+374 95 122 932</a>, <a href="mailto:sasha_belyaeva01@bk.ru">sasha_belyaeva01@bk.ru</a>, Instagram @pro_ring_studio.</p>
+  <p>Это сайт студии PRO RING STUDIO. Владелец — ИП Ежак Александра Игоревна, налоговый номер (ՀՎՀՀ) 20446405, Ереван, ул. Каджазнуни 1. Связаться: <a href="tel:+37495122932">+374&nbsp;95&nbsp;122&nbsp;932</a>, <a href="mailto:sasha_belyaeva01@bk.ru">sasha_belyaeva01@bk.ru</a>, Instagram @pro_ring_studio.</p>
 
   <h2>Что собирает сайт</h2>
   <p>На сайте нет форм, регистрации, счётчиков посещений и рекламных трекеров. Сайт не использует cookie. Шрифты загружаются с самого сайта, а не со сторонних сервисов.</p>
@@ -126,7 +128,7 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
   <p>Сайт запоминает выбранный язык (HY, RU или EN) в памяти твоего браузера. К нам это не уходит, стереть можно в настройках браузера.</p>
 
   <h2>Хостинг</h2>
-  <p>Сайт размещён у хостинг-провайдера <span class="stub">название и страна — при запуске</span>. Как любой сервер, он автоматически записывает технические данные о посещениях: IP-адрес, время, тип браузера. Это нужно для защиты от сбоев и атак. Мы эти записи не получаем и не используем.</p>
+  <p>Сайт размещён у хостинг-провайдера GitHub Pages (GitHub, Inc., США). Как любой сервер, он автоматически записывает технические данные о посещениях: IP-адрес, время, тип браузера. Это нужно для защиты от сбоев и атак. Мы эти записи не получаем и не используем.</p>
 
   <h2>Когда ты пишешь нам в мессенджер</h2>
   <p>Кнопки «Записаться» открывают WhatsApp, Telegram или Instagram с готовым текстом. Отправлять сообщение или нет, решаешь ты. Если напишешь, Александра увидит твоё имя или ник, номер телефона (в WhatsApp) и текст сообщения. Мы используем их только чтобы записать тебя на тренировку и сообщить об изменениях в расписании, и никому не передаём. На переписку также распространяются правила самого мессенджера.</p>
@@ -150,10 +152,10 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
 <!-- ===================== EN (черновой перевод) ===================== -->
 <article class="doc" lang="en" data-doc="en" hidden>
   <h1>Privacy policy</h1>
-  <p class="date">Effective from <span class="stub">site launch date</span>. <span class="stub">draft: translation to be checked by a native speaker, text by a lawyer</span></p>
+  <p class="date">Effective from 11 November 2026.</p>
 
   <h2>Who we are</h2>
-  <p>This is the website of PRO RING STUDIO. Owner: sole proprietor Ezhak Alexandra Igorevna, tax ID (ՀՎՀՀ) 20446405, 1 Kajaznuni St, Yerevan. Contact: <a href="tel:+37495122932">+374 95 122 932</a>, <a href="mailto:sasha_belyaeva01@bk.ru">sasha_belyaeva01@bk.ru</a>, Instagram @pro_ring_studio.</p>
+  <p>This is the website of PRO RING STUDIO. Owner: sole proprietor Ezhak Alexandra Igorevna, tax ID (ՀՎՀՀ) 20446405, 1 Kajaznuni St, Yerevan. Contact: <a href="tel:+37495122932">+374&nbsp;95&nbsp;122&nbsp;932</a>, <a href="mailto:sasha_belyaeva01@bk.ru">sasha_belyaeva01@bk.ru</a>, Instagram @pro_ring_studio.</p>
 
   <h2>What the site collects</h2>
   <p>The site has no forms, no sign-up, no visitor counters and no ad trackers. It doesn’t use cookies. Fonts load from the site itself, not from outside services.</p>
@@ -162,7 +164,7 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
   <p>The site remembers the language you chose (HY, RU or EN) in your browser’s storage. It isn’t sent to us, and you can clear it in your browser settings.</p>
 
   <h2>Hosting</h2>
-  <p>The site is hosted by <span class="stub">provider name and country, at launch</span>. Like any server, it automatically logs technical visit data such as IP address, time and browser type, to protect against outages and attacks. We don’t receive or use these logs.</p>
+  <p>The site is hosted by GitHub Pages (GitHub, Inc., USA). Like any server, it automatically logs technical visit data such as IP address, time and browser type, to protect against outages and attacks. We don’t receive or use these logs.</p>
 
   <h2>When you message us</h2>
   <p>The “Book” buttons open WhatsApp, Telegram or Instagram with a ready-made message. Whether you send it is up to you. If you do, Alexandra will see your name or username, your phone number (on WhatsApp) and your message. We use them only to book your class and let you know about schedule changes, and we don’t share them with anyone. The messenger’s own rules also apply to the conversation.</p>
