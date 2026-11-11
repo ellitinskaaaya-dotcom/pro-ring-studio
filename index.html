@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PRO RING STUDIO — бокс, кикбоксинг и фитнес в Ереване</title>
-<meta name="description" content="Студия бокса, кикбоксинга и фитнеса в центре Еревана. Группы и персональные тренировки с мастером спорта. Первая тренировка в группе — бесплатно.">
+<meta name="description" content="Студия бокса, кикбоксинга и фитнеса в центре Еревана. Групповые и персональные тренировки с Мастером спорта. Первая тренировка в группе — бесплатно.">
 <meta name="theme-color" content="#17120F">
 <link rel="preload" href="fonts/noto-sans-armenian.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -15,6 +15,8 @@
 @font-face{font-family:"Noto Sans Armenian";font-style:normal;font-weight:400 900;font-stretch:62.5% 100%;font-display:swap;src:url(fonts/noto-sans-armenian.woff2) format("woff2");unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
 /* ================= ТОКЕНЫ ================= */
 :root{
+  /* фото в цвете (Александра 2026-11-11: «хочется яркости») */
+  --photo:saturate(1.08) contrast(1.05) brightness(1.02);
   /* цвета — прототип v2 */
   --leather:#17120F;        /* фон: тёплый чёрный, кожа мешков */
   --mat:#231C17;            /* «сегодня», окно записи, подсветка строки */
@@ -159,7 +161,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 /* ================= ЭКРАН 1: ОБЛОЖКА ================= */
 .hero{position:relative;display:flex;flex-direction:column;padding:calc(var(--header-h) + clamp(var(--s3),6svh,var(--s5)) + var(--hero-drop)) 0 var(--hero-end);overflow:clip}
 .hero-photo{position:absolute;top:var(--hero-photo-top);right:0;width:60%;height:74%;z-index:0}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:32% 30%;filter:grayscale(1) sepia(.35) contrast(1.12) brightness(.82);animation:photo-in .6s ease-out both}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:32% 30%;filter:var(--photo);animation:photo-in .6s ease-out both}
 .hero-photo::after{content:"";position:absolute;inset:0;background:
   linear-gradient(90deg,var(--leather) 0%,var(--leather-82) 16%,var(--leather-12) 52%,var(--leather-0) 100%),
   linear-gradient(0deg,var(--leather) 0%,var(--leather-60) 22%,var(--leather-0) 48%),
@@ -304,9 +306,9 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 /* ===== Экран 5: тренер ===== */
 .coach-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:start}
 .coach-fig{grid-column:1 / span 6;position:relative;margin-bottom:var(--doc-drop)}
-.coach-fig .main{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 40%;filter:grayscale(1) sepia(.3) contrast(1.1) brightness(.85)}
+.coach-fig .main{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 40%;filter:var(--photo)}
 .doc{position:absolute;right:-32px;bottom:calc(-1 * var(--doc-drop));width:210px;background:var(--wrap);padding:var(--s1x) var(--s1x) var(--s4x)}
-.doc img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 40%;filter:grayscale(1) sepia(.25) contrast(1.05)}
+.doc img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 40%;filter:var(--photo)}
 .coach-text{grid-column:8 / span 5}
 .quote{font-stretch:var(--narrow);font-weight:700;font-size:var(--quote);line-height:1.08}
 .coach-h{font-weight:600;font-size:var(--h3);line-height:1.3;margin-top:var(--s4)}
@@ -318,7 +320,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 
 /* лента фото 03–06 */
 .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:360px;margin-top:var(--section);overflow:hidden}
-.strip img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(1) sepia(.3) contrast(1.15) brightness(.75)}
+.strip img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:var(--photo)}
 
 /* ===== Экран 6: 60 минут ===== */
 .first .cap{margin-top:var(--s3)}
@@ -610,7 +612,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
     <div class="hero-text">
       <span class="led" aria-hidden="true"></span>
       <h1 class="h1" id="h1" data-i18n="hero.h1">Студия бокса, кикбоксинга и фитнеса в центре Еревана</h1>
-      <p class="lead" data-i18n="hero.lead">Группы и персональные тренировки с мастером спорта. Можно с нуля, всё покажем и расскажем.</p>
+      <p class="lead" data-i18n="hero.lead">Групповые и персональные тренировки с Мастером&nbsp;спорта. От малышей до взрослых.</p>
       <div class="actions">
         <button class="btn btn-led js-book" type="button" data-i18n="cta.free">Записаться на бесплатную тренировку</button>
       </div>
@@ -649,15 +651,15 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
         <span class="door-l link" data-i18n="d1.l">Все группы</span></a></li>
       <li><a class="door" href="#raspisanie" data-filter="women">
         <span class="door-t" data-i18n="d2.t">Хочется тренироваться среди девушек</span>
-        <span class="door-d" data-i18n="d2.d">Женская группа кикбоксинга по вторникам и четвергам в 19:00, по субботам в 13:00. И фитнес: Табата, Body Sculpt.</span>
+        <span class="door-d" data-i18n="d2.d">Женская группа кикбоксинга по вторникам и четвергам в 19:00, по субботам в 13:00. Фитнес, Табата, Body Sculpt.</span>
         <span class="door-l link" data-i18n="d2.l">Женская группа</span></a></li>
       <li><a class="door" href="#raspisanie" data-filter="kids">
         <span class="door-t" data-i18n="d3.t">Нужна секция для ребёнка</span>
-        <span class="door-d"><span data-i18n="d3.d">Детская группа кикбоксинга с 5 лет, по понедельникам, средам и пятницам в 17:00.</span></span>
+        <span class="door-d"><span data-i18n="d3.d">Детская группа кикбоксинга с&nbsp;5&nbsp;лет, по понедельникам, средам и пятницам в 17:00.</span></span>
         <span class="door-l link" data-i18n="d3.l">Дети</span></a></li>
       <li><a class="door" href="#raspisanie" data-filter="box,kick">
         <span class="door-t" data-i18n="d4.t">Опыт есть, хочется серьёзнее</span>
-        <span class="door-d" data-i18n="d4.d">Группы бокса и кикбоксинга или персональные тренировки с мастером спорта по кикбоксингу.</span>
+        <span class="door-d" data-i18n="d4.d">Группы бокса и кикбоксинга или персональные тренировки с Мастером&nbsp;спорта по кикбоксингу.</span>
         <span class="door-l link" data-i18n="d4.l">Бокс и кикбоксинг</span></a></li>
       <li><a class="door" href="#ceny">
         <span class="door-t" data-i18n="d5.t">Удобнее один на один</span>
@@ -871,7 +873,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       ru:['Группа бокс','Стойка, удары руками, защита. Работа на лапах и мешках.'],
       hy:['Բռնցքամարտի խումբ','Կեցվածք, ձեռքերով հարվածներ, պաշտպանություն։ Աշխատանք լապաների և պարկերի վրա։'],
       en:['Boxing group','Stance, punches, defence. Pad and bag work.'] },
-    tabata:   { tags:['fit'],
+    tabata:   { tags:['fit','women'],
       ru:['Табата (HIIT)','Интервальная тренировка: короткая работа и короткий отдых по кругу.'],
       hy:['Տաբատա (HIIT)','Ինտերվալային մարզում՝ կարճ աշխատանք և կարճ հանգիստ՝ շրջանաձև։'],
       en:['Tabata (HIIT)','Interval training: short bursts of work and rest, in rounds.'] },
@@ -883,7 +885,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       ru:['Детская группа кикбоксинг','Кикбоксинг для детей с 5 лет.'],
       hy:['Մանկական քիքբոքսինգի խումբ','Քիքբոքսինգ երեխաների համար՝ 5 տարեկանից։'],
       en:['Kids’ kickboxing group','Kickboxing for children aged 5 and up.'] },
-    sculpt:   { tags:['fit'],
+    sculpt:   { tags:['fit','women'],
       ru:['Body Sculpt','Силовая тренировка на ягодицы и пресс.'],
       hy:['Body Sculpt','Ուժային մարզում հետույքի և որովայնի մկանների համար։'],
       en:['Body Sculpt','Strength training for glutes and abs.'] },
@@ -891,7 +893,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       ru:['Кроссфит','Функциональная тренировка: силовые и кардио-упражнения в высоком темпе.'],
       hy:['Քրոսֆիթ','Ֆունկցիոնալ մարզում՝ ուժային և կարդիո վարժություններ բարձր տեմպով։'],
       en:['Crossfit','Functional training: strength and cardio at a high pace.'] },
-    fitness:  { tags:['fit'],
+    fitness:  { tags:['fit','women'],
       ru:['Фитнес','Проработка всего тела без веса или с небольшим весом.'],
       hy:['Ֆիթնես','Ամբողջ մարմնի մշակում՝ առանց քաշի կամ թեթև քաշով։'],
       en:['Fitness','Whole-body workout with no weights or light ones.'] },
@@ -935,7 +937,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       aud:{ kids:'Для детей с 5 лет', women:'Только для девушек', men:'Только для мужчин' },
       copied:'Текст скопирован', copyErr:'Не получилось скопировать. Напиши нам в директ, мы ответим.',
       title:'PRO RING STUDIO — бокс, кикбоксинг и фитнес в Ереване',
-      desc:'Студия бокса, кикбоксинга и фитнеса в центре Еревана. Группы и персональные тренировки с мастером спорта. Первая тренировка в группе — бесплатно.' },
+      desc:'Студия бокса, кикбоксинга и фитнеса в центре Еревана. Групповые и персональные тренировки с Мастером спорта. Первая тренировка в группе — бесплатно.' },
     hy: { locale:'hy-AM',
       days:['','Երկուշաբթի','Երեքշաբթի','Չորեքշաբթի','Հինգշաբթի','Ուրբաթ','Շաբաթ','Կիրակի'],
       dayLow:['','երկուշաբթի','երեքշաբթի','չորեքշաբթի','հինգշաբթի','ուրբաթ','շաբաթ','կիրակի'],
@@ -994,14 +996,14 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       'hero.alt':'Ալեքսանդրան՝ ստուդիայի հիմնադիրը, ռինգի պարանների մոտ',
       'hero.s1':'Ուժ։','hero.s2':'Կարգապահություն։','hero.s3':'Արդյունք։',
       'hero.h1':'Բռնցքամարտի, քիքբոքսինգի և ֆիթնեսի ստուդիա Երևանի կենտրոնում',
-      'hero.lead':'Խմբային և անհատական մարզումներ սպորտի վարպետի հետ։ Կարող ես սկսել զրոյից՝ ամեն ինչ ցույց կտանք ու կբացատրենք։',
+      'hero.lead':'Խմբային և անհատական մարզումներ սպորտի վարպետի հետ։ Փոքրիկներից մինչև մեծահասակներ։',
       'hero.schedule':'Դիտել ժամանակացույցը',
       'hero.note':'Առաջին խմբային մարզումն անվճար է։ Կպատասխանենք Instagram-ում, WhatsApp-ում կամ Telegram-ում։',
       'today.all':'Ամբողջ ժամանակացույցը',
       'facts.1':'<b>Երկ–Շբթ</b> մարզումներ','facts.2':'<b>60 րոպե</b> յուրաքանչյուր մարզում','facts.3':'<b>5–6 հոգի</b> սովորաբար խմբում',
       'doors.h':'Որտեղի՞ց սկսել',
       'd1.t':'Բռնցքամարտ զրոյից','d1.d':'Կսովորեցնենք կեցվածք, հարված և պաշտպանություն։ Ձեռնոցները կտանք։','d1.l':'Բոլոր խմբերը',
-      'd2.t':'Ուզում եմ մարզվել աղջիկների հետ','d2.d':'Կանանց քիքբոքսինգի խումբ՝ երեքշաբթի և հինգշաբթի 19:00-ին, շաբաթ 13:00-ին։ Եվ ֆիթնես՝ Տաբատա, Body Sculpt։','d2.l':'Կանանց խումբ',
+      'd2.t':'Ուզում եմ մարզվել աղջիկների հետ','d2.d':'Կանանց քիքբոքսինգի խումբ՝ երեքշաբթի և հինգշաբթի 19:00-ին, շաբաթ 13:00-ին։ Ֆիթնես, Տաբատա, Body Sculpt։','d2.l':'Կանանց խումբ',
       'd3.t':'Խմբակ եմ փնտրում երեխայի համար','d3.d':'Մանկական քիքբոքսինգի խումբ 5 տարեկանից՝ երկուշաբթի, չորեքշաբթի, ուրբաթ 17:00-ին։','d3.l':'Երեխաներ',
       'd4.t':'Փորձ ունեմ, ուզում եմ ավելի լուրջ','d4.d':'Բռնցքամարտի և քիքբոքսինգի խմբեր կամ անհատական մարզումներ քիքբոքսինգի սպորտի վարպետի հետ։','d4.l':'Բռնցքամարտ և քիքբոքսինգ',
       'd5.t':'Ինձ հարմար է անհատապես','d5.d':'Անհատական մարզում քեզ հարմար ժամին։ Ժամը միասին կընտրենք։','d5.l':'Անհատական մարզումների գները',
@@ -1050,14 +1052,14 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       'hero.alt':'Alexandra, the studio’s founder, leaning on the ring ropes',
       'hero.s1':'Strength.','hero.s2':'Discipline.','hero.s3':'Results.',
       'hero.h1':'Boxing, kickboxing and fitness studio in central Yerevan',
-      'hero.lead':'Group and personal training with a Master of Sport. You can start from zero. We’ll show and explain everything.',
+      'hero.lead':'Group and personal training with a Master of Sport. From little kids to adults.',
       'hero.schedule':'See the schedule',
       'hero.note':'Your first group class is free. We reply on Instagram, WhatsApp or Telegram.',
       'today.all':'Full schedule',
       'facts.1':'<b>Mon–Sat</b> classes','facts.2':'<b>60 minutes</b> per class','facts.3':'<b>5–6 people</b> in a typical group',
       'doors.h':'Where to start',
       'd1.t':'Boxing from scratch','d1.d':'We’ll teach you stance, punches and defence. Gloves provided.','d1.l':'All groups',
-      'd2.t':'I’d like to train with other women','d2.d':'Women’s kickboxing group on Tuesdays and Thursdays at 19:00, Saturdays at 13:00. Plus fitness: Tabata, Body Sculpt.','d2.l':'Women’s group',
+      'd2.t':'I’d like to train with other women','d2.d':'Women’s kickboxing group on Tuesdays and Thursdays at 19:00, Saturdays at 13:00. Fitness, Tabata, Body Sculpt.','d2.l':'Women’s group',
       'd3.t':'Looking for a class for my child','d3.d':'Kids’ kickboxing group for ages 5 and up, on Mondays, Wednesdays and Fridays at 17:00.','d3.l':'Kids',
       'd4.t':'I have experience and want more','d4.d':'Boxing and kickboxing groups, or personal training with a Master of Sport in kickboxing.','d4.l':'Boxing and kickboxing',
       'd5.t':'I prefer one-on-one','d5.d':'A personal session at a time that suits you. We’ll pick the time together.','d5.l':'Personal training prices',
