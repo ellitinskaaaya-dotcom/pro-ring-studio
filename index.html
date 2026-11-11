@@ -15,7 +15,7 @@
 @font-face{font-family:"Noto Sans Armenian";font-style:normal;font-weight:400 900;font-stretch:62.5% 100%;font-display:swap;src:url(fonts/noto-sans-armenian.woff2) format("woff2");unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
 /* ================= ТОКЕНЫ ================= */
 :root{
-  /* фото в цвете (Александра 2026-11-11: «хочется яркости») */
+  /* фото тренера в цвете (Александра 2026-11-11: «хочется яркости»); остальные фото — ч/б */
   --photo:saturate(1.08) contrast(1.05) brightness(1.02);
   /* цвета — прототип v2 */
   --leather:#17120F;        /* фон: тёплый чёрный, кожа мешков */
@@ -161,7 +161,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 /* ================= ЭКРАН 1: ОБЛОЖКА ================= */
 .hero{position:relative;display:flex;flex-direction:column;padding:calc(var(--header-h) + clamp(var(--s3),6svh,var(--s5)) + var(--hero-drop)) 0 var(--hero-end);overflow:clip}
 .hero-photo{position:absolute;top:var(--hero-photo-top);right:0;width:60%;height:74%;z-index:0}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:32% 30%;filter:var(--photo);animation:photo-in .6s ease-out both}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:32% 30%;filter:grayscale(1) sepia(.35) contrast(1.12) brightness(.82);animation:photo-in .6s ease-out both}
 .hero-photo::after{content:"";position:absolute;inset:0;background:
   linear-gradient(90deg,var(--leather) 0%,var(--leather-82) 16%,var(--leather-12) 52%,var(--leather-0) 100%),
   linear-gradient(0deg,var(--leather) 0%,var(--leather-60) 22%,var(--leather-0) 48%),
@@ -320,7 +320,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 
 /* лента фото 03–06 */
 .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:360px;margin-top:var(--section);overflow:hidden}
-.strip img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:var(--photo)}
+.strip img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(1) sepia(.3) contrast(1.15) brightness(.75)}
 
 /* ===== Экран 6: 60 минут ===== */
 .first .cap{margin-top:var(--s3)}
