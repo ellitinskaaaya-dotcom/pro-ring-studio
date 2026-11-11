@@ -45,10 +45,14 @@
   --doc-drop:56px;          /* насколько фото «документ» свисает под фото тренера */
   --section:var(--s7);
   --header-h:72px; --r:4px;
-  /* первый экран на компьютере (v11, просьба Елены): */
-  --hero-drop:var(--s4x);   /* весь экран ниже шапки — меню не ложится на голову на фото */
-  --hero-gap:var(--s4x);    /* от слогана до золотой линии и табло */
-  --hero-end:80px;          /* от кнопки до фактов: ближе, чем было, но дальше, чем слоган от линии */
+  /* первый экран на компьютере (v12 — Елена подвинула блоки руками на странице dvigat.html): */
+  --hero-photo-top:32px;    /* фото ниже шапки — меню не ложится на голову */
+  --hero-drop:-4px;         /* слоган: почти там же, где до v11 */
+  --hero-gap:112px;         /* от слогана до золотых линий; обе линии — на одной высоте */
+  --hero-h1:44px;           /* от золотой линии до заголовка */
+  --hero-lead:20px;         /* от заголовка до текста */
+  --hero-btn:48px;          /* от текста до кнопки */
+  --hero-end:40px;          /* от кнопки до фактов */
 
   /* размеры текста: одна шкала на весь сайт, сверху вниз */
   --slogan-max:150px; --slogan-w:min(62vw,880px); --fit:6.4;
@@ -153,7 +157,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 
 /* ================= ЭКРАН 1: ОБЛОЖКА ================= */
 .hero{position:relative;display:flex;flex-direction:column;padding:calc(var(--header-h) + clamp(var(--s3),6svh,var(--s5)) + var(--hero-drop)) 0 var(--hero-end);overflow:clip}
-.hero-photo{position:absolute;top:var(--hero-drop);right:0;width:60%;height:74%;z-index:0}
+.hero-photo{position:absolute;top:var(--hero-photo-top);right:0;width:60%;height:74%;z-index:0}
 .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:32% 30%;filter:grayscale(1) sepia(.35) contrast(1.12) brightness(.82);animation:photo-in .6s ease-out both}
 .hero-photo::after{content:"";position:absolute;inset:0;background:
   linear-gradient(90deg,var(--leather) 0%,var(--leather-82) 16%,var(--leather-12) 52%,var(--leather-0) 100%),
@@ -173,6 +177,15 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 .lead{color:var(--wrap-soft);margin-top:var(--s1x);max-width:520px}
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3x);margin-top:var(--s3x)}
 .note{font-size:var(--small);color:var(--dust);margin-top:var(--s2);max-width:560px}
+@media (min-width:1100px){
+  .hero .led{margin-bottom:var(--hero-h1)}
+  .hero .lead{margin-top:var(--hero-lead)}
+  .hero .actions{margin-top:var(--hero-btn)}
+}
+/* невысокие ноутбуки (1280×800): те же пропорции, но кнопка остаётся на первом экране */
+@media (min-width:1100px) and (max-height:860px){
+  :root{--hero-gap:72px;--hero-h1:var(--s3x);--hero-lead:var(--s1x);--hero-btn:var(--s3x)}
+}
 
 @keyframes punch{from{opacity:0;transform:translateY(.22em)}to{opacity:1;transform:none}}
 @keyframes led-on{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
@@ -373,7 +386,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 
 /* ================= ПЛАНШЕТ 768–1099 ================= */
 @media (max-width:1099px){
-  :root{--pad:40px;--section:120px;--slogan-w:86vw;--h2:58px;--quote:36px;--t-display:26px;--hero-drop:0px;--hero-gap:var(--s3x)}
+  :root{--pad:40px;--section:120px;--slogan-w:86vw;--h2:58px;--quote:36px;--t-display:26px;--hero-drop:0px;--hero-photo-top:0px;--hero-gap:var(--s3x)}
   html[lang="hy"]{--h2:44px}
   .hero{min-height:0;padding:var(--header-h) 0 0}
   .hero-photo{position:relative;width:auto;height:min(60vw,560px);margin:var(--s1) var(--pad) 0}
