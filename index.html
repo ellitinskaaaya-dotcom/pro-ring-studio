@@ -57,14 +57,15 @@
   /* размеры текста: одна шкала на весь сайт, сверху вниз */
   --slogan-max:150px; --slogan-w:min(62vw,880px); --fit:6.4;
   --h2:80px;
-  --h2-small:44px; --quote:44px;
+  --h2-final:60px;          /* финальная фраза: 0,75 от заголовков; на телефоне = заголовок */
+  --quote:44px;
   --t-menu:40px;            /* пункты меню на телефоне и планшете */
   --time:40px; --price:40px;
   --t-display:32px;         /* «двери», «бесплатно», время в расписании */
   --t-icon:32px;            /* крестики «закрыть» */
   --t-title:26px;           /* логотип, заголовок окна записи */
   --h1:24px;
-  --h3:22px;                /* заголовки третьего уровня */
+  --h3:24px;                /* подзаголовки: «Правила посещения», имя тренера — как h1 */
   --t-lead:20px;            /* крупный текст: факты, вопросы, финал */
   --text:18px;              /* основной текст */
   --t-btn:16px;             /* кнопки, названия занятий */
@@ -72,7 +73,7 @@
   --small:14px;             /* примечания, «Записаться» в расписании */
   --t-xs:13px;              /* пометки, счётчики, подписи к фото */
 }
-html[lang="hy"]{--fit:9.7; --h2:58px; --h2-small:36px; --quote:36px}
+html[lang="hy"]{--fit:9.7; --h2:58px; --h2-final:44px; --quote:36px}
 html[lang="en"]{--fit:4.95}
 
 /* ================= БАЗА ================= */
@@ -269,13 +270,13 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 .slot.is-dim .go{visibility:hidden}
 /* при включённом фильтре подходящие занятия отмечены LED-чертой */
 .is-filtered #days .slot:not(.is-dim){padding-left:var(--s2);box-shadow:inset 2px 0 0 var(--led)}
-.sched-foot{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s3);align-items:center;margin-top:var(--s2)}
+.sched-foot{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s3);align-items:center;margin-top:var(--s3)}
 
 /* ===== Экран 4: цены ===== */
 .free{margin-bottom:var(--s5);max-width:760px}
 .free::before{content:"";display:block;width:var(--s3x);height:2px;background:var(--led);margin-bottom:var(--s2x)}
-.free-t{font-weight:700;font-size:var(--t-display);line-height:1.15}
-.free-d{color:var(--wrap-soft);margin-top:var(--s2)}
+.free-t{font-stretch:var(--narrow);font-weight:800;font-size:var(--t-display);line-height:1.05}
+.free-d{color:var(--wrap-soft);margin-top:var(--s1x)}
 .cur{margin-bottom:var(--s1x)}
 .price-table{width:100%;border-collapse:collapse}
 /* название — колонки 1–7; цены — с 8-й колонки, по одной линии с «Правилами посещения» и подписью справа */
@@ -334,7 +335,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 
 /* ===== Экран 7: записаться ===== */
 .final{padding-bottom:var(--section)}
-.final-h{font-size:calc(var(--h2) * .75);max-width:15em}
+.final-h{font-size:var(--h2-final);max-width:15em}
 .final-by{font-size:var(--small);color:var(--dust);margin-top:var(--s2)}
 .final-lead{font-size:var(--t-lead);color:var(--wrap-soft);margin-top:var(--s3);max-width:620px}
 .msgrs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-top:var(--s5)}
@@ -357,6 +358,8 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 .footer-legal{margin-top:var(--s5);font-size:var(--small);color:var(--dust);align-items:baseline}
 .footer-legal > p{grid-column:1 / span 8}
 .footer-legal > .link{grid-column:9 / span 4;justify-self:start;color:var(--wrap-soft)}
+/* подпись автора сайта — последняя строка страницы */
+.f-credit{margin-top:var(--s3);font-size:var(--t-xs);color:var(--dust)}
 
 /* ===== Нижняя панель (телефон) ===== */
 .sticky{display:none}
@@ -387,7 +390,8 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 /* ================= ПЛАНШЕТ 768–1099 ================= */
 @media (max-width:1099px){
   :root{--pad:40px;--section:120px;--slogan-w:86vw;--h2:58px;--quote:36px;--t-display:26px;--hero-drop:0px;--hero-photo-top:0px;--hero-gap:var(--s3x)}
-  html[lang="hy"]{--h2:44px}
+  :root{--h2-final:44px}
+  html[lang="hy"]{--h2:44px;--h2-final:32px}
   .hero{min-height:0;padding:var(--header-h) 0 0}
   .hero-photo{position:relative;width:auto;height:min(60vw,560px);margin:var(--s1) var(--pad) 0}
   .hero-photo img{object-position:50% 25%}
@@ -451,9 +455,9 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 /* ================= ТЕЛЕФОН < 768 ================= */
 @media (max-width:767px){
   :root{--pad:16px;--gap:16px;--section:96px;--header-h:56px;--slogan-max:60px;--slogan-w:calc(100vw - 32px);
-        --h2:40px;--h2-small:32px;--h3:20px;--quote:28px;--text:16px;--small:13px;--time:32px;--price:28px;
+        --h2:40px;--h2-final:40px;--h3:20px;--quote:32px;--text:16px;--small:13px;--time:32px;--price:32px;
         --t-btn:15px;--t-lead:18px;--h1:20px;--t-title:22px;--t-display:24px}
-  html[lang="hy"]{--h2:32px;--h2-small:28px;--quote:26px}
+  html[lang="hy"]{--h2:32px;--h2-final:32px;--quote:28px}
   .site-header .wrap{gap:var(--s1x)}
   .nav,.site-header .hdr-btn{display:none}
   .burger{display:block}
@@ -470,17 +474,17 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
   .hero-photo::after{background:linear-gradient(0deg,var(--leather) 0%,var(--leather-0) 45%)}
   .hero-grid{display:block}
   .hero-in{margin-top:calc(-1 * var(--s3x))}
-  .hero .led{width:160px;margin:var(--s3) 0 var(--s2x)}
-  .actions{flex-direction:column;align-items:stretch;gap:var(--s2);margin-top:var(--s3)}
+  .hero .led{width:160px;margin:var(--s3) 0}
+  .actions{flex-direction:column;align-items:stretch;gap:var(--s2);margin-top:var(--s4)}
   .btn{padding-inline:var(--s2)}
   .actions .btn{width:100%}
   .actions .link{align-self:center}
-  .today{margin-top:var(--s4x)}
+  .today{margin-top:var(--s4)}
   .row{grid-template-columns:72px minmax(0,1fr) auto;gap:var(--s1x)}
   .row .go{padding:var(--s1) var(--s1x)}
   .slot{grid-template-columns:72px minmax(0,1fr)}
 
-  .facts{margin-top:var(--s4x)}
+  .facts{margin-top:var(--s4)}
   .facts-in{grid-template-columns:1fr;gap:var(--s3)}
 
   .sec-head{display:block;margin-bottom:var(--s4)}
@@ -521,6 +525,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 
   .footer{padding-bottom:calc(var(--s6) + env(safe-area-inset-bottom))}
   .footer-grid,.footer-legal{display:block}
+  .footer-legal{margin-top:var(--s4)}
   .footer-grid > .f-col + .f-col{margin-top:var(--s3)}
   .f-col > * + *{margin-top:0}
   .f-small{margin-top:var(--s1)}
@@ -823,6 +828,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       <p><span data-i18n="foot.ip">ИП Александра Ежак</span> <span class="stub">налоговый номер (ՀՎՀՀ) — уточнить</span> <span class="stub">почта — уточнить</span></p>
       <a class="link" href="politika.html" data-policy data-i18n="foot.policy">Политика конфиденциальности</a>
     </div>
+    <p class="f-credit" data-i18n="foot.credit">Сайт сделала Елена Литинская</p>
   </div>
 </footer>
 
@@ -1029,6 +1035,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       'foot.ip':'Ա/Ձ Ալեքսանդրա Եժակ','foot.tin':'ՀՎՀՀ','foot.phone':'Հեռախոս','foot.mail':'էլ. փոստ',
       'foot.hours':'Աշխատանքային ժամեր՝ երկուշաբթիից շաբաթ, ըստ ժամանակացույցի։ Կիրակին հանգստյան օր է։',
       'foot.policy':'Գաղտնիության քաղաքականություն','foot.hours.h':'Աշխատանքային ժամեր','foot.contact':'Կապ',
+      'foot.credit':'Կայքը պատրաստել է Ելենա Լիտինսկայան',
       'dlg.priv':'Թե ինչպես ենք վարվում քո տվյալների հետ, գրված է <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">գաղտնիության քաղաքականությունում</a>։',
       'dlg.h':'Որտե՞ղ գրել','dlg.first':'Սա իմ առաջին մարզումն է','dlg.ig':'Պատճենել և բացել Instagram-ը','dlg.ignote':'Instagram-ը տեքստը չի տեղադրում։ Սեղմիր «Պատճենել», հետո տեղադրիր դիրեքթում։'
     },
@@ -1085,6 +1092,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       'foot.ip':'Sole proprietor Alexandra Ezhak','foot.tin':'tax ID (ՀՎՀՀ)','foot.phone':'Phone','foot.mail':'email',
       'foot.hours':'Opening hours: Monday to Saturday, as scheduled. Closed on Sundays.',
       'foot.policy':'Privacy policy','foot.hours.h':'Opening hours','foot.contact':'Contact',
+      'foot.credit':'Website by Elena Litinskaya',
       'dlg.priv':'How we handle your data is explained in our <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">privacy policy</a>.',
       'dlg.h':'Where should we talk?','dlg.first':'This is my first class','dlg.ig':'Copy and open Instagram','dlg.ignote':'Instagram can’t prefill text. Tap “Copy”, then paste it into the DM.'
     }
