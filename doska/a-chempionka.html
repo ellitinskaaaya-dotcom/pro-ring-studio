@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вариант А — Чемпионка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@62.5..100,400..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --leather:#17120F; --mat:#231C17; --wrap:#EEE5D6; --dust:#8F8478;
+  --led:#D6A45A; --led-glow:rgba(214,164,90,.35);
+  --pad:96px; --h-header:72px;
+  --slogan:136px; --h1:24px; --text:18px; --small:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--leather);color:var(--wrap);font-family:"Noto Sans",system-ui,sans-serif;font-stretch:100%;-webkit-font-smoothing:antialiased}
+.hero{position:relative;min-height:100vh;overflow:hidden}
+.photo{position:absolute;top:0;right:0;bottom:0;width:62%;}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:52% 30%;filter:grayscale(1) sepia(.35) contrast(1.12) brightness(.82)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--leather) 0%,rgba(23,18,15,.85) 18%,rgba(23,18,15,.15) 55%,rgba(23,18,15,0) 100%)}
+header{position:relative;z-index:2;height:var(--h-header);display:flex;align-items:center;gap:40px;padding:0 var(--pad)}
+.logo{font-stretch:62.5%;font-weight:800;font-size:26px;letter-spacing:.02em}
+.logo span{font-weight:500;color:var(--dust)}
+nav{margin-left:auto;display:flex;gap:28px;font-size:15px;color:var(--wrap)}
+.lang{font-size:15px;color:var(--dust)} .lang b{color:var(--wrap);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:4px;font:600 16px/1 "Noto Sans";text-decoration:none}
+.btn-led{background:var(--led);color:var(--leather);box-shadow:0 0 24px var(--led-glow)}
+.btn-sm{height:40px;padding:0 18px;font-size:14px}
+.content{position:relative;z-index:2;padding:56px var(--pad) 0;max-width:820px}
+.where{font-size:var(--small);color:var(--dust);margin-bottom:20px}
+.slogan{font-stretch:62.5%;font-weight:850;font-size:var(--slogan);line-height:.93;text-transform:uppercase;letter-spacing:-.005em}
+.led{width:320px;height:2px;background:var(--led);box-shadow:0 0 14px 2px var(--led-glow);margin:32px 0 32px}
+h1{font-weight:600;font-size:var(--h1);line-height:1.25;max-width:520px}
+.sub{font-size:var(--text);line-height:1.55;color:var(--wrap);opacity:.82;margin-top:12px;max-width:500px}
+.actions{display:flex;align-items:center;gap:28px;margin-top:36px}
+.link{color:var(--wrap);font-size:16px;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--dust)}
+.note{font-size:var(--small);color:var(--dust);margin-top:16px}
+.ropes{display:none;position:absolute;left:0;right:0;bottom:0;z-index:2;height:18px;background:repeating-linear-gradient(180deg,rgba(143,132,120,.55) 0 1px,transparent 1px 8px)}
+@media (max-width:767px){
+  .btn{padding:0 16px;font-size:15px;text-align:center}
+  :root{--pad:16px;--slogan:54px;--h1:20px;--text:16px;--small:13px}
+  header{height:56px;gap:16px} nav,.hdr-btn{display:none} .lang{margin-left:auto}
+  .burger{width:22px;height:14px;border-top:2px solid var(--wrap);border-bottom:2px solid var(--wrap);position:relative}
+  .burger::after{content:"";position:absolute;left:0;right:0;top:4px;border-top:2px solid var(--wrap)}
+  .photo{position:relative;width:auto;height:330px;margin:0 16px}
+  .photo img{object-position:50% 25%}
+  .photo::after{background:linear-gradient(0deg,var(--leather) 0%,rgba(23,18,15,0) 45%)}
+  .content{padding:0 16px 40px;margin-top:-56px}
+  .where{display:none}
+  .led{width:160px;margin:20px 0}
+  .actions{flex-direction:column;align-items:stretch;gap:16px;margin-top:24px}
+  .btn{width:100%}
+  .link{text-align:center}
+  .ropes{display:none}
+}
+@media (min-width:768px){.burger{display:none}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <header>
+    <div class="logo">PRO RING <span>STUDIO</span></div>
+    <nav><a>Расписание</a><a>Цены</a><a>Тренер</a><a>Вопросы</a><a>Контакты</a></nav>
+    <div class="lang"><b>RU</b> HY</div>
+    <a class="btn btn-led btn-sm hdr-btn">Записаться</a>
+    <div class="burger"></div>
+  </header>
+  <div class="photo"><img src="img/aleksandra-foto-02.jpg" alt="Александра на канатах ринга"></div>
+  <div class="content">
+    <p class="where">Ереван, Каджазнуни 1</p>
+    <div class="slogan">Сила.<br>Дисциплина.<br>Результат.</div>
+    <div class="led"></div>
+    <h1>Студия бокса, кикбоксинга и фитнеса в центре Еревана</h1>
+    <p class="sub">Группы и персональные тренировки с мастером спорта. Можно с нуля — всё покажем и расскажем.</p>
+    <div class="actions">
+      <a class="btn btn-led">Записаться на бесплатную тренировку</a>
+      <a class="link">Смотреть расписание</a>
+    </div>
+    <p class="note">Первая тренировка в группе — бесплатно. Ответим в WhatsApp, Telegram или Instagram.</p>
+  </div>
+  <div class="ropes"></div>
+</section>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="hy">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Գաղտնիության քաղաքականություն — PRO RING STUDIO</title>
+<meta name="theme-color" content="#17120F">
+<link rel="preload" href="fonts/noto-sans-armenian.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* шрифты лежат на самом сайте (Noto Sans, лицензия SIL OFL — fonts/OFL.txt) */
+@font-face{font-family:"Noto Sans";font-style:normal;font-weight:400 900;font-stretch:62.5% 100%;font-display:swap;src:url(fonts/noto-sans-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:"Noto Sans";font-style:normal;font-weight:400 900;font-stretch:62.5% 100%;font-display:swap;src:url(fonts/noto-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Noto Sans Armenian";font-style:normal;font-weight:400 900;font-stretch:62.5% 100%;font-display:swap;src:url(fonts/noto-sans-armenian.woff2) format("woff2");unicode-range:U+0308,U+0530-058F,U+2010,U+2024,U+25CC,U+FB13-FB17}
+
+:root{
+  --leather:#17120F; --mat:#231C17; --wrap:#EEE5D6; --wrap-soft:rgba(238,229,214,.82);
+  --dust:#8F8478; --rope:rgba(143,132,120,.45); --rope-soft:rgba(143,132,120,.22); --led:#D6A45A;
+  --f:"Noto Sans","Noto Sans Armenian",system-ui,sans-serif; --narrow:62.5%;
+  --pad:96px; --h1:72px;
+  /* размеры текста — та же шкала, что на главной */
+  --t-title:26px; --h3:22px; --text:18px; --t-ui:15px; --small:14px; --t-xs:13px;
+  /* отступы: шаг 8, мелкие — 4 */
+  --s0:4px; --s1:8px; --s1x:12px; --s2:16px; --s3:24px; --s3x:32px; --s4:40px; --s4x:48px; --s5:64px; --s6:96px;
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+html{background:var(--leather);-webkit-text-size-adjust:100%}
+body{background:var(--leather);color:var(--wrap);font-family:var(--f);font-size:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--led);outline-offset:3px;border-radius:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:min(calc(100% - 2 * var(--pad)),1248px);margin-inline:auto}
+.top{height:72px;display:flex;align-items:center;gap:var(--s3)}
+.logo{font-stretch:var(--narrow);font-weight:800;font-size:var(--t-title);letter-spacing:.02em;text-decoration:none;display:inline-block;line-height:44px;white-space:nowrap}
+.logo span{font-weight:500;color:var(--dust)}
+.langs{margin-left:auto;display:flex;gap:var(--s0)}
+.lang-b{font:inherit;font-size:var(--t-ui);color:var(--dust);background:none;border:0;cursor:pointer;min-width:40px;min-height:44px;padding:var(--s1)}
+.lang-b[aria-pressed="true"]{color:var(--wrap);font-weight:600}
+.rule{height:1px;background:var(--rope)}
+.doc{max-width:720px;padding:var(--s5) 0 var(--s6)}
+.doc[hidden]{display:none}
+h1{font-stretch:var(--narrow);font-weight:850;text-transform:uppercase;font-size:var(--h1);line-height:.95;letter-spacing:-.005em;overflow-wrap:break-word;hyphens:auto}
+html[lang="hy"] h1{font-size:calc(var(--h1) * .75)}
+.date{font-size:var(--small);color:var(--dust);margin-top:var(--s2)}
+h2{font-weight:600;font-size:var(--h3);line-height:1.3;margin-top:var(--s4)}
+p{color:var(--wrap-soft);margin-top:var(--s1x)}
+.back{display:inline-flex;align-items:center;min-height:44px;margin-top:var(--s4x);text-underline-offset:5px;text-decoration-color:var(--dust)}
+.back:hover{text-decoration-color:var(--led)}
+.stub{display:none}
+.work .stub{display:inline-block;font:500 var(--t-xs)/1.3 var(--f);color:var(--dust);border:1px dashed var(--dust);border-radius:3px;padding:var(--s0) var(--s1);vertical-align:middle}
+@media (max-width:767px){
+  :root{--pad:16px;--text:16px;--small:13px;--h1:32px;--h3:20px;--t-title:22px}
+  .top{height:56px}
+  .lang-b{padding:var(--s1) var(--s0)}
+  .doc{padding:var(--s4) 0 var(--s5)}
+  h2{margin-top:var(--s3x)}
+}
+</style>
+</head>
+<body class="work">
+<header class="wrap top">
+  <a class="logo" href="index.html" aria-label="PRO RING STUDIO">PRO RING <span>STUDIO</span></a>
+  <div class="langs" role="group" aria-label="Язык">
+    <button class="lang-b" type="button" data-lang="hy" aria-pressed="true" lang="hy">HY<span class="sr"> Հայերեն</span></button>
+    <button class="lang-b" type="button" data-lang="ru" aria-pressed="false" lang="ru">RU<span class="sr"> Русский</span></button>
+    <button class="lang-b" type="button" data-lang="en" aria-pressed="false" lang="en">EN<span class="sr"> English</span></button>
+  </div>
+</header>
+<div class="wrap"><div class="rule" aria-hidden="true"></div></div>
+
+<main class="wrap">
+
+<!-- ===================== HY (черновой перевод) ===================== -->
+<article class="doc" lang="hy" data-doc="hy">
+  <h1>Գաղտնիության քաղաքականություն</h1>
+  <p class="date">Գործում է <span class="stub">կայքի գործարկման ամսաթիվը</span>-ից։ <span class="stub">սևագիր, թարգմանությունը կստուգի մայրենի լեզվով խոսող, տեքստը՝ իրավաբան</span></p>
+
+  <h2>Ով ենք մենք</h2>
+  <p>Սա PRO RING STUDIO ստուդիայի կայքն է։ Տիրապետողը՝ Ա/Ձ Ալեքսանդրա Եժակ, ՀՎՀՀ <span class="stub">համար</span>, Երևան, Կաջազնունու 1։ Կապ՝ <a href="tel:+37495122932">+374 95 122 932</a>, <span class="stub">էլ. փոստ</span>, Instagram @pro_ring_studio։</p>
+
+  <h2>Ինչ է հավաքում կայքը</h2>
+  <p>Կայքում չկան ձևեր, գրանցում, այցելությունների հաշվիչներ կամ գովազդային հետևողներ։ Կայքը cookie չի օգտագործում։ Տառատեսակները բեռնվում են հենց կայքից, ոչ թե արտաքին ծառայություններից։</p>
+
+  <h2>Ինչ է պահվում քո դիտարկիչում</h2>
+  <p>Կայքը հիշում է ընտրած լեզուն (HY, RU կամ EN) քո դիտարկիչի հիշողության մեջ։ Այն մեզ չի ուղարկվում, և կարող ես ջնջել դիտարկիչի կարգավորումներում։</p>
+
+  <h2>Հոսթինգ</h2>
+  <p>Կայքը տեղադրված է հոսթինգ մատակարարի մոտ <span class="stub">անվանումը և երկիրը՝ գործարկելիս</span>։ Ինչպես ցանկացած սերվեր, այն ավտոմատ գրանցում է այցելությունների տեխնիկական տվյալները՝ IP հասցե, ժամ, դիտարկիչի տեսակ, խափանումներից և հարձակումներից պաշտպանվելու համար։ Մենք այդ գրառումները չենք ստանում և չենք օգտագործում։</p>
+
+  <h2>Երբ գրում ես մեզ մեսենջերում</h2>
+  <p>«Գրանցվել» կոճակները բացում են WhatsApp-ը, Telegram-ը կամ Instagram-ը պատրաստի տեքստով։ Ուղարկել հաղորդագրությունը, թե ոչ, որոշում ես դու։ Եթե գրես, Ալեքսանդրան կտեսնի քո անունը կամ մականունը, հեռախոսահամարը (WhatsApp-ում) և հաղորդագրության տեքստը։ Մենք դրանք օգտագործում ենք միայն քեզ մարզման գրանցելու և ժամանակացույցի փոփոխությունների մասին տեղեկացնելու համար, և ոչ մեկին չենք փոխանցում։ Նամակագրության վրա տարածվում են նաև մեսենջերի կանոնները։</p>
+
+  <h2>Երեխաներ</h2>
+  <p>Երեխայի փոխարեն գրում է ծնողը կամ օրինական ներկայացուցիչը։</p>
+
+  <h2>Լուսանկարներ</h2>
+  <p>Կայքում միայն Ալեքսանդրայի լուսանկարներն են՝ նրա համաձայնությամբ։ Սաների լուսանկարները կհայտնվեն միայն նրանց գրավոր համաձայնությամբ, իսկ երեխաներինը՝ ծնողների համաձայնությամբ։</p>
+
+  <h2>Քո իրավունքները</h2>
+  <p>Կարող ես հարցնել, թե քո ինչ տվյալներ ունենք, խնդրել ուղղել կամ ջնջել դրանք՝ գրիր մեզ ցանկացած մեսենջերում։ Եթե կարծում ես, որ խախտել ենք քո իրավունքները, կարող ես դիմել ՀՀ Անձնական տվյալների պաշտպանության գործակալություն։</p>
+
+  <h2>Օրենք</h2>
+  <p>Մենք հետևում ենք «Անձնական տվյալների պաշտպանության մասին» ՀՀ օրենքին։</p>
+
+  <a class="back" href="index.html?lang=hy">Վերադառնալ կայք</a>
+</article>
+
+<!-- ===================== RU ===================== -->
+<article class="doc" lang="ru" data-doc="ru" hidden>
+  <h1>Политика конфиденциальности</h1>
+  <p class="date">Действует с <span class="stub">дата запуска сайта</span>. <span class="stub">черновик — проверит юрист</span></p>
+
+  <h2>Кто мы</h2>
+  <p>Это сайт студии PRO RING STUDIO. Владелец — ИП Александра Ежак, налоговый номер (ՀՎՀՀ) <span class="stub">номер</span>, Ереван, ул. Каджазнуни 1. Связаться: <a href="tel:+37495122932">+374 95 122 932</a>, <span class="stub">почта</span>, Instagram @pro_ring_studio.</p>
+
+  <h2>Что собирает сайт</h2>
+  <p>На сайте нет форм, регистрации, счётчиков посещений и рекламных трекеров. Сайт не использует cookie. Шрифты загружаются с самого сайта, а не со сторонних сервисов.</p>
+
+  <h2>Что хранится в твоём браузере</h2>
+  <p>Сайт запоминает выбранный язык (HY, RU или EN) в памяти твоего браузера. К нам это не уходит, стереть можно в настройках браузера.</p>
+
+  <h2>Хостинг</h2>
+  <p>Сайт размещён у хостинг-провайдера <span class="stub">название и страна — при запуске</span>. Как любой сервер, он автоматически записывает технические данные о посещениях: IP-адрес, время, тип браузера. Это нужно для защиты от сбоев и атак. Мы эти записи не получаем и не используем.</p>
+
+  <h2>Когда ты пишешь нам в мессенджер</h2>
+  <p>Кнопки «Записаться» открывают WhatsApp, Telegram или Instagram с готовым текстом. Отправлять сообщение или нет, решаешь ты. Если напишешь, Александра увидит твоё имя или ник, номер телефона (в WhatsApp) и текст сообщения. Мы используем их только чтобы записать тебя на тренировку и сообщить об изменениях в расписании, и никому не передаём. На переписку также распространяются правила самого мессенджера.</p>
+
+  <h2>Дети</h2>
+  <p>За ребёнка пишет родитель или законный представитель.</p>
+
+  <h2>Фото</h2>
+  <p>На сайте только фото Александры, с её согласия. Фото учеников появятся только с их письменного согласия, а фото детей — с согласия родителей.</p>
+
+  <h2>Твои права</h2>
+  <p>Ты можешь спросить, какие твои данные у нас есть, попросить исправить или удалить их: напиши нам в любой мессенджер. Если считаешь, что мы нарушили твои права, можно обратиться в Агентство по защите персональных данных Республики Армения.</p>
+
+  <h2>Закон</h2>
+  <p>Мы следуем Закону Республики Армения «О защите персональных данных».</p>
+
+  <a class="back" href="index.html?lang=ru">Вернуться на сайт</a>
+</article>
+
+<!-- ===================== EN (черновой перевод) ===================== -->
+<article class="doc" lang="en" data-doc="en" hidden>
+  <h1>Privacy policy</h1>
+  <p class="date">Effective from <span class="stub">site launch date</span>. <span class="stub">draft: translation to be checked by a native speaker, text by a lawyer</span></p>
+
+  <h2>Who we are</h2>
+  <p>This is the website of PRO RING STUDIO. Owner: sole proprietor Alexandra Ezhak, tax ID (ՀՎՀՀ) <span class="stub">number</span>, 1 Kajaznuni St, Yerevan. Contact: <a href="tel:+37495122932">+374 95 122 932</a>, <span class="stub">email</span>, Instagram @pro_ring_studio.</p>
+
+  <h2>What the site collects</h2>
+  <p>The site has no forms, no sign-up, no visitor counters and no ad trackers. It doesn’t use cookies. Fonts load from the site itself, not from outside services.</p>
+
+  <h2>What’s stored in your browser</h2>
+  <p>The site remembers the language you chose (HY, RU or EN) in your browser’s storage. It isn’t sent to us, and you can clear it in your browser settings.</p>
+
+  <h2>Hosting</h2>
+  <p>The site is hosted by <span class="stub">provider name and country, at launch</span>. Like any server, it automatically logs technical visit data such as IP address, time and browser type, to protect against outages and attacks. We don’t receive or use these logs.</p>
+
+  <h2>When you message us</h2>
+  <p>The “Book” buttons open WhatsApp, Telegram or Instagram with a ready-made message. Whether you send it is up to you. If you do, Alexandra will see your name or username, your phone number (on WhatsApp) and your message. We use them only to book your class and let you know about schedule changes, and we don’t share them with anyone. The messenger’s own rules also apply to the conversation.</p>
+
+  <h2>Children</h2>
+  <p>A parent or legal guardian messages us on a child’s behalf.</p>
+
+  <h2>Photos</h2>
+  <p>The site only shows photos of Alexandra, with her consent. Photos of students will appear only with their written consent, and photos of children only with their parents’ consent.</p>
+
+  <h2>Your rights</h2>
+  <p>You can ask what data we have about you, and ask us to correct or delete it: just message us on any messenger. If you think we’ve violated your rights, you can contact the Personal Data Protection Agency of the Republic of Armenia.</p>
+
+  <h2>Law</h2>
+  <p>We follow the Law of the Republic of Armenia “On Protection of Personal Data”.</p>
+
+  <a class="back" href="index.html?lang=en">Back to the site</a>
+</article>
+
+</main>
+
+<script>
+(() => {
+  const TITLES = {
+    hy: 'Գաղտնիության քաղաքականություն — PRO RING STUDIO',
+    ru: 'Политика конфиденциальности — PRO RING STUDIO',
+    en: 'Privacy policy — PRO RING STUDIO'
+  };
+  const store = {
+    get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+    set(k,v){ try { localStorage.setItem(k, v); } catch(e){} }
+  };
+  const q = new URLSearchParams(location.search);
+  function show(l){
+    const lang = TITLES[l] ? l : 'hy';
+    document.documentElement.lang = lang;
+    document.title = TITLES[lang];
+    document.querySelectorAll('[data-doc]').forEach(a => { a.hidden = a.dataset.doc !== lang; });
+    document.querySelectorAll('.lang-b').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    document.querySelector('.logo').href = 'index.html?lang=' + lang;
+    store.set('proring-lang', lang);
+  }
+  document.querySelectorAll('.lang-b').forEach(b => b.addEventListener('click', () => show(b.dataset.lang)));
+  // режим показа заказчику: #chisto прячет заглушки
+  const mode = () => document.body.classList.toggle('work', !(location.hash === '#chisto' || q.has('chisto')));
+  addEventListener('hashchange', mode); mode();
+  // типографика: короткие предлоги и союзы не висят в конце строки, тире не начинает строку
+  const SHORT = /(?<=^|[\s\u00A0(«"„])(в|во|с|со|к|ко|у|о|об|и|а|но|на|по|за|из|от|до|не|ни|для|без|при)\s+/giu;
+  const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => n.parentElement && !n.parentElement.closest('script, style') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+  let n;
+  while ((n = tw.nextNode())) {
+    const t = n.nodeValue.replace(SHORT, '$1\u00A0').replace(/\s+—/g, '\u00A0—');
+    if (t !== n.nodeValue) n.nodeValue = t;
+  }
+  // по умолчанию русский, как на главной
+  show(q.get('lang') || store.get('proring-lang') || 'ru');
+})();
+</script>
+</body>
+</html>

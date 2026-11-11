@@ -1,0 +1,1433 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PRO RING STUDIO — бокс, кикбоксинг и фитнес в Ереване</title>
+<meta name="description" content="Студия бокса, кикбоксинга и фитнеса в центре Еревана. Группы и персональные тренировки с мастером спорта. Первая тренировка в группе — бесплатно.">
+<meta name="theme-color" content="#17120F">
+<link rel="preload" href="fonts/noto-sans-armenian.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* шрифты лежат на самом сайте (Noto Sans, лицензия SIL OFL — fonts/OFL.txt): адреса посетителей не уходят в Google */
+@font-face{font-family:"Noto Sans";font-style:normal;font-weight:400 900;font-stretch:62.5% 100%;font-display:swap;src:url(fonts/noto-sans-cyrillic.woff2) format("woff2");unicode-range:U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116}
+@font-face{font-family:"Noto Sans";font-style:normal;font-weight:400 900;font-stretch:62.5% 100%;font-display:swap;src:url(fonts/noto-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"Noto Sans Armenian";font-style:normal;font-weight:400 900;font-stretch:62.5% 100%;font-display:swap;src:url(fonts/noto-sans-armenian.woff2) format("woff2");unicode-range:U+0308, U+0530-058F, U+2010, U+2024, U+25CC, U+FB13-FB17}
+/* ================= ТОКЕНЫ ================= */
+:root{
+  /* цвета — прототип v2 */
+  --leather:#17120F;        /* фон: тёплый чёрный, кожа мешков */
+  --mat:#231C17;            /* «сегодня», окно записи, подсветка строки */
+  --wrap:#EEE5D6;           /* текст: цвет бинта */
+  --wrap-soft:rgba(238,229,214,.82);
+  --dust:#8F8478;           /* подписи, канаты */
+  --rope:rgba(143,132,120,.45);
+  --rope-soft:rgba(143,132,120,.22);
+  --led:#D6A45A;            /* единственный акцент: свет LED-ленты */
+  --led-glow:rgba(214,164,90,.35);
+  --led-hi:#E4B76F;         /* золото при наведении на кнопку */
+  --lift:rgba(238,229,214,.05); /* подсветка ячейки расписания при наведении */
+  --shade:rgba(23,18,15,.96);
+  --line-strong:rgba(238,229,214,.5);  /* контур кнопок и фильтров */
+  --on-led-soft:rgba(23,18,15,.7);     /* приглушённый текст на золоте */
+  --leather-82:rgba(23,18,15,.82); --leather-60:rgba(23,18,15,.6); --leather-12:rgba(23,18,15,.12); --leather-0:rgba(23,18,15,0); /* затемнение фото */
+  --backdrop:rgba(10,8,6,.74);         /* фон под окном записи */
+  --shadow:rgba(0,0,0,.55);            /* тень окна записи */
+
+  /* шрифт: одна система на RU, HY, EN */
+  --f:"Noto Sans","Noto Sans Armenian",system-ui,sans-serif;
+  --narrow:62.5%;
+
+  /* сетка и отступы: шаг 8, для мелких зазоров — половина шага (4) */
+  --pad:96px; --gap:24px; --maxw:1248px;
+  --s0:4px; --s1:8px; --s1x:12px; --s2:16px; --s2x:20px; --s3:24px; --s3x:32px;
+  --s4:40px; --s4x:48px; --s5:64px; --s6:96px; --s7:160px;
+  --doc-drop:56px;          /* насколько фото «документ» свисает под фото тренера */
+  --section:var(--s7);
+  --header-h:72px; --r:4px;
+  /* первый экран на компьютере (v11, просьба Елены): */
+  --hero-drop:var(--s4x);   /* весь экран ниже шапки — меню не ложится на голову на фото */
+  --hero-gap:var(--s4x);    /* от слогана до золотой линии и табло */
+  --hero-end:80px;          /* от кнопки до фактов: ближе, чем было, но дальше, чем слоган от линии */
+
+  /* размеры текста: одна шкала на весь сайт, сверху вниз */
+  --slogan-max:150px; --slogan-w:min(62vw,880px); --fit:6.4;
+  --h2:80px;
+  --h2-small:44px; --quote:44px;
+  --t-menu:40px;            /* пункты меню на телефоне и планшете */
+  --time:40px; --price:40px;
+  --t-display:32px;         /* «двери», «бесплатно», время в расписании */
+  --t-icon:32px;            /* крестики «закрыть» */
+  --t-title:26px;           /* логотип, заголовок окна записи */
+  --h1:24px;
+  --h3:22px;                /* заголовки третьего уровня */
+  --t-lead:20px;            /* крупный текст: факты, вопросы, финал */
+  --text:18px;              /* основной текст */
+  --t-btn:16px;             /* кнопки, названия занятий */
+  --t-ui:15px;              /* меню, ссылки, фильтры, подвал, окно записи */
+  --small:14px;             /* примечания, «Записаться» в расписании */
+  --t-xs:13px;              /* пометки, счётчики, подписи к фото */
+}
+html[lang="hy"]{--fit:9.7; --h2:58px; --h2-small:36px; --quote:36px}
+html[lang="en"]{--fit:4.95}
+
+/* ================= БАЗА ================= */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0;padding:0}
+html{background:var(--leather);scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + var(--s1));-webkit-text-size-adjust:100%}
+body{background:var(--leather);color:var(--wrap);font-family:var(--f);font-size:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+ul,ol{list-style:none}
+:focus-visible{outline:2px solid var(--led);outline-offset:3px;border-radius:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:min(calc(100% - 2 * var(--pad)),var(--maxw));margin-inline:auto}
+.skip{position:absolute;left:16px;top:-80px;z-index:100;background:var(--led);color:var(--leather);padding:var(--s1x) var(--s2);border-radius:var(--r);font-weight:600;text-decoration:none}
+.skip:focus{top:16px}
+/* переносы: без одного слова на последней строке, заголовки ровными строками */
+p,li,.a{text-wrap:pretty}
+h1,h2,h3,summary,blockquote{text-wrap:balance}
+
+/* отступы считаются от края букв, а не от рамки строки: сверху — линия заглавных, снизу — базовая линия */
+.h2,.final-h,.quote,.free-t,.door-t,.facts p,.cap,.rules li:last-child,.where p,.slogan span{text-box:trim-both cap alphabetic}
+
+/* узкий капс — слоган, H2 */
+.display{font-stretch:var(--narrow);font-weight:850;text-transform:uppercase;line-height:.9;letter-spacing:-.005em}
+.h2{font-stretch:var(--narrow);font-weight:850;text-transform:uppercase;font-size:var(--h2);line-height:.95;letter-spacing:-.005em}
+.num{font-stretch:var(--narrow);font-weight:600;font-variant-numeric:tabular-nums;line-height:1}
+
+/* канаты ринга: три линии с шагом 8 px */
+/* тонкая линия-разделитель */
+.rule{height:1px;background:var(--rope)}
+/* LED-линия */
+.led{display:block;height:2px;background:var(--led);box-shadow:0 0 14px 2px var(--led-glow)}
+
+/* кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:var(--s1x) var(--s3x);border-radius:var(--r);font-weight:600;font-size:var(--t-btn);line-height:1.2;text-align:center;text-decoration:none;transition:background-color .2s,color .2s,box-shadow .2s}
+/* кнопки плоские: свечение остаётся только у LED-линий — это мотив зала */
+.btn-led{background:var(--led);color:var(--leather)}
+.btn-led:hover{background:var(--led-hi)}
+.btn-line{border:1px solid var(--line-strong);color:var(--wrap)}
+.btn-line:hover{background:var(--led);border-color:var(--led);color:var(--leather)}
+.btn-sm{min-height:40px;padding:var(--s1) var(--s2x);font-size:var(--small)}
+.link{text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--dust);text-decoration-thickness:1px}
+.link:hover{text-decoration-color:var(--led)}
+
+/* заглушки: видны в рабочем режиме, скрыты с #chisto */
+.stub{display:none}
+.work .stub{display:inline-block;font:500 var(--t-xs)/1.3 var(--f);font-stretch:100%;text-transform:none;letter-spacing:0;color:var(--dust);border:1px dashed var(--dust);border-radius:3px;padding:var(--s0) var(--s1);margin:var(--s0) 0 0;vertical-align:middle}
+.stub-block{display:none}
+.work .stub-block{display:block}
+.draft-note{position:fixed;left:16px;bottom:16px;z-index:40;max-width:300px;font-size:var(--t-xs);line-height:1.35;color:var(--wrap);background:var(--mat);border:1px dashed var(--dust);border-radius:var(--r);padding:var(--s1) var(--s1x)}
+
+/* ================= ШАПКА ================= */
+.site-header{position:fixed;inset:0 0 auto;z-index:50;height:var(--header-h);transition:transform .3s ease,background-color .3s ease,box-shadow .3s ease}
+.site-header .wrap{height:100%;display:flex;align-items:center;gap:var(--s3x)}
+.site-header.is-solid{background:var(--shade);box-shadow:0 1px 0 var(--rope-soft)}
+.site-header.is-hidden{transform:translateY(-100%)}
+.logo{font-stretch:var(--narrow);font-weight:800;font-size:var(--t-title);letter-spacing:.02em;text-decoration:none;white-space:nowrap}
+.logo span{font-weight:500;color:var(--dust)}
+.nav{margin-left:auto;display:flex;gap:var(--s3);font-size:var(--t-ui)}
+.nav a{text-decoration:none}
+.nav a:hover{color:var(--led)}
+.langs{display:flex;gap:var(--s0)}
+.lang-b{font-size:var(--t-ui);color:var(--dust);padding:var(--s1) var(--s1);min-width:36px}
+.lang-b[aria-pressed="true"]{color:var(--wrap);font-weight:600}
+.lang-b:hover{color:var(--wrap)}
+.burger{display:none;width:48px;height:48px;margin-right:calc(-1 * var(--s1x));position:relative}
+.burger i{position:absolute;left:13px;right:13px;height:2px;background:var(--wrap)}
+.burger i:nth-child(1){top:17px}.burger i:nth-child(2){top:23px}.burger i:nth-child(3){top:29px}
+
+.menu{position:fixed;inset:0;z-index:60;background:var(--leather);display:flex;flex-direction:column;padding:0 var(--pad) calc(var(--s3) + env(safe-area-inset-bottom))}
+.menu[hidden]{display:none}
+.menu-top{height:56px;display:flex;align-items:center;justify-content:space-between}
+.menu-close{width:48px;height:48px;margin-right:calc(-1 * var(--s1x));font-size:var(--t-icon);line-height:1}
+.menu-nav{display:flex;flex-direction:column;gap:var(--s0);margin-top:var(--s3)}
+.menu-nav a{font-stretch:var(--narrow);font-weight:800;font-size:var(--t-menu);line-height:1.15;text-transform:uppercase;text-decoration:none;padding:var(--s0) 0}
+.menu .langs{margin-top:var(--s3x)}
+.menu-info{margin-top:var(--s3x);color:var(--wrap-soft);font-size:var(--text);line-height:1.5}
+.menu-msgrs{display:flex;flex-wrap:wrap;gap:0 var(--s3);margin-top:var(--s0)}
+.menu-msgrs a{display:inline-flex;align-items:center;min-height:44px;color:var(--wrap)}
+.menu .btn{margin-top:auto;width:100%}
+
+/* ================= ЭКРАН 1: ОБЛОЖКА ================= */
+.hero{position:relative;display:flex;flex-direction:column;padding:calc(var(--header-h) + clamp(var(--s3),6svh,var(--s5)) + var(--hero-drop)) 0 var(--hero-end);overflow:clip}
+.hero-photo{position:absolute;top:var(--hero-drop);right:0;width:60%;height:74%;z-index:0}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:32% 30%;filter:grayscale(1) sepia(.35) contrast(1.12) brightness(.82);animation:photo-in .6s ease-out both}
+.hero-photo::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,var(--leather) 0%,var(--leather-82) 16%,var(--leather-12) 52%,var(--leather-0) 100%),
+  linear-gradient(0deg,var(--leather) 0%,var(--leather-60) 22%,var(--leather-0) 48%),
+  linear-gradient(180deg,var(--leather) 0%,var(--leather-0) 12%)}
+.hero-grid{flex:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto 1fr;column-gap:var(--gap);row-gap:var(--hero-gap);align-items:start}
+.hero-in{grid-column:1 / span 7;grid-row:1;position:relative;z-index:2}
+/* вторая строка: золотая линия слева и верх табло справа — на одном уровне */
+.hero-text{grid-column:1 / span 6;grid-row:2;position:relative;z-index:2}
+.slogan{font-size:min(var(--slogan-max),calc(var(--slogan-w) / var(--fit)),16svh)}
+.slogan span{display:block;animation:punch .4s cubic-bezier(.2,.8,.2,1) both}
+.slogan span:nth-child(1){animation-delay:.15s}
+.slogan span:nth-child(2){animation-delay:.3s}
+.slogan span:nth-child(3){animation-delay:.45s}
+.hero .led{width:320px;margin:0 0 var(--s3x);transform-origin:left;animation:led-on .5s ease-out .95s both}
+.h1{font-weight:600;font-size:var(--h1);line-height:1.25;max-width:540px}
+.lead{color:var(--wrap-soft);margin-top:var(--s1x);max-width:520px}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2) var(--s3x);margin-top:var(--s3x)}
+.note{font-size:var(--small);color:var(--dust);margin-top:var(--s2);max-width:560px}
+
+@keyframes punch{from{opacity:0;transform:translateY(.22em)}to{opacity:1;transform:none}}
+@keyframes led-on{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+@keyframes photo-in{from{opacity:0}to{opacity:1}}
+
+/* «Сегодня в зале» — табло */
+.today{grid-column:8 / span 5;grid-row:2;align-self:start;position:relative;z-index:2;background:var(--leather);border-top:2px solid var(--led);box-shadow:0 -12px 28px -16px var(--led-glow)}
+.today-head{display:flex;justify-content:space-between;align-items:baseline;gap:var(--s1x);padding:var(--s2) 0 var(--s1)}
+.today-title{font-weight:600;font-size:var(--t-lead);line-height:1.3}
+.today-date{font-size:var(--small);color:var(--dust);white-space:nowrap}
+.today-all{display:inline-block;font-size:var(--t-ui);margin-top:var(--s1x)}
+
+/* строка занятия: в табло «сегодня» и в мобильном расписании */
+.row{display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:var(--s2);width:100%;text-align:left;padding:var(--s1x) 0;border-top:1px solid var(--rope-soft);transition:background-color .2s,opacity .2s}
+.row .t{font-size:var(--time)}
+.row .n{font-weight:600;font-size:var(--t-btn);line-height:1.3}
+.row .n small{display:block;font-weight:400;font-size:var(--t-xs);color:var(--dust);margin-top:var(--s0)}
+.row .go{font-size:var(--small);font-weight:500;border:1px solid var(--line-strong);border-radius:var(--r);padding:var(--s1) var(--s2);white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s}
+.row:hover{background:var(--mat)}
+.row:hover .go,.row:focus-visible .go{background:var(--led);border-color:var(--led);color:var(--leather)}
+.row.is-next{background:var(--mat);margin-inline:calc(-1 * var(--s1x));padding-inline:var(--s1x);width:calc(100% + 24px)}
+.row.is-next .go{border-color:var(--wrap)}
+
+/* ================= ФАКТЫ ================= */
+.facts-in{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+/* у каждого факта — короткая черта света, как LED-линия под слоганом */
+.facts p::before{content:"";display:block;width:var(--s3x);height:2px;background:var(--led);margin-bottom:var(--s1x)}
+.facts p{font-size:var(--t-lead);line-height:1.35;color:var(--wrap-soft)}
+.facts b{color:var(--wrap);font-weight:700}
+
+/* ================= СЕКЦИИ ================= */
+.section{padding-top:var(--section)}
+.sec-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:end;margin-bottom:var(--s5)}
+.sec-head .h2{grid-column:1 / span 7}
+.sec-head .h2:only-child{grid-column:1 / -1}
+.sec-head .aside{grid-column:8 / span 5;color:var(--wrap-soft)}
+.sec-head .aside p+p{margin-top:var(--s1)}
+.cap{font-size:var(--small);color:var(--dust)}
+
+/* ===== Экран 2: пять дверей ===== */
+.doors{border-bottom:1px solid var(--rope)}
+.doors li{border-top:1px solid var(--rope)}
+.door{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:baseline;padding:var(--s3x) var(--s1x);margin-inline:calc(-1 * var(--s1x));text-decoration:none;transition:background-color .2s}
+.door:hover{background:var(--mat)}
+.door-t{grid-column:1 / span 7;grid-row:1 / span 2;font-stretch:var(--narrow);font-weight:800;font-size:var(--t-display);line-height:1.05}
+.door-d{grid-column:8 / span 5;color:var(--wrap-soft)}
+.door-l{grid-column:8 / span 5;justify-self:start;margin-top:var(--s1x);font-size:var(--t-ui)}
+.door:hover .door-l{text-decoration-color:var(--led)}
+
+/* ===== Экран 3: расписание ===== */
+.chips{display:flex;flex-wrap:wrap;gap:var(--s1);margin-bottom:var(--s4)}
+.chip{height:40px;padding:0 var(--s2);border:1px solid var(--line-strong);border-radius:20px;font-size:var(--t-ui);white-space:nowrap;transition:background-color .2s,color .2s,border-color .2s}
+.chip span{color:var(--dust);margin-left:var(--s0);font-size:var(--t-xs)}
+.chip:hover{border-color:var(--wrap)}
+.chip[aria-pressed="true"]{background:var(--led);border-color:var(--led);color:var(--leather);font-weight:600}
+.chip[aria-pressed="true"] span{color:var(--on-led-soft)}
+.day-tabs{display:none}
+.days{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));column-gap:var(--gap);border-top:1px solid var(--rope);border-bottom:1px solid var(--rope)}
+.day{position:relative;z-index:0;padding:var(--s2) 0 var(--s3);min-width:0}
+/* разделитель дней — посередине промежутка между колонками */
+.day + .day::before{content:"";position:absolute;top:0;bottom:0;left:calc(var(--gap) / -2);width:1px;background:var(--rope-soft)}
+/* «сегодня» — подложка на всю колонку вместе с половинами промежутков */
+.day.is-today::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc(var(--gap) / -2);right:calc(var(--gap) / -2);background:var(--mat);box-shadow:inset 0 2px 0 var(--led)}
+.day-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s0) var(--s1);font-weight:600;font-size:var(--text);line-height:1.3;margin-bottom:var(--s1)}
+.day-h .mark{font-size:var(--t-xs);font-weight:500;color:var(--led)}
+.day-empty{display:none}
+.slot{position:relative;display:block;width:calc(100% + 16px);margin-inline:calc(-1 * var(--s1));text-align:left;padding:var(--s1x) var(--s1) var(--s2);border-top:1px solid var(--rope-soft);transition:background-color .2s,opacity .2s}
+.slot .t{display:block;font-size:var(--t-display)}
+.slot .n{display:block;font-weight:600;font-size:var(--t-btn);line-height:1.3;margin-top:var(--s1);min-height:2.6em}  /* место под две строки — ячейки одной высоты */
+/* пояснение и «Записаться» видны всегда: при наведении ячейка не растёт и столбец не прыгает */
+/* описание спрятано и раскрывается при наведении — сетка остаётся ровной */
+.slot .d{display:block;font-size:var(--small);line-height:1.4;color:var(--dust);max-height:0;opacity:0;overflow:hidden;transition:max-height .25s ease,opacity .2s ease,margin .2s}
+.slot:hover .d,.slot:focus-visible .d{max-height:8em;opacity:1;margin-top:var(--s0)}
+.slot .go{display:inline-block;margin-top:var(--s1);font-size:var(--small);font-weight:600;color:var(--wrap-soft);text-decoration:underline;text-decoration-color:var(--dust);text-decoration-thickness:1px;text-underline-offset:4px;transition:color .2s,text-decoration-color .2s}
+.slot:hover{background:var(--lift)}
+.slot:hover .go,.slot:focus-visible .go{color:var(--led);text-decoration-color:var(--led)}
+.slot .t,.slot .n,.row .t,.row .n{transition:color .2s}
+.slot.is-past .t,.slot.is-past .n,.slot.is-dim .t,.slot.is-dim .n,.row.is-dim .t,.row.is-dim .n{color:var(--dust)}
+/* прошедшее сегодня — «Прошла» (нажатие записывает на следующую неделю); не подходящее под фильтр — без «Записаться» */
+.slot.is-past .go{color:var(--dust);text-decoration:none}
+.slot.is-dim .go{visibility:hidden}
+/* при включённом фильтре подходящие занятия отмечены LED-чертой */
+.is-filtered #days .slot:not(.is-dim){padding-left:var(--s2);box-shadow:inset 2px 0 0 var(--led)}
+.sched-foot{display:flex;flex-wrap:wrap;gap:var(--s1) var(--s3);align-items:center;margin-top:var(--s2)}
+
+/* ===== Экран 4: цены ===== */
+.free{margin-bottom:var(--s5);max-width:760px}
+.free::before{content:"";display:block;width:var(--s3x);height:2px;background:var(--led);margin-bottom:var(--s2x)}
+.free-t{font-weight:700;font-size:var(--t-display);line-height:1.15}
+.free-d{color:var(--wrap-soft);margin-top:var(--s2)}
+.cur{margin-bottom:var(--s1x)}
+.price-table{width:100%;border-collapse:collapse}
+/* название — колонки 1–7; цены — с 8-й колонки, по одной линии с «Правилами посещения» и подписью справа */
+.price-table,.price-table thead,.price-table tbody{display:block}
+.price-table tr{display:grid;grid-template-columns:calc((100% + var(--gap)) / 12 * 7 - var(--gap)) repeat(3,minmax(0,1fr));column-gap:var(--gap);align-items:center}
+.price-table thead th{font-size:var(--small);font-weight:400;color:var(--dust);text-align:left;padding:0 0 var(--s1x)}
+.price-table thead th:first-child{text-align:left}
+.price-table tbody tr{border-top:1px solid var(--rope)}
+.price-table tbody tr:last-child{border-bottom:1px solid var(--rope)}
+.price-table tbody th{text-align:left;font-weight:600;font-size:var(--text);line-height:1.3;padding:var(--s2x) 0}
+.price-table tbody th small{display:block;font-weight:400;font-size:var(--small);color:var(--dust);margin-top:var(--s0)}
+.price-table td{text-align:left;padding:var(--s2x) 0;font-size:var(--price);white-space:nowrap}
+.dram{font-size:.6em;color:var(--wrap-soft);margin-left:.15em}
+.price-table .row-book{display:inline-flex;align-items:center;min-height:44px;margin-top:var(--s0);font-size:var(--t-ui);font-weight:600}
+.prices-foot{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);margin-top:var(--s4)}
+.prices-notes{grid-column:1 / span 6}
+.prices-notes li{color:var(--wrap-soft)}
+.prices-notes li+li{margin-top:var(--s1)}
+.prices-notes .btn{margin-top:var(--s4)}
+.rules{grid-column:8 / span 5}
+.rules h3{font-weight:600;font-size:var(--h3);line-height:1.3;margin-bottom:var(--s1x)}
+.rules li{color:var(--wrap-soft)}
+.rules li+li{margin-top:var(--s1x)}
+
+/* ===== Экран 5: тренер ===== */
+.coach-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap);align-items:start}
+.coach-fig{grid-column:1 / span 6;position:relative;margin-bottom:var(--doc-drop)}
+.coach-fig .main{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 40%;filter:grayscale(1) sepia(.3) contrast(1.1) brightness(.85)}
+.doc{position:absolute;right:-32px;bottom:calc(-1 * var(--doc-drop));width:210px;background:var(--wrap);padding:var(--s1x) var(--s1x) var(--s4x)}
+.doc img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 40%;filter:grayscale(1) sepia(.25) contrast(1.05)}
+.coach-text{grid-column:8 / span 5}
+.quote{font-stretch:var(--narrow);font-weight:700;font-size:var(--quote);line-height:1.08}
+.coach-h{font-weight:600;font-size:var(--h3);line-height:1.3;margin-top:var(--s4)}
+.coach-p{color:var(--wrap-soft);margin-top:var(--s1x)}
+.titles{margin-top:var(--s3)}
+.titles li{font-size:var(--text);line-height:1.4}
+.titles li+li{margin-top:var(--s1x)}
+.coach-text .btn{margin-top:var(--s4)}
+
+/* лента фото 03–06 */
+.strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:360px;margin-top:var(--section);overflow:hidden}
+.strip img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(1) sepia(.3) contrast(1.15) brightness(.75)}
+
+/* ===== Экран 6: 60 минут ===== */
+.first .cap{margin-top:var(--s3)}
+
+.qa{max-width:calc((100% + var(--gap)) / 12 * 8 - var(--gap));border-bottom:1px solid var(--rope)}
+.qa details{border-top:1px solid var(--rope)}
+.qa summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--s3);padding:var(--s2x) 0;font-weight:600;font-size:var(--t-lead);line-height:1.3;cursor:pointer}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"";flex:none;width:16px;height:16px;background:linear-gradient(var(--wrap),var(--wrap)) center/16px 2px no-repeat,linear-gradient(var(--wrap),var(--wrap)) center/2px 16px no-repeat;transition:transform .25s}
+.qa details[open] summary::after{transform:rotate(45deg)}
+.qa summary:hover{color:var(--led)}
+#voprosy .btn{margin-top:var(--s4)}
+.qa .a{color:var(--wrap-soft);padding:0 0 var(--s3);max-width:calc((100% + var(--gap)) / 8 * 6 - var(--gap))}
+
+/* ===== Экран 7: записаться ===== */
+.final{padding-bottom:var(--section)}
+.final-h{font-size:calc(var(--h2) * .75);max-width:15em}
+.final-by{font-size:var(--small);color:var(--dust);margin-top:var(--s2)}
+.final-lead{font-size:var(--t-lead);color:var(--wrap-soft);margin-top:var(--s3);max-width:620px}
+.msgrs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-top:var(--s5)}
+.msgr{min-height:72px;font-size:var(--t-lead)}
+.msgr-note{grid-column:1;font-size:var(--t-xs);color:var(--dust);margin-top:calc(-1 * var(--s1x))}
+
+/* ===== Подвал ===== */
+.footer{padding:0 0 calc(var(--s5) + env(safe-area-inset-bottom))}
+.footer-grid,.footer-legal{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gap)}
+.footer-grid{padding-top:var(--s4);font-size:var(--t-ui);color:var(--wrap-soft)}
+.footer-grid > .f-col{grid-column:span 4}  /* три колонки — по линиям кнопок мессенджеров */
+.f-h{font-size:var(--small);font-weight:400;color:var(--dust)}
+.f-col > .f-h2{margin-top:var(--s3)}
+.f-col > * + *{margin-top:var(--s1)}
+.f-links{display:flex;flex-direction:column;align-items:flex-start}
+.f-col .link{display:inline-block}
+.f-links a{text-decoration:none}
+.f-links a:hover{color:var(--led)}
+.f-small{font-size:var(--small);color:var(--dust)}
+.footer-legal{margin-top:var(--s5);font-size:var(--small);color:var(--dust);align-items:baseline}
+.footer-legal > p{grid-column:1 / span 8}
+.footer-legal > .link{grid-column:9 / span 4;justify-self:start;color:var(--wrap-soft)}
+
+/* ===== Нижняя панель (телефон) ===== */
+.sticky{display:none}
+
+/* ===== Окно «Куда написать?» ===== */
+.book{width:min(480px,calc(100% - 32px));margin:auto;background:var(--mat);color:var(--wrap);border:0;border-radius:var(--r);padding:var(--s3x);box-shadow:0 0 0 1px var(--rope-soft),0 24px 64px var(--shadow)}
+.book::backdrop{background:var(--backdrop)}
+.book[open]{animation:sheet-in .3s cubic-bezier(.2,.8,.2,1)}
+@keyframes sheet-in{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.book-x{position:absolute;top:8px;right:8px;width:48px;height:48px;font-size:var(--t-icon);line-height:1;color:var(--dust)}
+.book-x:hover{color:var(--wrap)}
+.book h2{font-weight:700;font-size:var(--t-title);line-height:1.2;padding-right:var(--s4)}
+.book-cls{margin-top:var(--s2);padding:var(--s1x) 0;border-top:1px solid var(--rope-soft);border-bottom:1px solid var(--rope-soft)}
+.book-cls b{display:block;font-weight:600;font-size:var(--text);line-height:1.3}
+.book-cls span{font-size:var(--t-ui);color:var(--dust)}
+.bubble{margin-top:var(--s2);background:var(--leather);border-radius:4px 16px 16px 16px;padding:var(--s2) var(--s2);font-size:var(--t-btn);line-height:1.45}
+.book-first{display:flex;align-items:center;gap:var(--s1x);min-height:44px;margin-top:var(--s1);font-size:var(--t-ui);color:var(--wrap-soft);cursor:pointer}
+.book-first[hidden]{display:none}
+.book-first input{flex:none;width:20px;height:20px;margin:0;accent-color:var(--led)}
+.book-note{font-size:var(--t-ui);line-height:1.45;color:var(--wrap);margin-top:var(--s1)}
+.book-btns{display:grid;gap:var(--s1x);margin-top:var(--s2x)}
+.book-btns .btn{width:100%}
+.ig-note{font-size:var(--t-xs);color:var(--dust);margin-top:var(--s0)}
+.book-status{min-height:1.4em;font-size:var(--small);color:var(--led);margin-top:var(--s1x)}
+.book-priv{font-size:var(--t-xs);line-height:1.45;color:var(--dust);margin-top:var(--s2)}
+.book-priv a{color:var(--wrap-soft)}
+
+/* ================= ПЛАНШЕТ 768–1099 ================= */
+@media (max-width:1099px){
+  :root{--pad:40px;--section:120px;--slogan-w:86vw;--h2:58px;--quote:36px;--t-display:26px;--hero-drop:0px;--hero-gap:var(--s3x)}
+  html[lang="hy"]{--h2:44px}
+  .hero{min-height:0;padding:var(--header-h) 0 0}
+  .hero-photo{position:relative;width:auto;height:min(60vw,560px);margin:var(--s1) var(--pad) 0}
+  .hero-photo img{object-position:50% 25%}
+  .hero-photo::after{background:linear-gradient(0deg,var(--leather) 0%,var(--leather-0) 45%)}
+  .hero-in{grid-column:1 / -1;margin-top:calc(-1 * var(--s4x))}
+  .hero-text{grid-column:1 / -1}
+  .today{grid-column:1 / span 9;grid-row:3;margin-top:var(--s5)}
+  .facts{margin-top:var(--s5)}
+  .sec-head .h2{grid-column:1 / -1}
+  .sec-head .aside{grid-column:1 / span 9;margin-top:var(--s3)}
+  .door-t{grid-column:1 / span 6}
+  .door-d,.door-l{grid-column:7 / span 6}
+  .coach-fig{grid-column:1 / span 6}
+  .coach-text{grid-column:7 / span 6}
+  .doc{right:-16px;width:170px}
+  .strip{grid-template-rows:280px}
+}
+@media (max-width:1099px) and (min-width:768px){
+  .nav{display:none}
+  .burger{display:block}
+  .site-header .langs{margin-left:auto}
+}
+
+/* ================= РАСПИСАНИЕ ВКЛАДКАМИ < 1024 (планшет и телефон) ================= */
+/* шесть колонок на узком экране не помещаются — показываем один день */
+@media (max-width:1023px){
+  .day-tabs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:var(--s0);margin-bottom:var(--s1x)}
+  .tab{position:relative;height:52px;border-radius:var(--r);font-size:var(--t-btn);font-weight:600;color:var(--wrap-soft);transition:opacity .2s}
+  .tab[aria-pressed="true"]{background:var(--mat);color:var(--wrap);box-shadow:inset 0 -2px 0 var(--led)}
+  .tab.is-today::after{content:"";position:absolute;left:50%;top:8px;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:var(--led)}
+  .tab.is-dim{color:var(--dust);font-weight:500}
+  .days{display:block;border:0}
+  .day,.day.is-today{display:none;background:none;box-shadow:none;border:0;padding:0}
+  .day::before,.day::after{display:none}
+  .day.is-active{display:block}
+  .day-h{display:none}
+  .day-empty{display:block;color:var(--wrap-soft);padding:var(--s2) 0;border-top:1px solid var(--rope-soft)}
+  .day-empty[hidden]{display:none}
+  .slot{display:grid;grid-template-columns:96px minmax(0,1fr);grid-template-areas:"t n" "t d" "t go";column-gap:var(--s1x);width:100%;margin-inline:0;padding:var(--s2) 0}
+  .slot .t{grid-area:t;font-size:var(--time)}
+  .slot .n{grid-area:n;margin-top:0;min-height:0}
+  .slot .d{grid-area:d;margin-top:var(--s0);max-height:none;opacity:1}
+  .slot .go{grid-area:go;justify-self:start;margin-top:var(--s1x);color:var(--wrap);text-decoration:none;border:1px solid var(--line-strong);border-radius:var(--r);padding:var(--s1) var(--s2);font-weight:500}
+  .slot:hover{background:none}
+  .slot:hover .go{background:var(--led);border-color:var(--led);color:var(--leather)}
+  .slot.is-past .go{color:var(--dust);border-color:var(--rope)}
+  .is-filtered #days .slot:not(.is-dim){padding-left:var(--s1x)}
+  .sunday{padding:var(--s1x) 0;color:var(--wrap-soft)}
+  /* шаги первой тренировки: в три колонки длинные армянские слова не помещаются */
+}
+
+/* ================= СЕНСОРНЫЕ ПЛАНШЕТЫ: зоны нажатия не меньше 44 px ================= */
+@media (pointer:coarse) and (min-width:768px){
+  .lang-b{min-width:44px;min-height:44px}
+  .btn-sm{min-height:44px}
+  .chip{height:44px}
+  .logo{display:inline-block;line-height:44px}
+  .actions .link,.today-all,.where .link,.f-links a,.footer-legal > .link{display:inline-flex;align-items:center;min-height:44px}
+}
+
+/* ================= ТЕЛЕФОН < 768 ================= */
+@media (max-width:767px){
+  :root{--pad:16px;--gap:16px;--section:96px;--header-h:56px;--slogan-max:60px;--slogan-w:calc(100vw - 32px);
+        --h2:40px;--h2-small:32px;--h3:20px;--quote:28px;--text:16px;--small:13px;--time:32px;--price:28px;
+        --t-btn:15px;--t-lead:18px;--h1:20px;--t-title:22px;--t-display:24px}
+  html[lang="hy"]{--h2:32px;--h2-small:28px;--quote:26px}
+  .site-header .wrap{gap:var(--s1x)}
+  .nav,.site-header .hdr-btn{display:none}
+  .burger{display:block}
+  .site-header .langs{margin-left:auto}
+  .lang-b{min-width:40px;min-height:44px;padding:var(--s1) var(--s0)}
+  .logo{display:inline-block;line-height:44px}
+  .chip{height:44px}
+  .actions .link,.today-all,.where .link{display:inline-flex;align-items:center;min-height:44px}
+  .today-all{margin-top:var(--s0)}
+
+  .hero{min-height:0;padding:var(--header-h) 0 0;overflow:visible}
+  .hero-photo{position:relative;width:auto;height:320px;margin:var(--s1) var(--s2) 0}
+  .hero-photo img{object-position:50% 22%}
+  .hero-photo::after{background:linear-gradient(0deg,var(--leather) 0%,var(--leather-0) 45%)}
+  .hero-grid{display:block}
+  .hero-in{margin-top:calc(-1 * var(--s3x))}
+  .hero .led{width:160px;margin:var(--s3) 0 var(--s2x)}
+  .actions{flex-direction:column;align-items:stretch;gap:var(--s2);margin-top:var(--s3)}
+  .btn{padding-inline:var(--s2)}
+  .actions .btn{width:100%}
+  .actions .link{align-self:center}
+  .today{margin-top:var(--s4x)}
+  .row{grid-template-columns:72px minmax(0,1fr) auto;gap:var(--s1x)}
+  .row .go{padding:var(--s1) var(--s1x)}
+  .slot{grid-template-columns:72px minmax(0,1fr)}
+
+  .facts{margin-top:var(--s4x)}
+  .facts-in{grid-template-columns:1fr;gap:var(--s3)}
+
+  .sec-head{display:block;margin-bottom:var(--s4)}
+  .door{display:block;padding:var(--s2x) var(--s1x)}
+  .door-t{display:block}
+  .door-d{display:block;margin-top:var(--s1)}
+  .door-l{display:inline-block;margin-top:var(--s1x);text-align:left}
+
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 calc(-1 * var(--pad)) var(--s3);padding:0 var(--pad) var(--s0);scrollbar-width:none}
+  .chips::-webkit-scrollbar{display:none}
+
+  .free{margin-bottom:var(--s4)}
+  .price-table thead{display:none}
+  .price-table,.price-table tbody,.price-table tr,.price-table th,.price-table td{display:block;width:auto}
+  .price-table tbody tr{display:block;padding:var(--s2) 0}
+  .price-table tbody th{padding:0 0 var(--s1);width:auto}
+  .price-table td{display:flex;justify-content:space-between;align-items:baseline;padding:var(--s1) 0;text-align:right}
+  .price-table td::before{content:attr(data-label);font-size:var(--t-ui);font-weight:400;font-stretch:100%;color:var(--wrap-soft)}
+  .prices-foot{display:block}
+  .prices-notes .btn{width:100%}
+  .rules{margin-top:var(--s4)}
+
+  .coach-grid{display:block}
+  .coach-fig{margin-bottom:0}
+  .doc{position:relative;right:auto;bottom:auto;width:150px;padding:var(--s1) var(--s1) var(--s3x);margin:calc(-1 * var(--doc-drop)) var(--s1x) 0 auto}
+  .coach-text{margin-top:var(--s4)}
+  .coach-text .btn{width:100%}
+
+  .strip{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px}
+
+
+  .msgrs{grid-template-columns:1fr;gap:var(--s1x);margin:var(--s4) 0}
+  .msgr{min-height:56px}
+  .msgr-note{grid-column:1;margin-top:0}
+  .msgrs .msgr[data-msgr="wa"],.msgrs .msgr[data-msgr="tg"]{order:1}  /* подсказка про Instagram — сразу под его кнопкой */
+  #voprosy .btn{width:100%}
+  .qa,.qa .a{max-width:none}
+
+  .footer{padding-bottom:calc(var(--s6) + env(safe-area-inset-bottom))}
+  .footer-grid,.footer-legal{display:block}
+  .footer-grid > .f-col + .f-col{margin-top:var(--s3)}
+  .f-col > * + *{margin-top:0}
+  .f-small{margin-top:var(--s1)}
+  .f-links a,.f-col .link,.footer-legal > .link{display:inline-flex;align-items:center;min-height:44px}
+
+  .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--shade);padding:var(--s1x) var(--pad) calc(var(--s1x) + env(safe-area-inset-bottom));border-top:2px solid var(--led);box-shadow:0 -10px 24px -14px var(--led-glow);transform:translateY(110%);transition:transform .3s ease}
+  .sticky.is-on{transform:none}
+  .sticky .btn{width:100%}
+  .draft-note{bottom:auto;top:64px;left:16px;right:16px;max-width:none}
+
+  .book{width:100%;max-width:none;margin:auto 0 0;border-radius:12px 12px 0 0;padding:var(--s3) var(--s2) calc(var(--s3) + env(safe-area-inset-bottom))}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+}
+</style>
+</head>
+<body class="work">
+<a class="skip" href="#main" data-i18n="skip">Перейти к содержанию</a>
+
+<header class="site-header" id="header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="PRO RING STUDIO">PRO RING <span>STUDIO</span></a>
+    <nav class="nav" aria-label="Меню" data-i18n-aria="nav.label">
+      <a href="#raspisanie" data-i18n="nav.schedule">Расписание</a>
+      <a href="#ceny" data-i18n="nav.prices">Цены</a>
+      <a href="#trener" data-i18n="nav.coach">Тренер</a>
+      <a href="#voprosy" data-i18n="nav.faq">Вопросы</a>
+      <a href="#kontakty" data-i18n="nav.contacts">Контакты</a>
+    </nav>
+    <div class="langs" role="group" aria-label="Язык сайта" data-i18n-aria="lang.label">
+      <button class="lang-b" type="button" data-lang="hy" aria-pressed="true" lang="hy">HY<span class="sr"> Հայերեն</span></button>
+      <button class="lang-b" type="button" data-lang="ru" aria-pressed="false" lang="ru">RU<span class="sr"> Русский</span></button>
+      <button class="lang-b" type="button" data-lang="en" aria-pressed="false" lang="en">EN<span class="sr"> English</span></button>
+    </div>
+    <button class="btn btn-line btn-sm hdr-btn js-book" type="button" data-i18n="cta.short">Записаться</button>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Открыть меню" data-i18n-aria="menu.open"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <div class="menu-top">
+    <a class="logo" href="#top">PRO RING <span>STUDIO</span></a>
+    <button class="menu-close" type="button" aria-label="Закрыть меню" data-i18n-aria="menu.close">×</button>
+  </div>
+  <nav class="menu-nav" aria-label="Меню" data-i18n-aria="nav.label">
+    <a href="#raspisanie" data-i18n="nav.schedule">Расписание</a>
+    <a href="#ceny" data-i18n="nav.prices">Цены</a>
+    <a href="#trener" data-i18n="nav.coach">Тренер</a>
+    <a href="#voprosy" data-i18n="nav.faq">Вопросы</a>
+    <a href="#kontakty" data-i18n="nav.contacts">Контакты</a>
+  </nav>
+  <div class="langs" role="group" aria-label="Язык сайта" data-i18n-aria="lang.label">
+    <button class="lang-b" type="button" data-lang="hy" aria-pressed="true" lang="hy">HY<span class="sr"> Հայերեն</span></button>
+    <button class="lang-b" type="button" data-lang="ru" aria-pressed="false" lang="ru">RU<span class="sr"> Русский</span></button>
+    <button class="lang-b" type="button" data-lang="en" aria-pressed="false" lang="en">EN<span class="sr"> English</span></button>
+  </div>
+  <div class="menu-info">
+    <p data-i18n="addr">Ереван, ул. Каджазнуни 1</p>
+    <p class="menu-msgrs"><a href="https://www.instagram.com/pro_ring_studio/" target="_blank" rel="noopener">Instagram</a><a href="#" data-msgr="wa" target="_blank" rel="noopener">WhatsApp</a><a href="#" data-msgr="tg" target="_blank" rel="noopener">Telegram</a></p>
+  </div>
+  <button class="btn btn-led js-book" type="button" data-i18n="cta.free">Записаться на бесплатную тренировку</button>
+</div>
+
+<p class="draft-note" id="draft-note" hidden>Черновой перевод для макета. Армянский и английский текст проверит носитель языка.</p>
+
+<main id="main">
+
+<!-- ===== 1. ОБЛОЖКА ===== -->
+<section class="hero" id="top" aria-labelledby="h1">
+  <div class="hero-photo"><img src="img/aleksandra-foto-02.jpg" width="1280" height="853" alt="Александра, основательница студии, на канатах ринга" data-i18n-alt="hero.alt"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-in">
+      <p class="slogan display"><span data-i18n="hero.s1">Сила.</span><span data-i18n="hero.s2">Дисциплина.</span><span data-i18n="hero.s3">Результат.</span></p>
+    </div>
+    <div class="hero-text">
+      <span class="led" aria-hidden="true"></span>
+      <h1 class="h1" id="h1" data-i18n="hero.h1">Студия бокса, кикбоксинга и фитнеса в центре Еревана</h1>
+      <p class="lead" data-i18n="hero.lead">Группы и персональные тренировки с мастером спорта. Можно с нуля, всё покажем и расскажем.</p>
+      <div class="actions">
+        <button class="btn btn-led js-book" type="button" data-i18n="cta.free">Записаться на бесплатную тренировку</button>
+      </div>
+    </div>
+
+    <aside class="today" aria-labelledby="today-title">
+      <div class="today-head">
+        <h2 class="today-title" id="today-title">Сегодня в зале</h2>
+        <span class="today-date" id="today-date"></span>
+      </div>
+      <ul id="today-list"></ul>
+      <a class="link today-all" href="#raspisanie" data-i18n="today.all">Всё расписание</a>
+    </aside>
+  </div>
+</section>
+
+<!-- факты -->
+<div class="facts">
+  <div class="wrap">
+    <div class="facts-in">
+      <p data-i18n="facts.1"><b>Пн–Сб</b> тренировки</p>
+      <p data-i18n="facts.2"><b>60 минут</b> каждая тренировка</p>
+      <p data-i18n="facts.3"><b>5–6 человек</b> обычно в группе</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2. С ЧЕГО НАЧАТЬ ===== -->
+<section class="section" id="dveri" aria-labelledby="doors-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="h2" id="doors-h" data-i18n="doors.h">С чего начать</h2></div>
+    <ul class="doors">
+      <li><a class="door" href="#raspisanie" data-filter="">
+        <span class="door-t" data-i18n="d1.t">Бокс с нуля</span>
+        <span class="door-d" data-i18n="d1.d">Научим стойке, удару и защите. Перчатки дадим.</span>
+        <span class="door-l link" data-i18n="d1.l">Все группы</span></a></li>
+      <li><a class="door" href="#raspisanie" data-filter="women">
+        <span class="door-t" data-i18n="d2.t">Хочется тренироваться среди девушек</span>
+        <span class="door-d" data-i18n="d2.d">Женская группа кикбоксинга по вторникам и четвергам в 19:00, по субботам в 13:00. И фитнес: Табата, Body Sculpt.</span>
+        <span class="door-l link" data-i18n="d2.l">Женская группа</span></a></li>
+      <li><a class="door" href="#raspisanie" data-filter="kids">
+        <span class="door-t" data-i18n="d3.t">Нужна секция для ребёнка</span>
+        <span class="door-d"><span data-i18n="d3.d">Детская группа кикбоксинга с 5 лет, по понедельникам, средам и пятницам в 17:00.</span></span>
+        <span class="door-l link" data-i18n="d3.l">Дети</span></a></li>
+      <li><a class="door" href="#raspisanie" data-filter="box,kick">
+        <span class="door-t" data-i18n="d4.t">Опыт есть, хочется серьёзнее</span>
+        <span class="door-d" data-i18n="d4.d">Группы бокса и кикбоксинга или персональные тренировки с мастером спорта по кикбоксингу.</span>
+        <span class="door-l link" data-i18n="d4.l">Бокс и кикбоксинг</span></a></li>
+      <li><a class="door" href="#ceny">
+        <span class="door-t" data-i18n="d5.t">Удобнее один на один</span>
+        <span class="door-d" data-i18n="d5.d">Персональная тренировка в удобное тебе время. Время подберём вместе.</span>
+        <span class="door-l link" data-i18n="d5.l">Цены на персональные</span></a></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 3. РАСПИСАНИЕ ===== -->
+<section class="section" id="raspisanie" aria-labelledby="sched-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2" id="sched-h" data-i18n="sch.h">Расписание</h2>
+      <div class="aside"><p data-i18n="sch.lead">Выбери время и нажми «Записаться». Сообщение уже готово.</p></div>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Направления" data-i18n-aria="f.label"></div>
+    <div class="day-tabs" id="day-tabs" role="group" aria-label="День недели" data-i18n-aria="tabs.label"></div>
+    <p class="sunday" id="sunday-note" hidden></p>
+    <div class="days" id="days"></div>
+    <div class="sched-foot">
+      <p class="cap" data-i18n="sch.cap">Все тренировки — 60 минут. Воскресенье — выходной.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. ЦЕНЫ ===== -->
+<section class="section" id="ceny" aria-labelledby="prices-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h2" id="prices-h" data-i18n="pr.h">Цены</h2>
+      <div class="aside"><p data-i18n="pr.note">Все цены — здесь. Без «узнай в директе».</p></div>
+    </div>
+    <div class="free">
+      <p class="free-t" data-i18n="pr.free.t">Первая тренировка в группе — бесплатно</p>
+      <p class="free-d" data-i18n="pr.free.d">Приходи, попробуй, потом решай. Персональные тренировки оплачиваются с первого занятия.</p>
+    </div>
+    <p class="cap cur" data-i18n="pr.cur">Цены в драмах (֏).</p>
+    <table class="price-table" role="table">
+      <thead role="rowgroup"><tr role="row">
+        <th role="columnheader" scope="col"><span class="sr" data-i18n="pr.what">Тренировки</span></th>
+        <th role="columnheader" scope="col" data-i18n="pr.c1">1 тренировка</th>
+        <th role="columnheader" scope="col" data-i18n="pr.c8">8 тренировок</th>
+        <th role="columnheader" scope="col" data-i18n="pr.c12">12 тренировок</th>
+      </tr></thead>
+      <tbody role="rowgroup">
+        <tr role="row"><th role="rowheader" scope="row" data-i18n="pr.r1">Группы: бокс и кикбоксинг</th>
+          <td role="cell" class="num" data-price="5000" data-label-key="pr.c1"></td><td role="cell" class="num" data-price="35000" data-label-key="pr.c8"></td><td role="cell" class="num" data-price="40000" data-label-key="pr.c12"></td></tr>
+        <tr role="row"><th role="rowheader" scope="row" data-i18n="pr.r2">Группы: фитнес</th>
+          <td role="cell" class="num" data-price="4000" data-label-key="pr.c1"></td><td role="cell" class="num" data-price="25000" data-label-key="pr.c8"></td><td role="cell" class="num" data-price="35000" data-label-key="pr.c12"></td></tr>
+        <tr role="row"><th role="rowheader" scope="row"><span data-i18n="pr.r3">Персональная тренировка</span><small data-i18n="pr.sub">бокс, кикбоксинг</small><button class="link row-book js-book" type="button" data-book="personal" data-i18n="cta.short">Записаться</button></th>
+          <td role="cell" class="num" data-price="12000" data-label-key="pr.c1"></td><td role="cell" class="num" data-price="55000" data-label-key="pr.c8"></td><td role="cell" class="num" data-price="70000" data-label-key="pr.c12"></td></tr>
+        <tr role="row"><th role="rowheader" scope="row"><span data-i18n="pr.r4">Сплит-тренировка</span><small data-i18n="pr.split">тренировка для двоих, цена за пару</small><small data-i18n="pr.sub">бокс, кикбоксинг</small></th>
+          <td role="cell" class="num" data-price="20000" data-label-key="pr.c1"></td><td role="cell" class="num" data-price="95000" data-label-key="pr.c8"></td><td role="cell" class="num" data-price="120000" data-label-key="pr.c12"></td></tr>
+      </tbody>
+    </table>
+    <div class="prices-foot">
+      <div class="prices-notes">
+        <ul>
+          <li data-i18n="pr.n1">Абонемент действует месяц с первой тренировки.</li>
+          <li data-i18n="pr.n2">8 тренировок — это 2 раза в неделю, 12 — 3 раза.</li>
+          <li data-i18n="pr.n3">Фитнес-абонемент действует на все фитнес-направления: Табата, Body Sculpt, Кроссфит, Фитнес.</li>
+        </ul>
+        <button class="btn btn-led js-book" type="button" data-i18n="cta.free">Записаться на бесплатную тренировку</button>
+      </div>
+      <div class="rules">
+        <h3 data-i18n="pr.rules">Правила посещения</h3>
+        <ul>
+          <li data-i18n="pr.rule1">На каждую тренировку записываемся заранее.</li>
+          <li data-i18n="pr.rule2">Отменить или перенести можно не позже чем за 3 часа. Если позже, тренировка сгорает.</li>
+          <li data-i18n="pr.rule3">Неиспользованные тренировки не переносятся на следующий месяц.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. ТРЕНЕР ===== -->
+<section class="section" id="trener" aria-labelledby="coach-h">
+  <div class="wrap coach-grid">
+    <figure class="coach-fig">
+      <img class="main" src="img/aleksandra-foto-01.jpg" width="968" height="1280" loading="lazy" alt="Александра с чемпионским поясом и кубком" data-i18n-alt="co.alt1">
+      <figure class="doc">
+        <img src="img/aleksandra-foto-08.jpg" width="960" height="1280" loading="lazy" alt="Александра на Чемпионате России по кикбоксингу в Перми" data-i18n-alt="co.alt2">
+      </figure>
+    </figure>
+    <div class="coach-text">
+      <blockquote class="quote" data-i18n="co.quote">«Спорт — часть моей жизни, мой характер и мой путь».</blockquote>
+      <h2 class="coach-h" id="coach-h" data-i18n="co.h">Александра, основательница и тренер</h2>
+      <p class="coach-p" data-i18n="co.text">Я создала PRO RING STUDIO как место, где каждый может стать сильнее, увереннее в себе и полюбить движение. Сейчас все тренировки в студии веду я.</p>
+      <ul class="titles">
+        <li data-i18n="co.l1">Мастер спорта России по кикбоксингу</li>
+        <li data-i18n="co.l2">Чемпионка России</li>
+        <li data-i18n="co.l3">Победительница всероссийских и международных турниров</li>
+        <li data-i18n="co.l4">Высшее образование «тренер-преподаватель»</li>
+        <li data-i18n="co.l5">18 лет в профессиональном спорте</li>
+        <li data-i18n="co.l6">7 лет тренерского опыта</li>
+      </ul>
+      <button class="btn btn-led js-book" type="button" data-book="personal" data-i18n="co.cta">Записаться к Александре</button>
+    </div>
+  </div>
+</section>
+
+<!-- лента фото: раскадровка удара -->
+<div class="strip" aria-hidden="true">
+  <img src="img/aleksandra-foto-03.jpg" width="853" height="1280" loading="lazy" alt="">
+  <img src="img/aleksandra-foto-04.jpg" width="853" height="1280" loading="lazy" alt="">
+  <img src="img/aleksandra-foto-05.jpg" width="853" height="1280" loading="lazy" alt="">
+  <img src="img/aleksandra-foto-06.jpg" width="853" height="1280" loading="lazy" alt="">
+</div>
+
+<!-- ===== 6. ЧАСТЫЕ ВОПРОСЫ ===== -->
+<section class="section" id="voprosy" aria-labelledby="faq-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="h2" id="faq-h" data-i18n="faq.h">Частые вопросы</h2></div>
+    <div class="qa">
+        <details open><summary data-i18n="q9">Как проходит тренировка?</summary><p class="a" data-i18n="a9">60 минут. Первые 30 — разминка и нагрузка: кардио, функциональные или силовые упражнения. Следующие 30 — бокс или кикбоксинг, работа на лапах и мешках. У фитнеса своя программа.</p></details>
+        <details><summary data-i18n="q10">Как записаться на первую тренировку?</summary><p class="a" data-i18n="a10">Выбери время в расписании и напиши. Мы ответим и подтвердим запись. Первая тренировка в группе бесплатная и ни к чему не обязывает.</p></details>
+        <details><summary data-i18n="q1">Можно прийти без опыта?</summary><p class="a" data-i18n="a1">Да. Тренировки подходят и новичкам, и опытным. Всё покажем, всё расскажем.</p></details>
+        <details><summary data-i18n="q2">Что взять с собой?</summary><p class="a" data-i18n="a2">Удобную спортивную форму и обувь: кроссовки, кеды или боксёрки. Перчатки дадим, бинты на первой тренировке не нужны. Позже обычно покупают свои перчатки и бинты.</p></details>
+        <details><summary data-i18n="q3">Сколько человек в группе?</summary><p class="a" data-i18n="a3">До 10. Обычно приходят 5–6 человек.</p></details>
+        <details><summary data-i18n="q4">Бокс подходит девушкам?</summary><p class="a" data-i18n="a4">Да. Есть отдельная женская группа кикбоксинга и фитнес-тренировки.</p></details>
+        <details><summary data-i18n="q5">Что если не смогу прийти?</summary><p class="a" data-i18n="a5">Напиши хотя бы за 3 часа, и мы перенесём тренировку. Если позже, она сгорает.</p></details>
+        <details><summary data-i18n="q6">Чем отличаются Табата, Body Sculpt, Кроссфит и Фитнес?</summary><p class="a"><span data-i18n="a6">На Табате короткая работа чередуется с отдыхом, по кругу. Body Sculpt — силовая на ягодицы и пресс. Кроссфит — базовые упражнения в высоком темпе, бывает с весом. Фитнес — проработка всего тела без веса или с небольшим весом.</span></p></details>
+        <details><summary data-i18n="q7">Будут спарринги?</summary><p class="a" data-i18n="a7">Новички работают в паре только по желанию. Не хочешь — никто не заставит.</p></details>
+        <details><summary data-i18n="q8">Есть душ и раздевалка?</summary><p class="a" data-i18n="a8">Раздевалка и туалет есть, душа нет.</p></details>
+    </div>
+    <button class="btn btn-led js-book" type="button" data-i18n="cta.free">Записаться на бесплатную тренировку</button>
+  </div>
+</section>
+
+<!-- ===== 7. ЗАПИСАТЬСЯ ===== -->
+<section class="section final" id="kontakty" aria-labelledby="final-h">
+  <div class="wrap">
+    <h2 class="h2 final-h" id="final-h" data-i18n="fin.quote">«Добро пожаловать в нашу спортивную семью!»</h2>
+    <p class="final-by" data-i18n="fin.quote.by">Александра, основательница и тренер</p>
+    <p class="final-lead" data-i18n="fin.lead">Напиши, как тебе удобно. Подберём время и запишем на первую тренировку.</p>
+    <div class="msgrs">
+      <button class="btn btn-led msgr" data-msgr="ig" type="button">Instagram</button>
+      <a class="btn btn-line msgr" data-msgr="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn-line msgr" data-msgr="tg" href="#" target="_blank" rel="noopener">Telegram</a>
+      <p class="msgr-note" data-i18n="fin.ig">Instagram не подставляет текст, поэтому мы его скопируем. Останется вставить в директ.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="rule" aria-hidden="true"></div>
+    <div class="footer-grid">
+      <div class="f-col">
+        <a class="logo" href="#top">PRO RING <span>STUDIO</span></a>
+        <p class="f-small">© 2026 PRO RING STUDIO</p>
+      </div>
+      <div class="f-col">
+        <h3 class="f-h" data-i18n="fin.addr.h">Адрес</h3>
+        <p data-i18n="addr">Ереван, ул. Каджазнуни 1</p>
+        <a class="link" href="https://www.google.com/maps/search/?api=1&amp;query=%D0%95%D1%80%D0%B5%D0%B2%D0%B0%D0%BD%2C%20%D1%83%D0%BB.%20%D0%9A%D0%B0%D0%B4%D0%B6%D0%B0%D0%B7%D0%BD%D1%83%D0%BD%D0%B8%201" target="_blank" rel="noopener" data-i18n="fin.map">Открыть на карте</a>
+        <h3 class="f-h f-h2" data-i18n="foot.hours.h">Часы работы</h3>
+        <p data-i18n="fin.when">С понедельника по субботу, по расписанию. Воскресенье — выходной.</p>
+      </div>
+      <div class="f-col f-links">
+        <h3 class="f-h" data-i18n="foot.contact">Связь</h3>
+        <a href="https://www.instagram.com/pro_ring_studio/" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" data-msgr="wa" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="#" data-msgr="tg" target="_blank" rel="noopener">Telegram</a>
+        <a href="tel:+37495122932">+374 95 122 932</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p><span data-i18n="foot.ip">ИП Александра Ежак</span> <span class="stub">налоговый номер (ՀՎՀՀ) — уточнить</span> <span class="stub">почта — уточнить</span></p>
+      <a class="link" href="politika.html" data-policy data-i18n="foot.policy">Политика конфиденциальности</a>
+    </div>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <button class="btn btn-led js-book" type="button" data-i18n="cta.short">Записаться</button>
+</div>
+
+<dialog class="book" id="book" aria-labelledby="book-h">
+  <button class="book-x" type="button" id="book-x" aria-label="Закрыть" data-i18n-aria="close">×</button>
+  <h2 id="book-h" data-i18n="dlg.h">Куда написать?</h2>
+  <div class="book-cls" id="book-cls" hidden><b id="book-cls-n"></b><span id="book-cls-w"></span></div>
+  <p class="bubble" id="book-msg"></p>
+  <label class="book-first" id="book-first" hidden><input type="checkbox" id="book-first-cb" checked><span data-i18n="dlg.first">Это моя первая тренировка</span></label>
+  <p class="book-note" id="book-note"></p>
+  <div class="book-btns">
+    <button class="btn btn-led" id="book-ig" data-msgr="ig" type="button" data-i18n="dlg.ig">Скопировать и открыть Instagram</button>
+    <p class="ig-note" data-i18n="dlg.ignote">Instagram не подставляет текст. Нажми «Скопировать», потом вставь в директ.</p>
+    <a class="btn btn-line" id="book-wa" data-msgr="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn btn-line" id="book-tg" data-msgr="tg" href="#" target="_blank" rel="noopener">Telegram</a>
+  </div>
+  <p class="book-priv" data-i18n="dlg.priv">Как мы обращаемся с твоими данными, написано в <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">политике конфиденциальности</a>.</p>
+  <p class="book-status" id="book-status" role="status" aria-live="polite"></p>
+</dialog>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ---------- настройки студии ---------- */
+  // Номера WhatsApp и Telegram — уточнить у Александры. Пока пусто: ссылки открывают мессенджер без получателя.
+  const CONTACT = { whatsapp: '79787602003', telegram: 'alxndraezh', instagram: 'pro_ring_studio', phone: '+37495122932' };
+
+  /* ---------- занятия и неделя ---------- */
+  const CLASSES = {
+    box:      { tags:['box'],
+      ru:['Группа бокс','Стойка, удары руками, защита. Работа на лапах и мешках.'],
+      hy:['Բռնցքամարտի խումբ','Կեցվածք, ձեռքերով հարվածներ, պաշտպանություն։ Աշխատանք լապաների և պարկերի վրա։'],
+      en:['Boxing group','Stance, punches, defence. Pad and bag work.'] },
+    tabata:   { tags:['fit'],
+      ru:['Табата (HIIT)','Интервальная тренировка: короткая работа и короткий отдых по кругу.'],
+      hy:['Տաբատա (HIIT)','Ինտերվալային մարզում՝ կարճ աշխատանք և կարճ հանգիստ՝ շրջանաձև։'],
+      en:['Tabata (HIIT)','Interval training: short bursts of work and rest, in rounds.'] },
+    kick:     { tags:['kick'],
+      ru:['Группа кикбоксинг','Удары руками и ногами. Работа на лапах и мешках.'],
+      hy:['Քիքբոքսինգի խումբ','Ձեռքերով և ոտքերով հարվածներ։ Աշխատանք լապաների և պարկերի վրա։'],
+      en:['Kickboxing group','Punches and kicks. Pad and bag work.'] },
+    kids:     { tags:['kick','kids'],
+      ru:['Детская группа кикбоксинг','Кикбоксинг для детей с 5 лет.'],
+      hy:['Մանկական քիքբոքսինգի խումբ','Քիքբոքսինգ երեխաների համար՝ 5 տարեկանից։'],
+      en:['Kids’ kickboxing group','Kickboxing for children aged 5 and up.'] },
+    sculpt:   { tags:['fit'],
+      ru:['Body Sculpt','Силовая тренировка на ягодицы и пресс.'],
+      hy:['Body Sculpt','Ուժային մարզում հետույքի և որովայնի մկանների համար։'],
+      en:['Body Sculpt','Strength training for glutes and abs.'] },
+    crossfit: { tags:['fit'],
+      ru:['Кроссфит','Функциональная тренировка: силовые и кардио-упражнения в высоком темпе.'],
+      hy:['Քրոսֆիթ','Ֆունկցիոնալ մարզում՝ ուժային և կարդիո վարժություններ բարձր տեմպով։'],
+      en:['Crossfit','Functional training: strength and cardio at a high pace.'] },
+    fitness:  { tags:['fit'],
+      ru:['Фитнес','Проработка всего тела без веса или с небольшим весом.'],
+      hy:['Ֆիթնես','Ամբողջ մարմնի մշակում՝ առանց քաշի կամ թեթև քաշով։'],
+      en:['Fitness','Whole-body workout with no weights or light ones.'] },
+    women:    { tags:['kick','women'],
+      ru:['Женская группа кикбоксинг','Кикбоксинг только для девушек.'],
+      hy:['Կանանց քիքբոքսինգի խումբ','Քիքբոքսինգ միայն աղջիկների համար։'],
+      en:['Women’s kickboxing group','Kickboxing for women only.'] },
+    men:      { tags:['kick','men'],
+      ru:['Мужская группа кикбоксинг','Кикбоксинг только для мужчин.'],
+      hy:['Տղամարդկանց քիքբոքսինգի խումբ','Քիքբոքսինգ միայն տղամարդկանց համար։'],
+      en:['Men’s kickboxing group','Kickboxing for men only.'] }
+  };
+  const MWF = [['09:00','box'],['10:00','tabata'],['15:00','kick'],['17:00','kids']];
+  const TT  = [['11:00','sculpt'],['15:00','crossfit'],['17:00','fitness'],['19:00','women'],['20:30','men']];
+  const SAT = [['11:00','sculpt'],['13:00','women'],['14:00','fitness'],['15:00','men']];
+  const WEEK = [];
+  [[1,MWF],[2,TT],[3,MWF],[4,TT],[5,MWF],[6,SAT]].forEach(([d,list]) => list.forEach(([t,c]) => WEEK.push({ d, t, c })));
+  const FILTERS = ['', 'box', 'kick', 'fit', 'kids', 'women', 'men'];
+
+  /* ---------- тексты интерфейса ---------- */
+  const UI = {
+    ru: { locale:'ru-RU',
+      days:['','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'],
+      dayLow:['','понедельник','вторник','среда','четверг','пятница','суббота','воскресенье'],
+      dayShort:['','Пн','Вт','Ср','Чт','Пт','Сб','Вс'],
+      months:['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'],
+      filters:{'':'Все',box:'Бокс',kick:'Кикбоксинг',fit:'Фитнес',kids:'Дети',women:'Женская',men:'Мужская'},
+      today:'сегодня', tToday:'Сегодня в зале', tTomorrow:'Завтра в зале', tNext:'Ближайшие тренировки',
+      nearest:'Ближайшая тренировка', dur:'60 минут', book:'Записаться',
+      aria:(n,d,t)=>`Записаться: ${n}, ${d}, ${t}`,
+      empty:'В этот день таких тренировок нет. Посмотри другие дни.',
+      sunday:'Сегодня выходной. Ближайшие тренировки в понедельник.',
+      msg:'Привет! Хочу записаться на бесплатную тренировку.',
+      msgCls:(n,d,t)=>`Привет! Хочу записаться: ${n}, ${d}, ${t}.`, first:' Это моя первая тренировка.',
+      msgKids:(d,t)=>`Привет! Хочу записать ребёнка в детскую группу кикбоксинга: ${d}, ${t}. Ребёнку ... лет.`,
+      msgPersonal:'Привет! Хочу персональную тренировку с Александрой. Удобное время: ...',
+      personal:'Персональная тренировка', personalW:'Время подберём вместе',
+      noteGroup:'Первая тренировка в группе бесплатна. Ответит Александра.',
+      notePersonal:'Ответит Александра. Персональные тренировки оплачиваются с первого занятия.',
+      past:'Прошла', ariaPast:(n,d,t)=>`Прошла: ${n}, ${d}, ${t}. Записаться на следующую неделю`,
+      aud:{ kids:'Для детей с 5 лет', women:'Только для девушек', men:'Только для мужчин' },
+      copied:'Текст скопирован', copyErr:'Не получилось скопировать. Напиши нам в директ, мы ответим.',
+      title:'PRO RING STUDIO — бокс, кикбоксинг и фитнес в Ереване',
+      desc:'Студия бокса, кикбоксинга и фитнеса в центре Еревана. Группы и персональные тренировки с мастером спорта. Первая тренировка в группе — бесплатно.' },
+    hy: { locale:'hy-AM',
+      days:['','Երկուշաբթի','Երեքշաբթի','Չորեքշաբթի','Հինգշաբթի','Ուրբաթ','Շաբաթ','Կիրակի'],
+      dayLow:['','երկուշաբթի','երեքշաբթի','չորեքշաբթի','հինգշաբթի','ուրբաթ','շաբաթ','կիրակի'],
+      dayShort:['','Երկ','Երք','Չրք','Հնգ','Ուրբ','Շբթ','Կիր'],
+      months:['հունվարի','փետրվարի','մարտի','ապրիլի','մայիսի','հունիսի','հուլիսի','օգոստոսի','սեպտեմբերի','հոկտեմբերի','նոյեմբերի','դեկտեմբերի'],
+      filters:{'':'Բոլորը',box:'Բռնցքամարտ',kick:'Քիքբոքսինգ',fit:'Ֆիթնես',kids:'Երեխաներ',women:'Կանանց',men:'Տղամարդկանց'},
+      today:'այսօր', tToday:'Այսօր դահլիճում', tTomorrow:'Վաղը դահլիճում', tNext:'Մոտակա մարզումները',
+      nearest:'Մոտակա մարզումը', dur:'60 րոպե', book:'Գրանցվել',
+      aria:(n,d,t)=>`Գրանցվել՝ ${n}, ${d}, ${t}`,
+      empty:'Այս օրը նման մարզումներ չկան։ Նայիր մյուս օրերը։',
+      sunday:'Այսօր հանգստյան օր է․ մոտակա մարզումները երկուշաբթի են։',
+      msg:'Բարև։ Ուզում եմ գրանցվել անվճար մարզման։',
+      msgCls:(n,d,t)=>`Բարև։ Ուզում եմ գրանցվել՝ ${n}, ${d}, ${t}։`, first:' Սա իմ առաջին մարզումն է։',
+      msgKids:(d,t)=>`Բարև։ Ուզում եմ երեխայիս գրանցել մանկական քիքբոքսինգի խմբում՝ ${d}, ${t}։ Երեխան ... տարեկան է։`,
+      msgPersonal:'Բարև։ Ուզում եմ անհատական մարզում Ալեքսանդրայի հետ։ Ինձ հարմար ժամը՝ ...',
+      personal:'Անհատական մարզում', personalW:'Ժամը միասին կընտրենք',
+      noteGroup:'Առաջին խմբային մարզումն անվճար է։ Կպատասխանի Ալեքսանդրան։',
+      notePersonal:'Կպատասխանի Ալեքսանդրան։ Անհատական մարզումները վճարովի են առաջին իսկ պարապմունքից։',
+      past:'Անցել է', ariaPast:(n,d,t)=>`Անցել է՝ ${n}, ${d}, ${t}։ Գրանցվել հաջորդ շաբաթվա համար`,
+      aud:{ kids:'Երեխաների համար՝ 5 տարեկանից', women:'Միայն աղջիկների համար', men:'Միայն տղամարդկանց համար' },
+      copied:'Տեքստը պատճենված է', copyErr:'Չհաջողվեց պատճենել։ Գրիր մեզ անմիջապես՝ կպատասխանենք։',
+      title:'PRO RING STUDIO — բռնցքամարտ, քիքբոքսինգ և ֆիթնես Երևանում',
+      desc:'Բռնցքամարտի, քիքբոքսինգի և ֆիթնեսի ստուդիա Երևանի կենտրոնում։ Առաջին խմբային մարզումն անվճար է։' },
+    en: { locale:'en-GB',
+      days:['','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+      dayLow:['','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+      dayShort:['','Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+      months:['January','February','March','April','May','June','July','August','September','October','November','December'],
+      filters:{'':'All',box:'Boxing',kick:'Kickboxing',fit:'Fitness',kids:'Kids',women:'Women',men:'Men'},
+      today:'today', tToday:'Today at the studio', tTomorrow:'Tomorrow at the studio', tNext:'Next classes',
+      nearest:'Next class', dur:'60 minutes', book:'Book',
+      aria:(n,d,t)=>`Book: ${n}, ${d}, ${t}`,
+      empty:'No classes like this on this day. Check the other days.',
+      sunday:'We’re closed today. The next classes are on Monday.',
+      msg:'Hi! I’d like to book a free class.',
+      msgCls:(n,d,t)=>`Hi! I’d like to book: ${n}, ${d}, ${t}.`, first:' It’s my first class.',
+      msgKids:(d,t)=>`Hi! I’d like to sign my child up for the kids’ kickboxing group: ${d}, ${t}. My child is ... years old.`,
+      msgPersonal:'Hi! I’d like a personal training session with Alexandra. Times that suit me: ...',
+      personal:'Personal training', personalW:'We’ll pick the time together',
+      noteGroup:'Your first group class is free. Alexandra will reply.',
+      notePersonal:'Alexandra will reply. Personal training is paid from the first session.',
+      past:'Finished', ariaPast:(n,d,t)=>`Finished: ${n}, ${d}, ${t}. Book for next week`,
+      aud:{ kids:'For kids 5+', women:'Women only', men:'Men only' },
+      copied:'Text copied', copyErr:'Couldn’t copy the text. Message us in the DM and we’ll reply.',
+      title:'PRO RING STUDIO — boxing, kickboxing and fitness in Yerevan',
+      desc:'Boxing, kickboxing and fitness studio in central Yerevan. Group and personal training with a Master of Sport. Your first group class is free.' }
+  };
+
+  /* ---------- перевод статичных текстов (черновой: HY, EN) ---------- */
+  const T = {
+    hy: {
+      'skip':'Անցնել բովանդակությանը',
+      'nav.label':'Մենյու','nav.schedule':'Ժամանակացույց','nav.prices':'Գներ','nav.coach':'Մարզիչ','nav.faq':'Հարցեր','nav.contacts':'Կոնտակտներ',
+      'lang.label':'Կայքի լեզուն','menu.open':'Բացել մենյուն','menu.close':'Փակել մենյուն','close':'Փակել',
+      'cta.short':'Գրանցվել','cta.free':'Գրանցվել անվճար մարզման',
+      'hero.alt':'Ալեքսանդրան՝ ստուդիայի հիմնադիրը, ռինգի պարանների մոտ',
+      'hero.s1':'Ուժ։','hero.s2':'Կարգապահություն։','hero.s3':'Արդյունք։',
+      'hero.h1':'Բռնցքամարտի, քիքբոքսինգի և ֆիթնեսի ստուդիա Երևանի կենտրոնում',
+      'hero.lead':'Խմբային և անհատական մարզումներ սպորտի վարպետի հետ։ Կարող ես սկսել զրոյից՝ ամեն ինչ ցույց կտանք ու կբացատրենք։',
+      'hero.schedule':'Դիտել ժամանակացույցը',
+      'hero.note':'Առաջին խմբային մարզումն անվճար է։ Կպատասխանենք Instagram-ում, WhatsApp-ում կամ Telegram-ում։',
+      'today.all':'Ամբողջ ժամանակացույցը',
+      'facts.1':'<b>Երկ–Շբթ</b> մարզումներ','facts.2':'<b>60 րոպե</b> յուրաքանչյուր մարզում','facts.3':'<b>5–6 հոգի</b> սովորաբար խմբում',
+      'doors.h':'Որտեղի՞ց սկսել',
+      'd1.t':'Բռնցքամարտ զրոյից','d1.d':'Կսովորեցնենք կեցվածք, հարված և պաշտպանություն։ Ձեռնոցները կտանք։','d1.l':'Բոլոր խմբերը',
+      'd2.t':'Ուզում եմ մարզվել աղջիկների հետ','d2.d':'Կանանց քիքբոքսինգի խումբ՝ երեքշաբթի և հինգշաբթի 19:00-ին, շաբաթ 13:00-ին։ Եվ ֆիթնես՝ Տաբատա, Body Sculpt։','d2.l':'Կանանց խումբ',
+      'd3.t':'Խմբակ եմ փնտրում երեխայի համար','d3.d':'Մանկական քիքբոքսինգի խումբ 5 տարեկանից՝ երկուշաբթի, չորեքշաբթի, ուրբաթ 17:00-ին։','d3.l':'Երեխաներ',
+      'd4.t':'Փորձ ունեմ, ուզում եմ ավելի լուրջ','d4.d':'Բռնցքամարտի և քիքբոքսինգի խմբեր կամ անհատական մարզումներ քիքբոքսինգի սպորտի վարպետի հետ։','d4.l':'Բռնցքամարտ և քիքբոքսինգ',
+      'd5.t':'Ինձ հարմար է անհատապես','d5.d':'Անհատական մարզում քեզ հարմար ժամին։ Ժամը միասին կընտրենք։','d5.l':'Անհատական մարզումների գները',
+      'sch.h':'Ժամանակացույց','sch.lead':'Ընտրիր ժամը և սեղմիր «Գրանցվել»՝ հաղորդագրությունն արդեն պատրաստ է։',
+      'sch.cap':'Բոլոր մարզումները 60 րոպե են։ Կիրակին հանգստյան օր է։','f.label':'Ուղղություններ','tabs.label':'Շաբաթվա օր',
+      'pr.h':'Գներ','pr.note':'Բոլոր գներն այստեղ են։ Առանց «գրիր դիրեքթ»-ի։',
+      'pr.free.t':'Առաջին խմբային մարզումն անվճար է','pr.free.d':'Արի, փորձիր, հետո որոշիր։ Անհատական մարզումները վճարովի են առաջին իսկ պարապմունքից։',
+      'pr.cur':'Գները՝ դրամով (֏)։','pr.what':'Մարզումներ','pr.c1':'1 մարզում','pr.c8':'8 մարզում','pr.c12':'12 մարզում',
+      'pr.r1':'Խմբեր՝ բռնցքամարտ և քիքբոքսինգ','pr.r2':'Խմբեր՝ ֆիթնես','pr.r3':'Անհատական մարզում','pr.r4':'Սպլիտ մարզում','pr.split':'մարզում երկու հոգու համար, գինը՝ զույգի համար','pr.sub':'բռնցքամարտ, քիքբոքսինգ',
+      'pr.n1':'Աբոնեմենտը գործում է մեկ ամիս՝ առաջին մարզումից։','pr.n2':'8 մարզումը շաբաթը 2 անգամ է, 12-ը՝ 3 անգամ։',
+      'pr.n3':'Ֆիթնես աբոնեմենտը գործում է բոլոր ֆիթնես ուղղությունների համար՝ Տաբատա, Body Sculpt, Քրոսֆիթ, Ֆիթնես։',
+      'pr.rules':'Այցելության կանոններ','pr.rule1':'Յուրաքանչյուր մարզման գրանցվում ենք նախապես։',
+      'pr.rule2':'Չեղարկել կամ տեղափոխել կարելի է առնվազն 3 ժամ առաջ։ Ավելի ուշ՝ մարզումն այրվում է։','pr.rule3':'Չօգտագործված մարզումները հաջորդ ամիս չեն փոխանցվում։',
+      'co.alt1':'Ալեքսանդրան չեմպիոնական գոտիով և գավաթով','co.alt2':'Ալեքսանդրան Պերմում՝ Ռուսաստանի քիքբոքսինգի առաջնությունում',
+      'co.quote':'«Սպորտն իմ կյանքի մասն է, իմ բնավորությունն ու իմ ճանապարհը»։',
+      'co.h':'Ալեքսանդրա, հիմնադիր և մարզիչ',
+      'co.text':'Ես ստեղծել եմ PRO RING STUDIO-ն որպես մի վայր, որտեղ յուրաքանչյուրը կարող է դառնալ ավելի ուժեղ, ավելի վստահ ու սիրել շարժումը։ Հիմա ստուդիայի բոլոր մարզումներն ինքս եմ վարում։',
+      'co.l1':'Քիքբոքսինգի Ռուսաստանի սպորտի վարպետ','co.l2':'Ռուսաստանի չեմպիոն','co.l3':'Համառուսաստանյան և միջազգային մրցաշարերի հաղթող','co.l4':'Բարձրագույն կրթություն՝ «մարզիչ-դասավանդող»','co.l5':'18 տարի պրոֆեսիոնալ սպորտում','co.l6':'7 տարվա մարզչական փորձ',
+      'co.cta':'Գրանցվել Ալեքսանդրայի մոտ',
+      'faq.h':'Հաճախ տրվող հարցեր',
+      'q9':'Ինչպե՞ս է անցնում մարզումը։','a9':'60 րոպե։ Առաջին 30 րոպեն՝ տաքացում և ծանրաբեռնվածություն՝ կարդիո, ֆունկցիոնալ կամ ուժային վարժություններ։ Հաջորդ 30 րոպեն՝ բռնցքամարտ կամ քիքբոքսինգ, աշխատանք լապաների և պարկերի վրա։ Ֆիթնեսն ունի իր ծրագիրը։',
+      'q10':'Ինչպե՞ս գրանցվել առաջին մարզմանը։','a10':'Ընտրիր ժամը ժամանակացույցում և գրիր։ Կպատասխանենք և կհաստատենք գրանցումը։ Առաջին խմբային մարզումն անվճար է և ոչնչի չի պարտավորեցնում։',
+      'q1':'Կարելի՞ է գալ առանց փորձի։','a1':'Այո։ Մարզումները հարմար են և՛ սկսնակների, և՛ փորձառուների համար։ Ամեն ինչ ցույց կտանք ու կպատմենք։',
+      'q2':'Ի՞նչ վերցնել հետս։','a2':'Հարմար մարզահագուստ և կոշիկներ՝ սպորտային կոշիկներ, կեդեր կամ բռնցքամարտի կոշիկներ։ Ձեռնոցները կտանք, առաջին մարզմանը բինտեր պետք չեն։ Հետագայում սովորաբար գնում են սեփական ձեռնոցներ ու բինտեր։',
+      'q3':'Քանի՞ հոգի է լինում խմբում։','a3':'Մինչև 10։ Սովորաբար գալիս է 5–6 հոգի։',
+      'q4':'Բռնցքամարտը հարմա՞ր է աղջիկներին։','a4':'Այո։ Կա կանանց քիքբոքսինգի առանձին խումբ և ֆիթնես մարզումներ։',
+      'q7':'Սպարինգներ կլինե՞ն։','a7':'Սկսնակները զույգով աշխատում են միայն ցանկության դեպքում։ Չես ուզում՝ ոչ ոք չի ստիպի։','q8':'Կա՞ ցնցուղ և հանդերձարան։','a8':'Հանդերձարան և զուգարան կա, ցնցուղ չկա։',
+      'q5':'Ի՞նչ անել, եթե չկարողանամ գալ։','a5':'Գրիր առնվազն 3 ժամ առաջ՝ կտեղափոխենք։ Ավելի ուշ գրելու դեպքում մարզումն այրվում է։',
+      'q6':'Ինչո՞վ են տարբերվում Տաբատան, Body Sculpt-ը, Քրոսֆիթը և Ֆիթնեսը։','a6':'Տաբատա՝ ինտերվալներ. կարճ աշխատանք և հանգիստ՝ շրջանաձև։ Body Sculpt՝ ուժային մարզում հետույքի և որովայնի համար։ Քրոսֆիթ՝ բազային վարժություններ բարձր տեմպով, երբեմն քաշով։ Ֆիթնես՝ ամբողջ մարմնի մշակում առանց քաշի կամ թեթև քաշով։',
+      'fin.lead':'Գրիր քեզ հարմար ձևով։ Կընտրենք ժամը և կգրանցենք առաջին մարզմանը։',
+      'fin.ig':'Instagram-ը տեքստը չի տեղադրում, դրա համար մենք այն կպատճենենք։ Մնում է տեղադրել դիրեքթում։',
+      'fin.quote':'«Բարի գալուստ մեր սպորտային ընտանիք»։','fin.quote.by':'Ալեքսանդրա, հիմնադիր և մարզիչ',
+      'fin.addr.h':'Հասցե','addr':'Երևան, Կաջազնունու 1','fin.map':'Բացել քարտեզում','fin.when.h':'Երբ',
+      'fin.when':'Երկուշաբթիից շաբաթ՝ ըստ ժամանակացույցի։ Կիրակին հանգստյան օր է։',
+      'foot.ip':'Ա/Ձ Ալեքսանդրա Եժակ','foot.tin':'ՀՎՀՀ','foot.phone':'Հեռախոս','foot.mail':'էլ. փոստ',
+      'foot.hours':'Աշխատանքային ժամեր՝ երկուշաբթիից շաբաթ, ըստ ժամանակացույցի։ Կիրակին հանգստյան օր է։',
+      'foot.policy':'Գաղտնիության քաղաքականություն','foot.hours.h':'Աշխատանքային ժամեր','foot.contact':'Կապ',
+      'dlg.priv':'Թե ինչպես ենք վարվում քո տվյալների հետ, գրված է <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">գաղտնիության քաղաքականությունում</a>։',
+      'dlg.h':'Որտե՞ղ գրել','dlg.first':'Սա իմ առաջին մարզումն է','dlg.ig':'Պատճենել և բացել Instagram-ը','dlg.ignote':'Instagram-ը տեքստը չի տեղադրում։ Սեղմիր «Պատճենել», հետո տեղադրիր դիրեքթում։'
+    },
+    en: {
+      'skip':'Skip to content',
+      'nav.label':'Menu','nav.schedule':'Schedule','nav.prices':'Prices','nav.coach':'Coach','nav.faq':'FAQ','nav.contacts':'Contacts',
+      'lang.label':'Site language','menu.open':'Open menu','menu.close':'Close menu','close':'Close',
+      'cta.short':'Book','cta.free':'Book a free class',
+      'hero.alt':'Alexandra, the studio’s founder, leaning on the ring ropes',
+      'hero.s1':'Strength.','hero.s2':'Discipline.','hero.s3':'Results.',
+      'hero.h1':'Boxing, kickboxing and fitness studio in central Yerevan',
+      'hero.lead':'Group and personal training with a Master of Sport. You can start from zero. We’ll show and explain everything.',
+      'hero.schedule':'See the schedule',
+      'hero.note':'Your first group class is free. We reply on Instagram, WhatsApp or Telegram.',
+      'today.all':'Full schedule',
+      'facts.1':'<b>Mon–Sat</b> classes','facts.2':'<b>60 minutes</b> per class','facts.3':'<b>5–6 people</b> in a typical group',
+      'doors.h':'Where to start',
+      'd1.t':'Boxing from scratch','d1.d':'We’ll teach you stance, punches and defence. Gloves provided.','d1.l':'All groups',
+      'd2.t':'I’d like to train with other women','d2.d':'Women’s kickboxing group on Tuesdays and Thursdays at 19:00, Saturdays at 13:00. Plus fitness: Tabata, Body Sculpt.','d2.l':'Women’s group',
+      'd3.t':'Looking for a class for my child','d3.d':'Kids’ kickboxing group for ages 5 and up, on Mondays, Wednesdays and Fridays at 17:00.','d3.l':'Kids',
+      'd4.t':'I have experience and want more','d4.d':'Boxing and kickboxing groups, or personal training with a Master of Sport in kickboxing.','d4.l':'Boxing and kickboxing',
+      'd5.t':'I prefer one-on-one','d5.d':'A personal session at a time that suits you. We’ll pick the time together.','d5.l':'Personal training prices',
+      'sch.h':'Schedule','sch.lead':'Pick a time and tap “Book”. Your message is ready to send.',
+      'sch.cap':'Every class is 60 minutes. Closed on Sundays.','f.label':'Class types','tabs.label':'Day of the week',
+      'pr.h':'Prices','pr.note':'Every price is right here. No “DM us for prices”.',
+      'pr.free.t':'Your first group class is free','pr.free.d':'Come, try it, then decide. Personal training is paid from the first session.',
+      'pr.cur':'Prices in Armenian dram (֏).','pr.what':'Classes','pr.c1':'1 class','pr.c8':'8 classes','pr.c12':'12 classes',
+      'pr.r1':'Groups: boxing and kickboxing','pr.r2':'Groups: fitness','pr.r3':'Personal training','pr.r4':'Split training','pr.split':'a session for two, price per pair','pr.sub':'boxing, kickboxing',
+      'pr.n1':'A pass is valid for one month from your first class.','pr.n2':'8 classes means twice a week, 12 means three times.',
+      'pr.n3':'The fitness pass covers every fitness class: Tabata, Body Sculpt, Crossfit, Fitness.',
+      'pr.rules':'Studio rules','pr.rule1':'Book every class in advance.',
+      'pr.rule2':'You can cancel or move a class up to 3 hours before it starts. Any later, and the class is used up.','pr.rule3':'Unused classes don’t carry over to the next month.',
+      'co.alt1':'Alexandra with a champion’s belt and trophy','co.alt2':'Alexandra at the Russian Kickboxing Championship in Perm',
+      'co.quote':'“Sport is part of my life, my character and my path.”',
+      'co.h':'Alexandra, founder and coach',
+      'co.text':'I created PRO RING STUDIO as a place where anyone can get stronger, feel more confident and fall in love with movement. Right now I lead every class in the studio myself.',
+      'co.l1':'Master of Sport of Russia in kickboxing','co.l2':'Russian champion','co.l3':'Winner of national and international tournaments','co.l4':'University degree in coaching and teaching','co.l5':'18 years in professional sport','co.l6':'7 years of coaching experience',
+      'co.cta':'Book with Alexandra',
+      'faq.h':'Questions',
+      'q9':'How does a class go?','a9':'60 minutes. The first 30 are warm-up and conditioning: cardio, functional or strength exercises. The next 30 are boxing or kickboxing, pad and bag work. Fitness follows its own plan.',
+      'q10':'How do I book my first class?','a10':'Pick a time in the schedule and message us. We’ll reply and confirm your spot. Your first group class is free, with no strings attached.',
+      'q1':'Can I come with no experience?','a1':'Yes. Classes suit both beginners and experienced people. We’ll show and explain everything.',
+      'q2':'What should I bring?','a2':'Comfortable sportswear and shoes: trainers, sneakers or boxing shoes. We’ll lend you gloves; no hand wraps needed for the first class. Later on, people usually buy their own gloves and wraps.',
+      'q3':'How many people are in a group?','a3':'Up to 10. Usually 5–6 people come.',
+      'q4':'Is boxing right for women?','a4':'Yes. There’s a separate women’s kickboxing group, plus fitness classes.',
+      'q7':'Will there be sparring?','a7':'Beginners only spar if they want to. If you don’t, nobody will make you.','q8':'Is there a shower and changing room?','a8':'There’s a changing room and a toilet, but no shower.',
+      'q5':'What if I can’t make it?','a5':'Message us at least 3 hours before and we’ll move your class. Any later, and the class is used up.',
+      'q6':'What’s the difference between Tabata, Body Sculpt, Crossfit and Fitness?','a6':'Tabata is intervals: short bursts of work and rest, in rounds. Body Sculpt is strength work for glutes and abs. Crossfit is basic exercises at a high pace, sometimes with weights. Fitness works the whole body, with no weights or light ones.',
+      'fin.lead':'Message us however suits you. We’ll find a time and book your first class.',
+      'fin.ig':'Instagram can’t prefill text, so we’ll copy it for you. Then just paste it into the DM.',
+      'fin.quote':'“Welcome to our sports family!”','fin.quote.by':'Alexandra, founder and coach',
+      'fin.addr.h':'Address','addr':'1 Kajaznuni St, Yerevan','fin.map':'Open in maps','fin.when.h':'When',
+      'fin.when':'Monday to Saturday, as scheduled. Closed on Sundays.',
+      'foot.ip':'Sole proprietor Alexandra Ezhak','foot.tin':'tax ID (ՀՎՀՀ)','foot.phone':'Phone','foot.mail':'email',
+      'foot.hours':'Opening hours: Monday to Saturday, as scheduled. Closed on Sundays.',
+      'foot.policy':'Privacy policy','foot.hours.h':'Opening hours','foot.contact':'Contact',
+      'dlg.priv':'How we handle your data is explained in our <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">privacy policy</a>.',
+      'dlg.h':'Where should we talk?','dlg.first':'This is my first class','dlg.ig':'Copy and open Instagram','dlg.ignote':'Instagram can’t prefill text. Tap “Copy”, then paste it into the DM.'
+    }
+  };
+
+  /* ---------- помощники ---------- */
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+  const store = {
+    get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } },
+    set(k,v){ try { localStorage.setItem(k, v); } catch(e){} }
+  };
+  const q = new URLSearchParams(location.search);
+
+  // Время в Ереване. Для проверки макета: ?day=2&time=18:30
+  function yerevanNow(){
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone:'Asia/Yerevan', weekday:'short', hour:'numeric', minute:'numeric', hourCycle:'h23' }).formatToParts(new Date());
+    const g = t => (parts.find(p => p.type === t) || {}).value;
+    let day = { Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6, Sun:7 }[g('weekday')];
+    let min = Number(g('hour')) * 60 + Number(g('minute'));
+    const realDay = day;
+    if (q.get('day')) day = Math.min(7, Math.max(1, Number(q.get('day'))));
+    if (q.get('time')) min = toMin(q.get('time'));
+    return { day, min, shift: day - realDay };   // shift — сдвиг дат, когда день подставлен через ?day
+  }
+  const NOW = yerevanNow();
+
+  /* ---------- состояние ---------- */
+  let lang = 'ru';
+  let filter = [];                       // пусто = все
+  let activeDay = NOW.day <= 6 ? NOW.day : 1;
+  const ui = () => UI[lang];
+  const name = c => CLASSES[c][lang][0];
+  const descr = c => CLASSES[c][lang][1];
+  const matches = c => !filter.length || CLASSES[c].tags.some(t => filter.includes(t));
+  const isPast = s => s.d === NOW.day && toMin(s.t) <= NOW.min;
+
+  /* ---------- типографика: короткие предлоги и союзы не висят в конце строки, тире не начинает строку ---------- */
+  const SHORT = /(?<=^|[\s\u00A0(«"„])(в|во|с|со|к|ко|у|о|об|и|а|но|на|по|за|из|от|до|не|ни|для|без|при)\s+/giu;
+  function typo(root){
+    const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => n.parentElement && !n.parentElement.closest('script, style, #book-msg') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT });
+    let n;
+    while ((n = tw.nextNode())) {
+      const t = n.nodeValue.replace(SHORT, '$1\u00A0').replace(/\s+—/g, '\u00A0—');
+      if (t !== n.nodeValue) n.nodeValue = t;
+    }
+  }
+
+  /* ---------- оптика крупного текста: зазоры между строками слогана и левый край — по краю букв ---------- */
+  // у «Д» и «Ц» есть хвосты ниже строки, у «Й» и «Ё» — значки выше: зазор считаем от них, а не от рамки строки
+  function optics(){
+    const ctx = document.createElement('canvas').getContext('2d');
+    const setFont = el => { const cs = getComputedStyle(el); const fs = parseFloat(cs.fontSize);
+      ctx.font = `${cs.fontWeight} ${fs}px ${cs.fontFamily}`; ctx.fontStretch = 'extra-condensed'; return fs; };
+    const slogan = $('.slogan');
+    if (slogan) {
+      const spans = [...slogan.children];
+      const fs = setFont(spans[0]);
+      const cap = ctx.measureText('H').actualBoundingBoxAscent;
+      let prevDesc = 0;
+      spans.forEach((sp, i) => {
+        const m = ctx.measureText(sp.textContent.toUpperCase());
+        const over = Math.max(0, m.actualBoundingBoxAscent - cap);
+        sp.style.marginTop = (i ? fs * .14 + prevDesc + over : over) + 'px';
+        sp.style.marginLeft = m.actualBoundingBoxLeft + 'px';
+        prevDesc = Math.max(0, m.actualBoundingBoxDescent);
+      });
+    }
+    $$('.h2, .final-h').forEach(h => { setFont(h); const ch = h.textContent.trim().charAt(0).toUpperCase(); h.style.marginLeft = ctx.measureText(ch).actualBoundingBoxLeft + 'px'; });
+  }
+  document.fonts.ready.then(optics);
+  addEventListener('resize', () => requestAnimationFrame(optics));
+
+  /* ---------- перевод ---------- */
+  const RU = {};
+  $$('[data-i18n]').forEach(el => { const k = el.dataset.i18n; if (!(k in RU)) RU[k] = el.innerHTML; });
+  $$('[data-i18n-alt]').forEach(el => { RU[el.dataset.i18nAlt] = el.alt; });
+  $$('[data-i18n-aria]').forEach(el => { RU[el.dataset.i18nAria] = el.getAttribute('aria-label'); });
+  const tr = k => (lang === 'ru' ? RU[k] : (T[lang][k] ?? RU[k]));
+
+  function applyLang(l){
+    lang = UI[l] ? l : 'ru';
+    document.documentElement.lang = lang;
+    $$('[data-i18n]').forEach(el => { el.innerHTML = tr(el.dataset.i18n); });
+    $$('[data-i18n-alt]').forEach(el => { el.alt = tr(el.dataset.i18nAlt); });
+    $$('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', tr(el.dataset.i18nAria)); });
+    $$('.lang-b').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    $$('a[data-policy]').forEach(a => { a.href = 'politika.html?lang=' + lang; });
+    $('#draft-note').hidden = lang === 'ru';
+    document.title = ui().title;
+    $('meta[name="description"]').setAttribute('content', ui().desc);
+    const nf = new Intl.NumberFormat(ui().locale);
+    $$('[data-price]').forEach(td => {
+      td.innerHTML = '<span>' + nf.format(Number(td.dataset.price)) + '<span class="dram">֏</span></span>';
+      td.dataset.label = tr(td.dataset.labelKey);
+    });
+    renderToday(); renderChips(); renderSchedule();
+    typo(document.body);
+    optics();
+    store.set('proring-lang', lang);
+  }
+
+  /* ---------- «Сегодня в зале» ---------- */
+  function nextClasses(){
+    if (NOW.day <= 6) {
+      const list = WEEK.filter(s => s.d === NOW.day && toMin(s.t) > NOW.min);
+      if (list.length) return { offset:0, list };
+    }
+    for (let k = 1; k <= 7; k++) {
+      const d = ((NOW.day - 1 + k) % 7) + 1;
+      const list = WEEK.filter(s => s.d === d);
+      if (list.length) return { offset:k, list };
+    }
+    return { offset:0, list:[] };
+  }
+  // Дата собирается вручную: не во всех браузерах есть армянские названия месяцев
+  function dateParts(offset){
+    const parts = new Intl.DateTimeFormat('en-US', { timeZone:'Asia/Yerevan', day:'numeric', month:'numeric' }).formatToParts(new Date(Date.now() + (NOW.shift + offset) * 864e5));
+    return { dd:Number(parts.find(p => p.type === 'day').value), mm:Number(parts.find(p => p.type === 'month').value) - 1 };
+  }
+  const weekdayAt = offset => ((NOW.day - 1 + offset) % 7) + 1;
+  // «Вторник, 17 ноября» — заголовок табло и окна записи
+  function dateLabel(offset){
+    const { dd, mm } = dateParts(offset), u = ui(), wd = weekdayAt(offset);
+    return lang === 'hy' ? `${u.days[wd]}, ${u.months[mm]} ${dd}` : `${u.days[wd]}, ${dd} ${u.months[mm]}`;
+  }
+  // «вторник 17 ноября» — для готового сообщения
+  function dayDate(offset){
+    const { dd, mm } = dateParts(offset), u = ui(), wd = weekdayAt(offset);
+    return lang === 'hy' ? `${u.dayLow[wd]}, ${u.months[mm]} ${dd}` : `${u.dayLow[wd]} ${dd} ${u.months[mm]}`;
+  }
+  // через сколько дней ближайшее такое занятие; прошедшее сегодня — через неделю
+  function slotOffset(s){
+    const k = (s.d - NOW.day + 7) % 7;
+    return k === 0 && toMin(s.t) <= NOW.min ? 7 : k;
+  }
+  function rowHTML(s, extraClass, sub){
+    const u = ui();
+    return `<li><button type="button" class="row ${extraClass}" data-d="${s.d}" data-t="${s.t}" data-c="${s.c}" aria-label="${esc(u.aria(name(s.c), u.dayLow[s.d], s.t))}">
+      <span class="t num">${s.t}</span>
+      <span class="n">${esc(name(s.c))}<small>${esc(sub)}</small></span>
+      <span class="go" aria-hidden="true">${esc(u.book)}</span></button></li>`;
+  }
+  function renderToday(){
+    const u = ui();
+    const { offset, list } = nextClasses();
+    $('#today-title').textContent = offset === 0 ? u.tToday : offset === 1 ? u.tTomorrow : u.tNext;
+    $('#today-date').textContent = dateLabel(offset);
+    // «Ближайшая» — только открытая группа; у детской, женской и мужской — для кого она
+    $('#today-list').innerHTML = list.slice(0, 3).map((s, i) => {
+      const aud = u.aud[s.c];
+      const next = i === 0 && !aud;
+      return rowHTML(s, next ? 'is-next' : '', next ? u.nearest : (aud || u.dur));
+    }).join('');
+  }
+
+  /* ---------- фильтр ---------- */
+  function renderChips(){
+    const u = ui();
+    $('#chips').innerHTML = FILTERS.map(f => {
+      const n = f ? WEEK.filter(s => CLASSES[s.c].tags.includes(f)).length : WEEK.length;
+      const on = f ? filter.length === 1 && filter[0] === f || (filter.length > 1 && filter.includes(f)) : !filter.length;
+      return `<button type="button" class="chip" data-f="${f}" aria-pressed="${on}">${esc(u.filters[f])} <span>${n}</span></button>`;
+    }).join('');
+  }
+  function setFilter(list){
+    filter = list;
+    renderChips(); applyFilter();
+  }
+
+  /* ---------- расписание ---------- */
+  function renderSchedule(){
+    const u = ui();
+    $('#day-tabs').innerHTML = [1,2,3,4,5,6].map(d =>
+      `<button type="button" class="tab${d === NOW.day ? ' is-today' : ''}" data-day="${d}" aria-pressed="${d === activeDay}" aria-label="${esc(u.days[d] + (d === NOW.day ? ', ' + u.today : ''))}">${esc(u.dayShort[d])}</button>`).join('');
+    $('#days').innerHTML = [1,2,3,4,5,6].map(d => {
+      const slots = WEEK.filter(s => s.d === d).map(s => {
+        const c = CLASSES[s.c];
+        const stub = c.stub ? ` <span class="stub">${esc(c.stub)}</span>` : '';
+        const past = isPast(s);
+        return `<li><button type="button" class="slot${past ? ' is-past' : ''}" data-d="${s.d}" data-t="${s.t}" data-c="${s.c}" aria-label="${esc((past ? u.ariaPast : u.aria)(name(s.c), u.dayLow[d], s.t))}">
+          <span class="t num">${s.t}</span><span class="n">${esc(name(s.c))}</span>
+          <span class="d">${esc(descr(s.c))}${stub}</span><span class="go" aria-hidden="true">${esc(past ? u.past : u.book)}</span></button></li>`;
+      }).join('');
+      return `<section class="day${d === NOW.day ? ' is-today' : ''}${d === activeDay ? ' is-active' : ''}" data-day="${d}" aria-label="${esc(u.days[d])}">
+        <h3 class="day-h">${esc(u.days[d])}${d === NOW.day ? `<span class="mark">${esc(u.today)}</span>` : ''}</h3>
+        <ul>${slots}</ul><p class="day-empty" hidden>${esc(u.empty)}</p></section>`;
+    }).join('');
+    const sn = $('#sunday-note');
+    sn.hidden = NOW.day !== 7; sn.textContent = u.sunday;
+    applyFilter();
+  }
+  function applyFilter(){
+    document.body.classList.toggle('is-filtered', filter.length > 0);
+    $$('#days .slot, #today-list .row').forEach(el => el.classList.toggle('is-dim', !matches(el.dataset.c)));
+    $$('#days .day').forEach(day => {
+      const any = WEEK.some(s => s.d === Number(day.dataset.day) && matches(s.c));
+      $('.day-empty', day).hidden = any;
+      const tab = $(`#day-tabs .tab[data-day="${day.dataset.day}"]`);
+      if (tab) tab.classList.toggle('is-dim', !any);
+    });
+  }
+  function setDay(d){
+    activeDay = d;
+    $$('#day-tabs .tab').forEach(t => t.setAttribute('aria-pressed', String(Number(t.dataset.day) === d)));
+    $$('#days .day').forEach(el => el.classList.toggle('is-active', Number(el.dataset.day) === d));
+  }
+
+  /* ---------- окно «Куда написать?» ---------- */
+  const dlg = $('#book');
+  let currentMsg = '';
+  function links(msg){
+    const t = encodeURIComponent(msg);
+    return {
+      wa: CONTACT.whatsapp ? `https://wa.me/${CONTACT.whatsapp}?text=${t}` : `https://wa.me/?text=${t}`,
+      // по номеру телефона Telegram не подставляет текст — его копируем при нажатии
+      tg: CONTACT.telegram.startsWith('+') ? `https://t.me/${CONTACT.telegram}` : CONTACT.telegram ? `https://t.me/${CONTACT.telegram}?text=${t}` : `https://t.me/share/url?url=${encodeURIComponent(location.origin + location.pathname)}&text=${t}`,
+      ig: `https://ig.me/m/${CONTACT.instagram}`
+    };
+  }
+  function setMsgrLinks(scope, msg){
+    const l = links(msg);
+    $$('a[data-msgr]', scope).forEach(a => { a.href = l[a.dataset.msgr]; });
+  }
+  // info: null — общая запись на бесплатную; { personal:true } — персональная; { d, t, c } — занятие из расписания
+  let bookInfo = null;
+  function composeMsg(){
+    const u = ui(), i = bookInfo;
+    if (!i) return u.msg;
+    if (i.personal) return u.msgPersonal;
+    const when = dayDate(slotOffset(i));
+    if (i.c === 'kids') return u.msgKids(when, i.t);
+    return u.msgCls(name(i.c), when, i.t) + ($('#book-first-cb').checked ? u.first : '');
+  }
+  function refreshMsg(){
+    currentMsg = composeMsg();
+    $('#book-msg').textContent = currentMsg;
+    setMsgrLinks(dlg, currentMsg);
+  }
+  function openBook(info){
+    const u = ui();
+    bookInfo = info;
+    if (info) {
+      $('#book-cls-n').textContent = info.personal ? u.personal : name(info.c);
+      $('#book-cls-w').textContent = info.personal ? u.personalW : `${dateLabel(slotOffset(info))}, ${info.t}`;
+    }
+    $('#book-cls').hidden = !info;
+    $('#book-first').hidden = !info || !!info.personal || info.c === 'kids';
+    $('#book-first-cb').checked = true;
+    $('#book-note').textContent = info && info.personal ? u.notePersonal : u.noteGroup;
+    $('#book-status').textContent = '';
+    refreshMsg();
+    typo(dlg);
+    document.body.classList.add('is-booking');
+    updateSticky();
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+  }
+  dlg.addEventListener('close', () => { document.body.classList.remove('is-booking'); updateSticky(); });
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+  $('#book-x').addEventListener('click', () => dlg.close());
+  $('#book-first-cb').addEventListener('change', refreshMsg);
+
+  async function copyAndOpenInstagram(msg, statusEl){
+    try {
+      await navigator.clipboard.writeText(msg);
+      if (statusEl) statusEl.textContent = ui().copied;
+      window.open(links(msg).ig, '_blank', 'noopener');
+    } catch (e) {
+      if (statusEl) statusEl.textContent = ui().copyErr;
+      else alert(ui().copyErr);
+    }
+  }
+
+  /* ---------- события ---------- */
+  document.addEventListener('click', e => {
+    const lb = e.target.closest('.lang-b');
+    if (lb) { applyLang(lb.dataset.lang); return; }
+
+    const book = e.target.closest('.js-book');
+    if (book) { closeMenu(); openBook(book.dataset.book === 'personal' ? { personal:true } : null); return; }
+
+    const slot = e.target.closest('.slot, .row');
+    if (slot) { openBook({ d:Number(slot.dataset.d), t:slot.dataset.t, c:slot.dataset.c }); return; }
+
+    const chip = e.target.closest('.chip');
+    if (chip) { setFilter(chip.dataset.f ? [chip.dataset.f] : []); return; }
+
+    const tab = e.target.closest('.tab');
+    if (tab) { setDay(Number(tab.dataset.day)); return; }
+
+    const door = e.target.closest('.door[data-filter]');
+    if (door) { setFilter(door.dataset.filter ? door.dataset.filter.split(',') : []); return; }
+
+    const ig = e.target.closest('[data-msgr="ig"]');
+    if (ig) {
+      const inDialog = dlg.contains(ig);
+      copyAndOpenInstagram(inDialog ? currentMsg : ui().msg, inDialog ? $('#book-status') : null);
+      return;
+    }
+    const m = e.target.closest('a[data-msgr]');
+    if (m && m.dataset.msgr === 'tg' && CONTACT.telegram.startsWith('+')) {
+      const inDlg = dlg.contains(m);
+      navigator.clipboard?.writeText(inDlg ? currentMsg : ui().msg).then(() => { if (inDlg) $('#book-status').textContent = ui().copied; }, () => {});
+    }
+    if (m && !dlg.contains(m)) { m.href = links(ui().msg)[m.dataset.msgr]; }
+    if (m && dlg.contains(m)) { setTimeout(() => dlg.close(), 300); }
+  });
+
+  /* ---------- мобильное меню ---------- */
+  const menu = $('#menu'), burger = $('.burger');
+  const behindMenu = () => ['#header', '#main', '.footer', '#sticky'].map(s => $(s));
+  function openMenu(){ menu.hidden = false; burger.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; behindMenu().forEach(el => { el.inert = true; }); $('.menu-nav a', menu).focus(); }
+  function closeMenu(){ if (menu.hidden) return; menu.hidden = true; burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; behindMenu().forEach(el => { el.inert = false; }); }
+  burger.addEventListener('click', openMenu);
+  $('.menu-close').addEventListener('click', () => { closeMenu(); burger.focus(); });
+  $$('.menu-nav a', menu).forEach(a => a.addEventListener('click', closeMenu));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { closeMenu(); burger.focus(); } });
+
+  /* ---------- шапка: прячется вниз, появляется вверх ---------- */
+  const header = $('#header');
+  let lastY = scrollY;
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    header.classList.toggle('is-solid', y > 40);
+    if (y > lastY + 4 && y > 240) header.classList.add('is-hidden');
+    else if (y < lastY - 4 || y <= 240) header.classList.remove('is-hidden');
+    lastY = y;
+  }, { passive:true });
+  header.addEventListener('focusin', () => header.classList.remove('is-hidden'));
+
+  /* ---------- нижняя кнопка на телефоне ---------- */
+  const sticky = $('#sticky');
+  let heroVisible = true, finalVisible = false;
+  const ctaOnScreen = new Set();   // золотые кнопки в секциях: пока такая видна, нижняя не нужна
+  function updateSticky(){ sticky.classList.toggle('is-on', !heroVisible && !finalVisible && !ctaOnScreen.size && !document.body.classList.contains('is-booking')); }
+  if ('IntersectionObserver' in window) {
+    // кнопка внизу появляется, когда главная кнопка первого экрана ушла вверх
+    new IntersectionObserver(([e]) => { heroVisible = e.isIntersecting || e.boundingClientRect.top > 0; updateSticky(); }, { threshold:0 }).observe($('.hero .actions'));
+    new IntersectionObserver(([e]) => { finalVisible = e.isIntersecting; updateSticky(); }, { threshold:0 }).observe($('.msgrs'));
+    const ctaIO = new IntersectionObserver(es => { es.forEach(e => { if (e.isIntersecting) ctaOnScreen.add(e.target); else ctaOnScreen.delete(e.target); }); updateSticky(); }, { threshold:0 });
+    $$('main .btn-led.js-book').filter(b => !b.closest('.hero')).forEach(b => ctaIO.observe(b));
+  }
+
+  /* ---------- режим показа заказчику: #chisto прячет заглушки ---------- */
+  function applyMode(){ document.body.classList.toggle('work', !(location.hash === '#chisto' || q.has('chisto'))); }
+  addEventListener('hashchange', applyMode);
+  applyMode();
+
+  /* ---------- старт ---------- */
+  setMsgrLinks(document, UI.ru.msg);
+  // По умолчанию русский (решение Елены 2026-11-10); армянский — первым в переключателе
+  applyLang(q.get('lang') || store.get('proring-lang') || 'ru');
+})();
+</script>
+</body>
+</html>

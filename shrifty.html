@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Доска шрифтов — PRO RING STUDIO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wdth,wght@62.5..100,100..900&family=Noto+Sans+Armenian:wdth,wght@62.5..100,100..900&family=Noto+Serif:wdth,wght@62.5..100,100..900&family=Noto+Serif+Armenian:wdth,wght@62.5..100,100..900&family=Handjet:ELGR,ELSH,wght@1..2,0..16,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* цвета — из прототипа v2 */
+  --leather:#17120F; --mat:#231C17; --wrap:#EEE5D6; --dust:#8F8478;
+  --led:#D6A45A; --led-glow:rgba(214,164,90,.35); --rope:rgba(143,132,120,.35);
+
+  /* размеры доски */
+  --pad:96px; --gap:48px;
+  --slogan:112px; --h2:60px; --h1:24px; --text:18px; --small:14px;
+  --time:40px; --price:40px; --quote:28px;
+
+  /* шрифты: базовые стеки */
+  --sans:"Noto Sans","Noto Sans Armenian",system-ui,sans-serif;
+  --serif:"Noto Serif","Noto Serif Armenian",Georgia,serif;
+  --led-font:"Handjet","Noto Sans",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--leather)}
+body{background:var(--leather);color:var(--wrap);font-family:var(--sans);font-size:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+
+/* ===== шапка доски ===== */
+.intro{padding:72px var(--pad) 24px;max-width:1100px}
+.intro h1{font-family:var(--sans);font-stretch:62.5%;font-weight:800;font-size:56px;line-height:1;text-transform:uppercase}
+.intro p{color:var(--wrap);opacity:.82;margin-top:20px;max-width:720px}
+.intro ul{margin-top:16px;padding-left:20px;max-width:720px;opacity:.82}
+.intro li+li{margin-top:6px}
+.draft{display:inline-block;margin-top:24px;font-size:var(--small);color:var(--dust);border-left:2px solid var(--led);padding:4px 0 4px 12px}
+
+/* ===== сочетание ===== */
+.pair{padding:72px var(--pad) 88px;border-top:1px solid var(--rope)}
+.pair-head{display:grid;grid-template-columns:5fr 7fr;gap:var(--gap);align-items:start;margin-bottom:48px}
+.pair-name{font-family:var(--sans);font-stretch:62.5%;font-weight:800;font-size:44px;line-height:1;text-transform:uppercase}
+.pair-fonts{font-size:16px;opacity:.82}
+.pair-notes{margin-top:12px;font-size:16px;list-style:none}
+.pair-notes li{padding-left:16px;position:relative}
+.pair-notes li::before{content:"";position:absolute;left:0;top:.7em;width:6px;height:2px;background:var(--dust)}
+.pair-notes li+li{margin-top:4px}
+.pair-notes b{font-weight:600}
+
+.langs{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+.langs-3{grid-template-columns:repeat(3,1fr);gap:40px;--slogan:96px;--h2:52px;--h1:20px;--text:16px;--time:32px;--price:32px;--time-col:76px;--quote:22px}
+.langs-3 .cls{gap:12px}
+.langs-3 .cls .go{padding:8px 12px}
+.chosen{display:inline-block;margin-top:14px;font-size:var(--small);font-weight:600;color:var(--leather);background:var(--led);border-radius:4px;padding:4px 10px}
+.sample{container-type:inline-size;min-width:0}
+.lang-tag{font-size:var(--small);color:var(--dust);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--rope)}
+
+/* роли — переменные задаёт сочетание */
+.slogan{font-family:var(--f-display);font-stretch:var(--display-wdth);font-weight:var(--display-wght);font-size:var(--slogan);line-height:var(--display-lh,.9);text-transform:uppercase;letter-spacing:var(--display-track,0)}
+.slogan{font-size:min(var(--slogan),calc(100cqi / var(--fit-ru)))}
+.sample:lang(hy) .slogan{font-size:min(var(--slogan),calc(100cqi / var(--fit-hy)))}
+.sample:lang(en) .slogan{font-size:min(var(--slogan),calc(100cqi / var(--fit-en,6.4)))}
+.led{width:240px;height:2px;background:var(--led);box-shadow:0 0 14px 2px var(--led-glow);margin:28px 0}
+.h1{font-family:var(--f-text);font-weight:600;font-size:var(--h1);line-height:1.25;max-width:520px}
+.sub{font-family:var(--f-text);font-size:var(--text);line-height:1.55;opacity:.82;margin-top:12px;max-width:520px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:12px 28px;margin-top:28px;border-radius:4px;background:var(--led);color:var(--leather);box-shadow:0 0 24px var(--led-glow);font-family:var(--f-text);font-weight:600;font-size:16px;line-height:1.2;text-decoration:none;text-align:center}
+.cap{font-family:var(--f-text);font-size:var(--small);color:var(--dust);margin-top:12px}
+
+.today{margin-top:48px;border-top:2px solid var(--led);box-shadow:0 -10px 24px -14px var(--led-glow)}
+.today-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 0 8px}
+.today-h .h3{font-family:var(--f-text);font-weight:600;font-size:20px}
+.today-h .cap{margin:0}
+.cls{display:grid;grid-template-columns:var(--time-col,108px) 1fr auto;align-items:center;gap:16px;padding:12px 0;border-top:1px solid var(--rope)}
+.cls .t{font-family:var(--f-digits);font-stretch:var(--digits-wdth,100%);font-weight:var(--digits-wght);font-size:var(--time);line-height:1;font-variant-numeric:tabular-nums;font-variation-settings:var(--digits-axes,normal);text-shadow:var(--digits-glow,none)}
+.cls .n{font-family:var(--f-text);font-weight:600;font-size:17px;line-height:1.25}
+.cls .n small{display:block;font-weight:400;font-size:13px;color:var(--dust);margin-top:3px}
+.cls .go{font-family:var(--f-text);font-size:14px;font-weight:500;border:1px solid rgba(238,229,214,.5);border-radius:4px;padding:9px 14px;white-space:nowrap}
+.cls.next{background:var(--mat);margin:0 -12px;padding:12px}
+.cls.next .go{background:var(--led);color:var(--leather);border-color:var(--led)}
+
+.h2{font-family:var(--f-display);font-stretch:var(--display-wdth);font-weight:var(--display-wght);font-size:var(--h2);line-height:.95;text-transform:uppercase;margin-top:64px;letter-spacing:var(--display-track,0)}
+.prow{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:20px;padding:16px 0;border-top:1px solid var(--rope);border-bottom:1px solid var(--rope)}
+.pn{font-family:var(--f-text);font-weight:600;font-size:17px;line-height:1.3}
+.pn small{display:block;font-weight:400;font-size:13px;color:var(--dust);margin-top:3px}
+.pv{font-family:var(--f-digits);font-stretch:var(--digits-wdth,100%);font-weight:var(--digits-wght);font-size:var(--price);line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums;font-variation-settings:var(--digits-axes,normal);text-shadow:var(--digits-glow,none)}
+
+.quote{font-family:var(--f-quote);font-weight:var(--quote-wght,500);font-stretch:var(--quote-wdth,100%);font-size:var(--quote);line-height:1.3;margin-top:56px;max-width:560px}
+.who{font-family:var(--f-text);font-size:var(--small);color:var(--dust);margin-top:12px}
+
+/* ===== А. Одна семья ===== */
+.pair-a{--fit-ru:6.4;--fit-hy:9.7;--fit-en:4.95;--f-display:var(--sans);--display-wdth:62.5%;--display-wght:850;
+  --f-text:var(--sans);--f-digits:var(--sans);--digits-wdth:62.5%;--digits-wght:600;
+  --f-quote:var(--sans);--quote-wght:500}
+/* ===== Б. Пояс чемпиона ===== */
+.pair-b{--display-lh:.98;--fit-ru:7;--fit-hy:10.4;--f-display:var(--serif);--display-wdth:62.5%;--display-wght:800;
+  --f-text:var(--sans);--f-digits:var(--serif);--digits-wdth:62.5%;--digits-wght:700;
+  --f-quote:var(--serif);--quote-wght:400}
+/* ===== В. Табло ===== */
+.pair-c{--fit-ru:6.4;--fit-hy:9.7;--f-display:var(--sans);--display-wdth:62.5%;--display-wght:850;
+  --f-text:var(--sans);--f-digits:var(--led-font);--digits-wght:700;--digits-axes:"ELSH" 10,"ELGR" 1;--digits-glow:0 0 10px rgba(214,164,90,.45);
+  --f-quote:var(--sans);--quote-wght:500;--time:52px;--price:52px;--time-col:120px}
+
+/* ===== вывод ===== */
+.outro{padding:72px var(--pad) 96px;border-top:1px solid var(--rope)}
+.outro h2{font-family:var(--sans);font-stretch:62.5%;font-weight:800;font-size:44px;line-height:1;text-transform:uppercase}
+.outro p{margin-top:16px;max-width:720px;opacity:.82}
+
+@media (max-width:767px){
+  :root{--pad:16px;--gap:40px;--slogan:60px;--h2:44px;--h1:20px;--text:16px;--small:13px;--time:30px;--price:30px;--quote:22px}
+  .intro{padding-top:40px}
+  .intro h1{font-size:40px}
+  .pair{padding:48px var(--pad) 56px}
+  .pair-head{grid-template-columns:1fr;gap:16px;margin-bottom:32px}
+  .pair-name{font-size:36px}
+  .langs,.langs-3{grid-template-columns:1fr;gap:var(--gap)}
+  .langs-3{--slogan:60px;--h2:44px;--h1:20px;--time:30px;--price:30px;--time-col:72px;--quote:22px}
+  .led{width:160px;margin:20px 0}
+  .btn{width:100%;padding:12px 16px;font-size:15px}
+  .cls{grid-template-columns:var(--time-col,72px) 1fr auto;gap:10px}
+  .cls .go{padding:8px 10px;font-size:13px}
+  .pair-c{--time:38px;--price:38px;--time-col:84px}
+  .h2{margin-top:48px}
+  .quote{margin-top:40px}
+  .outro{padding:48px var(--pad) 64px}
+  .outro h2{font-size:36px}
+}
+</style>
+</head>
+<body>
+
+<header class="intro">
+  <h1>Доска шрифтов</h1>
+  <p>Три сочетания шрифтов на настоящих текстах сайта. Выбрано А «Одна семья» — оно показано на трёх языках сайта: русском, армянском и английском. Б и В оставлены для сравнения. Цвета и первый экран — как в выбранном варианте А с блоком «Сегодня в зале».</p>
+  <ul>
+    <li>Смотри на слоган: держит ли он характер на обоих языках.</li>
+    <li>Смотри на время и цены: читаются ли с одного взгляда.</li>
+    <li>Смотри на обычный текст: не устаёт ли глаз.</li>
+  </ul>
+  <p class="draft">Армянский и английский здесь — черновой перевод только для проверки шрифта. На сайт пойдёт проверенный перевод.</p>
+</header>
+
+<!-- ===================== А ===================== -->
+<section class="pair pair-a" aria-labelledby="pa">
+  <div class="pair-head">
+    <div><h2 class="pair-name" id="pa">А. Одна семья</h2><p class="chosen">Выбрано 10 ноября</p></div>
+    <div>
+      <p class="pair-fonts">Заголовки и цифры — Noto Sans узкий, очень жирный. Текст — Noto Sans обычный. Армянский — Noto Sans Armenian с теми же настройками, английский — тот же Noto Sans. Одна система на три языка.</p>
+      <ul class="pair-notes">
+        <li><b>Плюс:</b> русская, армянская и английская версии выглядят одинаково, как один бренд.</li>
+        <li><b>Риск:</b> самый спокойный из трёх, характер держится на размере и фото.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="langs langs-3">
+    <article class="sample" lang="ru">
+      <p class="lang-tag">Русский</p>
+      <div class="slogan">Сила.<br>Дисциплина.<br>Результат.</div>
+      <div class="led"></div>
+      <p class="h1">Студия бокса, кикбоксинга и фитнеса в центре Еревана</p>
+      <p class="sub">Группы и персональные тренировки с мастером спорта. Можно с нуля — всё покажем и расскажем.</p>
+      <a class="btn">Записаться на бесплатную тренировку</a>
+      <p class="cap">Ответим в WhatsApp, Telegram или Instagram</p>
+      <div class="today">
+        <div class="today-h"><span class="h3">Сегодня в зале</span><span class="cap">Вторник, 10 ноября</span></div>
+        <div class="cls next"><span class="t">19:00</span><span class="n">Женская группа кикбоксинг<small>Ближайшая тренировка</small></span><span class="go">Записаться</span></div>
+        <div class="cls"><span class="t">20:30</span><span class="n">Мужская группа кикбоксинг<small>60 минут</small></span><span class="go">Записаться</span></div>
+      </div>
+      <p class="h2">Цены</p>
+      <div class="prow"><span class="pn">Группы: бокс и кикбоксинг<small>8 тренировок, месяц</small></span><span class="pv">35 000 ֏</span></div>
+      <p class="quote">«Спорт — это не просто моя профессия, это часть моей жизни, мой характер и мой путь».</p>
+      <p class="who">Александра, основательница и тренер</p>
+    </article>
+    <article class="sample" lang="hy">
+      <p class="lang-tag">Армянский, черновой перевод</p>
+      <div class="slogan">Ուժ։<br>Կարգապահություն։<br>Արդյունք։</div>
+      <div class="led"></div>
+      <p class="h1">Բռնցքամարտի, քիքբոքսինգի և ֆիթնեսի ստուդիա Երևանի կենտրոնում</p>
+      <p class="sub">Խմբային և անհատական մարզումներ սպորտի վարպետի հետ։ Կարող ես սկսել զրոյից՝ ամեն ինչ ցույց կտանք ու կբացատրենք։</p>
+      <a class="btn">Գրանցվել անվճար մարզման</a>
+      <p class="cap">Կպատասխանենք WhatsApp-ում, Telegram-ում կամ Instagram-ում</p>
+      <div class="today">
+        <div class="today-h"><span class="h3">Այսօր դահլիճում</span><span class="cap">Երեքշաբթի, նոյեմբերի 10</span></div>
+        <div class="cls next"><span class="t">19:00</span><span class="n">Կանանց քիքբոքսինգի խումբ<small>Մոտակա մարզումը</small></span><span class="go">Գրանցվել</span></div>
+        <div class="cls"><span class="t">20:30</span><span class="n">Տղամարդկանց քիքբոքսինգի խումբ<small>60 րոպե</small></span><span class="go">Գրանցվել</span></div>
+      </div>
+      <p class="h2">Գներ</p>
+      <div class="prow"><span class="pn">Խմբեր՝ բռնցքամարտ և քիքբոքսինգ<small>8 մարզում, մեկ ամիս</small></span><span class="pv">35 000 ֏</span></div>
+      <p class="quote">«Սպորտն ինձ համար պարզապես մասնագիտություն չէ, այն իմ կյանքի մասն է, իմ բնավորությունն ու իմ ճանապարհը»։</p>
+      <p class="who">Ալեքսանդրա, հիմնադիր և մարզիչ</p>
+    </article>
+    <article class="sample" lang="en">
+      <p class="lang-tag">Английский, черновой перевод</p>
+      <div class="slogan">Strength.<br>Discipline.<br>Results.</div>
+      <div class="led"></div>
+      <p class="h1">Boxing, kickboxing and fitness studio in central Yerevan</p>
+      <p class="sub">Group and personal training with a Master of Sport. Starting from zero is fine — we’ll show and explain everything.</p>
+      <a class="btn">Book a free class</a>
+      <p class="cap">We reply on WhatsApp, Telegram or Instagram</p>
+      <div class="today">
+        <div class="today-h"><span class="h3">Today at the studio</span><span class="cap">Tuesday, November 10</span></div>
+        <div class="cls next"><span class="t">19:00</span><span class="n">Women’s kickboxing group<small>Next class</small></span><span class="go">Book</span></div>
+        <div class="cls"><span class="t">20:30</span><span class="n">Men’s kickboxing group<small>60 minutes</small></span><span class="go">Book</span></div>
+      </div>
+      <p class="h2">Prices</p>
+      <div class="prow"><span class="pn">Groups: boxing and kickboxing<small>8 classes, one month</small></span><span class="pv">35,000 ֏</span></div>
+      <p class="quote">“Sport isn’t just my profession. It’s part of my life, my character and my path.”</p>
+      <p class="who">Alexandra, founder and coach</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== Б ===================== -->
+<section class="pair pair-b" aria-labelledby="pb">
+  <div class="pair-head">
+    <h2 class="pair-name" id="pb">Б. Пояс чемпиона</h2>
+    <div>
+      <p class="pair-fonts">Заголовки, цифры и цитата — Noto Serif узкий, жирный, с засечками (как гравировка на поясе и кубке). Текст — Noto Sans обычный. Армянский — Noto Serif Armenian и Noto Sans Armenian.</p>
+      <ul class="pair-notes">
+        <li><b>Плюс:</b> самый «премиальный», похож на старые афиши боёв, ни у кого из конкурентов такого нет.</li>
+        <li><b>Риск:</b> мягче и солиднее, «жёсткого спортивного» меньше.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="langs">
+    <article class="sample" lang="ru">
+      <p class="lang-tag">Русский</p>
+      <div class="slogan">Сила.<br>Дисциплина.<br>Результат.</div>
+      <div class="led"></div>
+      <p class="h1">Студия бокса, кикбоксинга и фитнеса в центре Еревана</p>
+      <p class="sub">Группы и персональные тренировки с мастером спорта. Можно с нуля — всё покажем и расскажем.</p>
+      <a class="btn">Записаться на бесплатную тренировку</a>
+      <p class="cap">Ответим в WhatsApp, Telegram или Instagram</p>
+      <div class="today">
+        <div class="today-h"><span class="h3">Сегодня в зале</span><span class="cap">Вторник, 10 ноября</span></div>
+        <div class="cls next"><span class="t">19:00</span><span class="n">Женская группа кикбоксинг<small>Ближайшая тренировка</small></span><span class="go">Записаться</span></div>
+        <div class="cls"><span class="t">20:30</span><span class="n">Мужская группа кикбоксинг<small>60 минут</small></span><span class="go">Записаться</span></div>
+      </div>
+      <p class="h2">Цены</p>
+      <div class="prow"><span class="pn">Группы: бокс и кикбоксинг<small>8 тренировок, месяц</small></span><span class="pv">35 000 ֏</span></div>
+      <p class="quote">«Спорт — это не просто моя профессия, это часть моей жизни, мой характер и мой путь».</p>
+      <p class="who">Александра, основательница и тренер</p>
+    </article>
+    <article class="sample" lang="hy">
+      <p class="lang-tag">Армянский, черновой перевод</p>
+      <div class="slogan">Ուժ։<br>Կարգապահություն։<br>Արդյունք։</div>
+      <div class="led"></div>
+      <p class="h1">Բռնցքամարտի, քիքբոքսինգի և ֆիթնեսի ստուդիա Երևանի կենտրոնում</p>
+      <p class="sub">Խմբային և անհատական մարզումներ սպորտի վարպետի հետ։ Կարող ես սկսել զրոյից՝ ամեն ինչ ցույց կտանք ու կբացատրենք։</p>
+      <a class="btn">Գրանցվել անվճար մարզման</a>
+      <p class="cap">Կպատասխանենք WhatsApp-ում, Telegram-ում կամ Instagram-ում</p>
+      <div class="today">
+        <div class="today-h"><span class="h3">Այսօր դահլիճում</span><span class="cap">Երեքշաբթի, նոյեմբերի 10</span></div>
+        <div class="cls next"><span class="t">19:00</span><span class="n">Կանանց քիքբոքսինգի խումբ<small>Մոտակա մարզումը</small></span><span class="go">Գրանցվել</span></div>
+        <div class="cls"><span class="t">20:30</span><span class="n">Տղամարդկանց քիքբոքսինգի խումբ<small>60 րոպե</small></span><span class="go">Գրանցվել</span></div>
+      </div>
+      <p class="h2">Գներ</p>
+      <div class="prow"><span class="pn">Խմբեր՝ բռնցքամարտ և քիքբոքսինգ<small>8 մարզում, մեկ ամիս</small></span><span class="pv">35 000 ֏</span></div>
+      <p class="quote">«Սպորտն ինձ համար պարզապես մասնագիտություն չէ, այն իմ կյանքի մասն է, իմ բնավորությունն ու իմ ճանապարհը»։</p>
+      <p class="who">Ալեքսանդրա, հիմնադիր և մարզիչ</p>
+    </article>
+  </div>
+</section>
+
+<!-- ===================== В ===================== -->
+<section class="pair pair-c" aria-labelledby="pc">
+  <div class="pair-head">
+    <h2 class="pair-name" id="pc">В. Табло</h2>
+    <div>
+      <p class="pair-fonts">Как А, но время и цены — шрифтом Handjet: цифры собраны из светящихся точек, как на табло. Армянский он тоже знает.</p>
+      <ul class="pair-notes">
+        <li><b>Плюс:</b> цифры становятся «фишкой» студии и перекликаются с LED-лентой в зале.</li>
+        <li><b>Риск:</b> на мелком размере точки сливаются, поэтому только для крупных цифр.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="langs">
+    <article class="sample" lang="ru">
+      <p class="lang-tag">Русский</p>
+      <div class="slogan">Сила.<br>Дисциплина.<br>Результат.</div>
+      <div class="led"></div>
+      <p class="h1">Студия бокса, кикбоксинга и фитнеса в центре Еревана</p>
+      <p class="sub">Группы и персональные тренировки с мастером спорта. Можно с нуля — всё покажем и расскажем.</p>
+      <a class="btn">Записаться на бесплатную тренировку</a>
+      <p class="cap">Ответим в WhatsApp, Telegram или Instagram</p>
+      <div class="today">
+        <div class="today-h"><span class="h3">Сегодня в зале</span><span class="cap">Вторник, 10 ноября</span></div>
+        <div class="cls next"><span class="t">19:00</span><span class="n">Женская группа кикбоксинг<small>Ближайшая тренировка</small></span><span class="go">Записаться</span></div>
+        <div class="cls"><span class="t">20:30</span><span class="n">Мужская группа кикбоксинг<small>60 минут</small></span><span class="go">Записаться</span></div>
+      </div>
+      <p class="h2">Цены</p>
+      <div class="prow"><span class="pn">Группы: бокс и кикбоксинг<small>8 тренировок, месяц</small></span><span class="pv">35 000 ֏</span></div>
+      <p class="quote">«Спорт — это не просто моя профессия, это часть моей жизни, мой характер и мой путь».</p>
+      <p class="who">Александра, основательница и тренер</p>
+    </article>
+    <article class="sample" lang="hy">
+      <p class="lang-tag">Армянский, черновой перевод</p>
+      <div class="slogan">Ուժ։<br>Կարգապահություն։<br>Արդյունք։</div>
+      <div class="led"></div>
+      <p class="h1">Բռնցքամարտի, քիքբոքսինգի և ֆիթնեսի ստուդիա Երևանի կենտրոնում</p>
+      <p class="sub">Խմբային և անհատական մարզումներ սպորտի վարպետի հետ։ Կարող ես սկսել զրոյից՝ ամեն ինչ ցույց կտանք ու կբացատրենք։</p>
+      <a class="btn">Գրանցվել անվճար մարզման</a>
+      <p class="cap">Կպատասխանենք WhatsApp-ում, Telegram-ում կամ Instagram-ում</p>
+      <div class="today">
+        <div class="today-h"><span class="h3">Այսօր դահլիճում</span><span class="cap">Երեքշաբթի, նոյեմբերի 10</span></div>
+        <div class="cls next"><span class="t">19:00</span><span class="n">Կանանց քիքբոքսինգի խումբ<small>Մոտակա մարզումը</small></span><span class="go">Գրանցվել</span></div>
+        <div class="cls"><span class="t">20:30</span><span class="n">Տղամարդկանց քիքբոքսինգի խումբ<small>60 րոպե</small></span><span class="go">Գրանցվել</span></div>
+      </div>
+      <p class="h2">Գներ</p>
+      <div class="prow"><span class="pn">Խմբեր՝ բռնցքամարտ և քիքբոքսինգ<small>8 մարզում, մեկ ամիս</small></span><span class="pv">35 000 ֏</span></div>
+      <p class="quote">«Սպորտն ինձ համար պարզապես մասնագիտություն չէ, այն իմ կյանքի մասն է, իմ բնավորությունն ու իմ ճանապարհը»։</p>
+      <p class="who">Ալեքսանդրա, հիմնադիր և մարզիչ</p>
+    </article>
+  </div>
+</section>
+
+<footer class="outro">
+  <h2>Что важно знать</h2>
+  <p>Армянский в бесплатной библиотеке Google поддерживают всего несколько шрифтов. Для сайта подходят Noto Sans Armenian и Noto Serif Armenian: они сделаны в пару к Noto Sans и Noto Serif с кириллицей. Узкие шрифты вроде Oswald армянского не знают — армянская версия сайта выглядела бы как другой бренд.</p>
+  <p>Армянские слова длиннее русских («Կարգապահություն» — 15 букв против 10), поэтому на армянской версии слоган набирается мельче. Это нормально, характер сохраняется. Английский по длине почти как русский.</p>
+</footer>
+
+</body>
+</html>

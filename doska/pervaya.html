@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Первая тренировка в вопросах — три варианта</title>
+<style>
+@font-face{font-family:"Noto Sans";font-weight:400 900;font-stretch:62.5% 100%;src:url(../fonts/noto-sans-cyrillic.woff2) format("woff2");unicode-range:U+0400-045F}
+@font-face{font-family:"Noto Sans";font-weight:400 900;font-stretch:62.5% 100%;src:url(../fonts/noto-sans-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+2000-206F}
+:root{
+  --leather:#17120F; --mat:#231C17; --wrap:#EEE5D6; --wrap-soft:rgba(238,229,214,.82);
+  --dust:#8F8478; --rope:rgba(143,132,120,.45); --rope-soft:rgba(143,132,120,.22); --led:#D6A45A;
+  --narrow:62.5%; --pad:96px; --gap:24px;
+  --h2-small:44px; --h3:22px; --t-lead:20px; --text:18px; --t-btn:16px; --small:14px; --t-xs:13px; --time:40px;
+  --s1:8px; --s1x:12px; --s2:16px; --s2x:20px; --s3:24px; --s3x:32px; --s4:40px; --s5:64px; --s6:96px;
+}
+@media (max-width:767px){:root{--pad:16px;--gap:16px;--h2-small:32px;--h3:20px;--t-lead:18px;--text:16px;--small:13px;--time:32px}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--leather);color:var(--wrap);font-family:"Noto Sans",system-ui,sans-serif;font-size:var(--text);line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{width:min(calc(100% - 2 * var(--pad)),1248px);margin-inline:auto}
+.board-h{padding:var(--s5) 0 var(--s3)}
+.board-h h1{font-size:var(--t-lead);font-weight:600}
+.board-h p{color:var(--dust);font-size:var(--small);margin-top:var(--s1);max-width:760px}
+.var{padding:var(--s5) 0 var(--s6);border-top:1px solid var(--rope)}
+.tag{display:inline-block;font-size:var(--small);color:var(--leather);background:var(--led);border-radius:4px;padding:2px 10px;font-weight:600}
+.var-note{color:var(--dust);font-size:var(--small);margin:var(--s1) 0 var(--s4);max-width:760px}
+.h2{font-stretch:var(--narrow);font-weight:850;text-transform:uppercase;font-size:var(--h2-small);line-height:.95;margin-bottom:var(--s4)}
+.qa{max-width:820px;border-bottom:1px solid var(--rope)}
+.qa details{border-top:1px solid var(--rope)}
+.qa summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:var(--s3);padding:var(--s2x) 0;font-weight:600;font-size:var(--t-lead);line-height:1.3;cursor:pointer}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"";flex:none;width:16px;height:16px;background:linear-gradient(var(--wrap),var(--wrap)) center/16px 2px no-repeat,linear-gradient(var(--wrap),var(--wrap)) center/2px 16px no-repeat;transition:transform .25s}
+.qa details[open] summary::after{transform:rotate(45deg)}
+.a{color:var(--wrap-soft);padding:0 0 var(--s3);max-width:620px}
+.a p+p{margin-top:var(--s1x)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:var(--s1x) var(--s3x);border-radius:4px;font-weight:600;font-size:var(--t-btn);background:var(--led);color:var(--leather);margin-top:var(--s4);border:0}
+
+/* А: шкала внутри ответа */
+.bar{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:var(--s1) 0 var(--s2x)}
+.bar div{border-top:2px solid var(--led);padding-top:var(--s1)}
+.bar b{display:block;font-stretch:var(--narrow);font-weight:600;font-size:var(--h3);color:var(--wrap)}
+.bar span{font-size:var(--small);color:var(--wrap-soft)}
+
+/* В: панель «60 минут» слева от вопросов */
+.two{display:grid;grid-template-columns:4fr 8fr;gap:var(--s5);align-items:start}
+.panel{position:sticky;top:var(--s3)}
+.panel .big{font-stretch:var(--narrow);font-weight:850;font-size:88px;line-height:.9;text-transform:uppercase}
+.panel .big small{display:block;font-size:var(--h3);font-weight:600;letter-spacing:0;margin-top:var(--s1)}
+.tl{margin-top:var(--s4);border-left:2px solid var(--rope);padding-left:var(--s2x)}
+.tl li{list-style:none;position:relative;padding-bottom:var(--s3)}
+.tl li::before{content:"";position:absolute;left:calc(-1 * var(--s2x) - 6px);top:6px;width:10px;height:10px;border-radius:50%;background:var(--led)}
+.tl b{display:block;font-stretch:var(--narrow);font-weight:600;font-size:var(--h3)}
+.tl span{font-size:var(--small);color:var(--wrap-soft)}
+.free{font-weight:600;margin-top:var(--s1)}
+.free small{display:block;font-weight:400;font-size:var(--small);color:var(--dust)}
+@media (max-width:767px){.two{grid-template-columns:1fr;gap:var(--s4)}.panel{position:static}.panel .big{font-size:60px}}
+</style>
+</head>
+<body>
+<div class="wrap board-h">
+  <h1>Как пройдёт первая тренировка — внутри «Частых вопросов»</h1>
+  <p>Три варианта. Отдельного блока со шкалой 0–30–60 и шагами 1–2–3 больше нет. Тексты — те же, что на сайте, слова Александры не менялись.</p>
+</div>
+
+<!-- ===== А ===== -->
+<section class="var"><div class="wrap">
+  <span class="tag">А · Первый вопрос, открыт сразу</span>
+  <p class="var-note">Главный вопрос новичка стоит первым и открыт. Внутри — короткая шкала «30 + 30 минут» и как записаться. Остальные вопросы как сейчас.</p>
+  <h2 class="h2">Частые вопросы</h2>
+  <div class="qa">
+    <details open><summary>Как пройдёт первая тренировка?</summary><div class="a">
+      <div class="bar">
+        <div><b>30 минут</b><span>Разминка и нагрузка: кардио, функциональные или силовые упражнения</span></div>
+        <div><b>30 минут</b><span>Бокс или кикбоксинг: работа на лапах и мешках</span></div>
+      </div>
+      <p>Выбери время в расписании и напиши. Мы ответим и подтвердим запись. Первая тренировка в группе бесплатная и ни к чему не обязывает.</p>
+    </div></details>
+    <details><summary>Можно прийти без опыта?</summary><div class="a"><p>Да. Тренировки подходят и новичкам, и опытным. Всё покажем, всё расскажем.</p></div></details>
+    <details><summary>Что взять с собой?</summary><div class="a"><p>Удобную спортивную форму и обувь: кроссовки, кеды или боксёрки. Перчатки дадим, бинты на первой тренировке не нужны.</p></div></details>
+    <details><summary>Будут спарринги?</summary><div class="a"><p>Новички работают в паре только по желанию. Не хочешь — никто не заставит.</p></div></details>
+    <details><summary>Сколько человек в группе?</summary><div class="a"><p>До 10. Обычно приходят 5–6 человек.</p></div></details>
+  </div>
+  <button class="btn" type="button">Записаться на бесплатную тренировку</button>
+</div></section>
+
+<!-- ===== Б ===== -->
+<section class="var"><div class="wrap">
+  <span class="tag">Б · Разложить на два вопроса</span>
+  <p class="var-note">Без графики, самый спокойный вариант. «Как проходит тренировка?» и «Как записаться на первую?» — обычные вопросы в общем списке, первый открыт.</p>
+  <h2 class="h2">Частые вопросы</h2>
+  <div class="qa">
+    <details open><summary>Как проходит тренировка?</summary><div class="a"><p>60 минут. Первые 30 — разминка и нагрузка: кардио, функциональные или силовые упражнения. Следующие 30 — бокс или кикбоксинг, работа на лапах и мешках. Фитнес — по своей программе.</p></div></details>
+    <details><summary>Как записаться на первую тренировку?</summary><div class="a"><p>Выбери время в расписании и напиши. Мы ответим и подтвердим запись. Первая тренировка в группе бесплатная и ни к чему не обязывает.</p></div></details>
+    <details><summary>Можно прийти без опыта?</summary><div class="a"><p>Да. Тренировки подходят и новичкам, и опытным. Всё покажем, всё расскажем.</p></div></details>
+    <details><summary>Что взять с собой?</summary><div class="a"><p>Удобную спортивную форму и обувь: кроссовки, кеды или боксёрки. Перчатки дадим, бинты на первой тренировке не нужны.</p></div></details>
+    <details><summary>Будут спарринги?</summary><div class="a"><p>Новички работают в паре только по желанию. Не хочешь — никто не заставит.</p></div></details>
+  </div>
+  <button class="btn" type="button">Записаться на бесплатную тренировку</button>
+</div></section>
+
+<!-- ===== В ===== -->
+<section class="var"><div class="wrap">
+  <span class="tag">В · «60 минут» рядом с вопросами</span>
+  <p class="var-note">Слева — крупно «60 минут» и две половины тренировки, справа — вопросы. Шкала остаётся заметной, но живёт внутри блока вопросов. На телефоне панель встаёт над вопросами.</p>
+  <h2 class="h2">Первая тренировка и вопросы</h2>
+  <div class="two">
+    <aside class="panel">
+      <p class="big">60<small>минут</small></p>
+      <ol class="tl">
+        <li><b>0–30</b><span>Разминка и нагрузка: кардио, функциональные или силовые упражнения</span></li>
+        <li><b>30–60</b><span>Бокс или кикбоксинг: лапы и мешки</span></li>
+      </ol>
+      <p class="free">Первая тренировка в группе — бесплатно<small>Ни к чему не обязывает</small></p>
+    </aside>
+    <div>
+      <div class="qa">
+        <details open><summary>Можно прийти без опыта?</summary><div class="a"><p>Да. Тренировки подходят и новичкам, и опытным. Всё покажем, всё расскажем.</p></div></details>
+        <details><summary>Как записаться?</summary><div class="a"><p>Выбери время в расписании и напиши. Мы ответим и подтвердим запись.</p></div></details>
+        <details><summary>Что взять с собой?</summary><div class="a"><p>Удобную спортивную форму и обувь: кроссовки, кеды или боксёрки. Перчатки дадим, бинты на первой тренировке не нужны.</p></div></details>
+        <details><summary>Будут спарринги?</summary><div class="a"><p>Новички работают в паре только по желанию. Не хочешь — никто не заставит.</p></div></details>
+        <details><summary>Сколько человек в группе?</summary><div class="a"><p>До 10. Обычно приходят 5–6 человек.</p></div></details>
+      </div>
+      <button class="btn" type="button">Записаться на бесплатную тренировку</button>
+    </div>
+  </div>
+</div></section>
+</body>
+</html>

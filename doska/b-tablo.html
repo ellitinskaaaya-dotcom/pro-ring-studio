@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вариант Б — Табло</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --leather:#141110; --mat:#211B17; --wrap:#EEE5D6; --dust:#8F8478;
+  --led:#D6A45A; --led-glow:rgba(214,164,90,.35);
+  --pad:96px; --slogan:150px; --time:40px; --text:18px; --small:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--leather);color:var(--wrap);font-family:"Golos Text",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.hero{min-height:100vh;display:flex;flex-direction:column}
+header{height:72px;display:flex;align-items:center;gap:40px;padding:0 var(--pad);border-bottom:1px solid rgba(143,132,120,.35)}
+.logo{font-family:Oswald;font-weight:700;font-size:26px;letter-spacing:.04em}
+.logo span{font-weight:400;color:var(--dust)}
+nav{margin-left:auto;display:flex;gap:28px;font-size:15px}
+.lang{font-size:15px;color:var(--dust)} .lang b{color:var(--wrap);font-weight:600}
+.btn{display:inline-flex;align-items:center;justify-content:center;height:56px;padding:0 28px;border-radius:4px;font:600 16px/1 "Golos Text";text-decoration:none}
+.btn-led{background:var(--led);color:var(--leather);box-shadow:0 0 24px var(--led-glow)}
+.btn-sm{height:40px;padding:0 18px;font-size:14px}
+.slogan{font-family:Oswald;font-weight:700;text-transform:uppercase;font-size:var(--slogan);line-height:.93;padding:32px var(--pad) 0;letter-spacing:-.01em}
+.slogan span{display:block}.slogan .l3{text-align:right}
+.row{display:grid;grid-template-columns:5fr 7fr;gap:24px;padding:36px var(--pad) 0;align-items:start}
+h1{font-weight:600;font-size:24px;line-height:1.25}
+.sub{font-size:var(--text);line-height:1.55;opacity:.82;margin-top:12px}
+.actions{display:flex;flex-direction:column;align-items:flex-start;gap:14px;margin-top:28px}
+.note{font-size:var(--small);color:var(--dust)}
+.board{border-top:2px solid var(--led);box-shadow:0 -10px 24px -14px var(--led-glow)}
+.board h2{font-family:Oswald;font-weight:500;font-size:20px;letter-spacing:.02em;padding:14px 0 6px;display:flex;justify-content:space-between}
+.board h2 small{font-family:"Golos Text";font-size:14px;font-weight:400;color:var(--dust);letter-spacing:0}
+.cls{display:grid;grid-template-columns:110px 1fr auto;align-items:center;gap:16px;padding:10px 0;border-top:1px solid rgba(143,132,120,.3)}
+.cls .t{font-family:Oswald;font-weight:600;font-size:var(--time);line-height:1;font-variant-numeric:tabular-nums}
+.cls .n{font-size:16px;font-weight:500}
+.cls .n small{display:block;color:var(--dust);font-weight:400;font-size:13px;margin-top:2px}
+.cls .go{font-size:14px;border:1px solid rgba(238,229,214,.5);border-radius:4px;padding:9px 14px}
+.cls.next{background:var(--mat);margin:0 -12px;padding:10px 12px}
+.cls.next .go{background:var(--led);color:var(--leather);border-color:var(--led)}
+.strip{margin-top:auto;display:grid;grid-template-columns:repeat(4,1fr);height:150px;margin-top:32px}
+.strip img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(1) sepia(.3) contrast(1.15) brightness(.75)}
+@media (max-width:767px){
+  .btn{padding:0 16px;font-size:15px;text-align:center}
+  :root{--pad:16px;--slogan:52px;--time:30px;--text:16px;--small:13px}
+  header{height:56px;gap:16px} nav,.hdr-btn{display:none} .lang{margin-left:auto}
+  .burger{width:22px;height:14px;border-top:2px solid var(--wrap);border-bottom:2px solid var(--wrap);position:relative}
+  .burger::after{content:"";position:absolute;left:0;right:0;top:4px;border-top:2px solid var(--wrap)}
+  .slogan{padding-top:24px;line-height:.96}
+  .slogan .l3{text-align:left}
+  .row{grid-template-columns:1fr;padding-top:20px;gap:28px}
+  h1{font-size:20px}
+  .actions{align-items:stretch} .btn{width:100%}
+  .cls{grid-template-columns:72px 1fr auto;gap:10px}
+  .cls .go{padding:8px 10px;font-size:13px}
+  .board .more{display:none}
+  .strip{grid-template-columns:repeat(4,1fr);height:110px}
+}
+@media (min-width:768px){.burger{display:none}}
+</style>
+</head>
+<body>
+<section class="hero">
+  <header>
+    <div class="logo">PRO RING <span>STUDIO</span></div>
+    <nav><a>Расписание</a><a>Цены</a><a>Тренер</a><a>Вопросы</a><a>Контакты</a></nav>
+    <div class="lang"><b>RU</b> HY</div>
+    <a class="btn btn-led btn-sm hdr-btn">Записаться</a>
+    <div class="burger"></div>
+  </header>
+  <div class="slogan"><span>Сила.</span><span>Дисциплина.</span><span class="l3">Результат.</span></div>
+  <div class="row">
+    <div>
+      <h1>Студия бокса, кикбоксинга и фитнеса в центре Еревана</h1>
+      <p class="sub">Группы и персональные тренировки с мастером спорта. Можно с нуля — всё покажем и расскажем.</p>
+      <div class="actions">
+        <a class="btn btn-led">Записаться на бесплатную тренировку</a>
+        <p class="note">Первая тренировка в группе — бесплатно. Каджазнуни 1.</p>
+      </div>
+    </div>
+    <div class="board">
+      <h2>Сегодня в зале <small>Вторник, 10 ноября</small></h2>
+      <div class="cls more"><span class="t">15:00</span><span class="n">Кроссфит<small>Функциональная, высокий темп</small></span><span class="go">Записаться</span></div>
+      <div class="cls"><span class="t">17:00</span><span class="n">Фитнес<small>60 минут</small></span><span class="go">Записаться</span></div>
+      <div class="cls next"><span class="t">19:00</span><span class="n">Женская группа кикбоксинг<small>Ближайшая тренировка</small></span><span class="go">Записаться</span></div>
+      <div class="cls"><span class="t">20:30</span><span class="n">Мужская группа кикбоксинг<small>60 минут</small></span><span class="go">Записаться</span></div>
+    </div>
+  </div>
+  <div class="strip">
+    <img src="img/aleksandra-foto-03.jpg" alt="">
+    <img src="img/aleksandra-foto-04.jpg" alt="">
+    <img src="img/aleksandra-foto-05.jpg" alt="">
+    <img src="img/aleksandra-foto-06.jpg" alt="">
+  </div>
+</section>
+</body>
+</html>
