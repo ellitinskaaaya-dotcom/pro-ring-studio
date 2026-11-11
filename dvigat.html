@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Подвинуть первый экран</title>
+<style>
+:root{
+  --bg:#17120F; --panel:#211A16; --text:#EEE5D6; --soft:rgba(238,229,214,.7); --line:rgba(238,229,214,.18);
+  --led:#D6A45A; --on-led:#17120F; --pin:#E0523F;
+  --pad:16px; --r:6px; --frame-w:1440; --frame-h:1000;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 "Noto Sans",system-ui,sans-serif}
+.wrap{max-width:1180px;margin:0 auto;padding:var(--pad)}
+h1{font-size:20px;margin:0 0 4px}
+.hint{color:var(--soft);font-size:14px;margin:0 0 12px}
+.stage{position:relative;width:100%;overflow:hidden;border:1px solid var(--line);border-radius:var(--r);background:var(--bg)}
+.stage iframe{position:absolute;top:0;left:0;width:1440px;height:1000px;border:0;transform-origin:0 0}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+button{font:inherit;font-size:15px;font-weight:600;border-radius:var(--r);padding:10px 16px;min-height:44px;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--text)}
+button.main{background:var(--led);border-color:var(--led);color:var(--on-led)}
+ul{list-style:none;margin:0;padding:0}
+li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:8px 0;border-top:1px solid var(--line);font-size:15px}
+li span{color:var(--soft)}
+li button{min-height:36px;padding:4px 10px;font-size:13px}
+.empty{color:var(--soft);font-size:14px;padding:8px 0}
+.note{margin-top:12px}
+textarea{width:100%;min-height:72px;font:inherit;font-size:15px;color:var(--text);background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:10px}
+.status{color:var(--led);font-size:14px;min-height:1.4em;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Первый экран на компьютере (1440 px)</h1>
+  <p class="hint">Перетащите пальцем или мышкой то, что хотите подвинуть: фото, слоган, линию, заголовок, кнопку, табло, факты. Шаг — 4 px. Потом нажмите «Скопировать для Claude» и вставьте в чат.</p>
+  <div class="stage" id="stage"><iframe id="f" src="index.html?lang=ru" scrolling="no" title="Первый экран"></iframe></div>
+  <div class="bar">
+    <button class="main" id="copy" type="button">Скопировать для Claude</button>
+    <button id="undo" type="button">Отменить последнее</button>
+    <button id="reset" type="button">Сбросить всё</button>
+  </div>
+  <ul id="list"></ul>
+  <div class="note"><textarea id="note" placeholder="Комментарий, если нужно (необязательно)"></textarea></div>
+  <div class="status" id="status" role="status"></div>
+</div>
+<script>
+(() => {
+  const ITEMS = [
+    ['.hero-photo', 'Фото Александры'],
+    ['.slogan', 'Слоган «Сила. Дисциплина. Результат.»'],
+    ['.hero-text .led', 'Золотая линия слева'],
+    ['#h1', 'Заголовок «Студия бокса, кикбоксинга…»'],
+    ['.hero .lead', 'Текст «Группы и персональные…»'],
+    ['.hero .actions', 'Кнопка «Записаться на бесплатную тренировку»'],
+    ['.today', 'Табло «Сегодня в зале»'],
+    ['.facts', 'Факты «Пн–Сб · 60 минут · 5–6 человек»'],
+    ['.site-header .nav', 'Меню в шапке'],
+  ];
+  const KEY = 'dvigat-v1';
+  const stage = document.getElementById('stage'), frame = document.getElementById('f');
+  const list = document.getElementById('list'), note = document.getElementById('note'), status = document.getElementById('status');
+  let moves = {}, history = [];
+  try { const s = JSON.parse(localStorage.getItem(KEY) || '{}'); moves = s.moves || {}; note.value = s.note || ''; } catch {}
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify({ moves, note: note.value })); } catch {} };
+
+  function fit() {
+    const s = stage.clientWidth / 1440;
+    frame.style.transform = `scale(${s})`;
+    stage.style.height = Math.round(1000 * s) + 'px';
+  }
+  addEventListener('resize', fit); fit();
+
+  const dir = (v, a, b) => v === 0 ? '' : `${v > 0 ? a : b} ${Math.abs(v)} px`;
+  function describe(i) {
+    const m = moves[i]; if (!m) return '';
+    return [dir(m.y, 'вниз', 'вверх'), dir(m.x, 'вправо', 'влево')].filter(Boolean).join(', ');
+  }
+  function render() {
+    const keys = Object.keys(moves).filter(k => moves[k].x || moves[k].y);
+    list.innerHTML = keys.length ? '' : '<li class="empty">Пока ничего не сдвинуто.</li>';
+    keys.forEach(k => {
+      const li = document.createElement('li');
+      li.innerHTML = `<div>${ITEMS[k][1]} <span>— ${describe(k)}</span></div>`;
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = 'Вернуть';
+      b.onclick = () => { delete moves[k]; apply(); render(); save(); };
+      li.appendChild(b); list.appendChild(li);
+    });
+  }
+  let doc;
+  function apply() {
+    if (!doc) return;
+    ITEMS.forEach(([sel], i) => { const el = doc.querySelector(sel); if (!el) return;
+      const m = moves[i] || { x: 0, y: 0 }; el.style.translate = `${m.x}px ${m.y}px`; });
+  }
+
+  frame.addEventListener('load', () => {
+    doc = frame.contentDocument;
+    const st = doc.createElement('style');
+    st.textContent = `*,*::before,*::after{animation:none!important;transition:none!important}
+      [data-drag]{cursor:grab;touch-action:none;outline:1px dashed rgba(214,164,90,.45);outline-offset:4px}
+      [data-drag]:hover,[data-drag].is-drag{outline:2px solid #D6A45A}
+      [data-drag].is-drag{cursor:grabbing}
+      .sticky-cta,.site-header{pointer-events:auto}`;
+    doc.head.appendChild(st);
+    doc.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); }, true);
+    ITEMS.forEach(([sel, name], i) => {
+      const el = doc.querySelector(sel); if (!el) return;
+      el.dataset.drag = i; el.title = name;
+    });
+    let cur = null;
+    doc.addEventListener('pointerdown', e => {
+      const el = e.target.closest('[data-drag]'); if (!el) return;
+      e.preventDefault();
+      const i = +el.dataset.drag, m = moves[i] || { x: 0, y: 0 };
+      cur = { el, i, sx: e.clientX, sy: e.clientY, bx: m.x, by: m.y, before: { ...m } };
+      el.classList.add('is-drag'); el.setPointerCapture(e.pointerId);
+    });
+    doc.addEventListener('pointermove', e => {
+      if (!cur) return;
+      const snap = v => Math.round(v / 4) * 4;
+      moves[cur.i] = { x: snap(cur.bx + e.clientX - cur.sx), y: snap(cur.by + e.clientY - cur.sy) };
+      apply();
+    });
+    const end = () => { if (!cur) return;
+      cur.el.classList.remove('is-drag');
+      const m = moves[cur.i];
+      if (m && (m.x !== cur.before.x || m.y !== cur.before.y)) history.push({ i: cur.i, prev: cur.before });
+      cur = null; render(); save(); };
+    doc.addEventListener('pointerup', end); doc.addEventListener('pointercancel', end);
+    apply(); render();
+  });
+
+  document.getElementById('undo').onclick = () => { const h = history.pop(); if (!h) return;
+    moves[h.i] = h.prev; apply(); render(); save(); };
+  document.getElementById('reset').onclick = () => { moves = {}; history = []; apply(); render(); save(); };
+  note.addEventListener('input', save);
+
+  document.getElementById('copy').onclick = async () => {
+    const keys = Object.keys(moves).filter(k => moves[k].x || moves[k].y);
+    const lines = keys.map(k => `${ITEMS[k][1]}: ${describe(k)}`);
+    if (note.value.trim()) lines.push('Комментарий: ' + note.value.trim());
+    const text = 'Первый экран, компьютер 1440 px:\n' + (lines.length ? lines.join('\n') : 'без сдвигов');
+    try { await navigator.clipboard.writeText(text); status.textContent = 'Скопировано. Вставьте в чат.'; }
+    catch { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); status.textContent = 'Скопировано. Вставьте в чат.'; } catch { status.textContent = text; }
+      t.remove(); }
+  };
+})();
+</script>
+</body>
+</html>
