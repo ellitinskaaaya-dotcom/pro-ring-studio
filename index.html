@@ -361,6 +361,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 /* подпись автора сайта — последняя строка страницы */
 .f-credit{margin-top:var(--s3);font-size:var(--t-xs);color:var(--dust)}
 .f-credit a{color:var(--wrap-soft);text-underline-offset:3px}
+.f-mail{color:var(--wrap-soft);text-underline-offset:3px;margin-left:var(--s1)}
 .f-credit a:hover{color:var(--led)}
 
 /* ===== Нижняя панель (телефон) ===== */
@@ -532,6 +533,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
   .f-col > * + *{margin-top:0}
   .f-small{margin-top:var(--s1)}
   .f-links a,.f-col .link,.footer-legal > .link,.f-credit a{display:inline-flex;align-items:center;min-height:44px}
+  .f-mail{display:flex;width:max-content;align-items:center;min-height:44px;margin-left:0}
 
   .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--shade);padding:var(--s1x) var(--pad) calc(var(--s1x) + env(safe-area-inset-bottom));border-top:2px solid var(--led);box-shadow:0 -10px 24px -14px var(--led-glow);transform:translateY(110%);transition:transform .3s ease}
   .sticky.is-on{transform:none}
@@ -827,7 +829,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       </div>
     </div>
     <div class="footer-legal">
-      <p><span data-i18n="foot.ip">ИП Александра Ежак</span> <span class="stub">налоговый номер (ՀՎՀՀ) — уточнить</span> <span class="stub">почта — уточнить</span></p>
+      <p><span data-i18n="foot.ip">ИП Ежак Александра Игоревна</span> <span class="stub">налоговый номер (ՀՎՀՀ) — уточнить</span> <a class="f-mail" href="mailto:sasha_belyaeva01@bk.ru">sasha_belyaeva01@bk.ru</a></p>
       <a class="link" href="politika.html" data-policy data-i18n="foot.policy">Политика конфиденциальности</a>
     </div>
     <p class="f-credit">Создание сайта&nbsp;— <a href="https://t.me/ellitinskaya" target="_blank" rel="noopener">@ellitinskaya</a></p>
@@ -1034,7 +1036,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       'fin.quote':'«Բարի գալուստ մեր սպորտային ընտանիք»։','fin.quote.by':'Ալեքսանդրա, հիմնադիր և մարզիչ',
       'fin.addr.h':'Հասցե','addr':'Երևան, Կաջազնունու 1','fin.map':'Բացել քարտեզում','fin.when.h':'Երբ',
       'fin.when':'Երկուշաբթիից շաբաթ՝ ըստ ժամանակացույցի։ Կիրակին հանգստյան օր է։',
-      'foot.ip':'Ա/Ձ Ալեքսանդրա Եժակ','foot.tin':'ՀՎՀՀ','foot.phone':'Հեռախոս','foot.mail':'էլ. փոստ',
+      'foot.ip':'Ա/Ձ Եժակ Ալեքսանդրա Իգորի','foot.tin':'ՀՎՀՀ','foot.phone':'Հեռախոս','foot.mail':'էլ. փոստ',
       'foot.hours':'Աշխատանքային ժամեր՝ երկուշաբթիից շաբաթ, ըստ ժամանակացույցի։ Կիրակին հանգստյան օր է։',
       'foot.policy':'Գաղտնիության քաղաքականություն','foot.hours.h':'Աշխատանքային ժամեր','foot.contact':'Կապ',
       'dlg.priv':'Թե ինչպես ենք վարվում քո տվյալների հետ, գրված է <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">գաղտնիության քաղաքականությունում</a>։',
@@ -1090,7 +1092,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       'fin.quote':'“Welcome to our sports family!”','fin.quote.by':'Alexandra, founder and coach',
       'fin.addr.h':'Address','addr':'1 Kajaznuni St, Yerevan','fin.map':'Open in maps','fin.when.h':'When',
       'fin.when':'Monday to Saturday, as scheduled. Closed on Sundays.',
-      'foot.ip':'Sole proprietor Alexandra Ezhak','foot.tin':'tax ID (ՀՎՀՀ)','foot.phone':'Phone','foot.mail':'email',
+      'foot.ip':'Sole proprietor Ezhak Alexandra Igorevna','foot.tin':'tax ID (ՀՎՀՀ)','foot.phone':'Phone','foot.mail':'email',
       'foot.hours':'Opening hours: Monday to Saturday, as scheduled. Closed on Sundays.',
       'foot.policy':'Privacy policy','foot.hours.h':'Opening hours','foot.contact':'Contact',
       'dlg.priv':'How we handle your data is explained in our <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">privacy policy</a>.',
