@@ -5,6 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Գաղտնիության քաղաքականություն — PRO RING STUDIO</title>
+<link rel="canonical" href="https://ellitinskaaaya-dotcom.github.io/pro-ring-studio/politika.html">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#17120F">
 <link rel="preload" href="fonts/noto-sans-armenian.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -109,7 +112,7 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
   <h2>Օրենք</h2>
   <p>Մենք հետևում ենք «Անձնական տվյալների պաշտպանության մասին» ՀՀ օրենքին։</p>
 
-  <a class="back" href="index.html?lang=hy">Վերադառնալ կայք</a>
+  <a class="back" href="hy/">Վերադառնալ կայք</a>
   <p class="credit">Создание сайта&nbsp;— <a href="https://t.me/ellitinskaya" target="_blank" rel="noopener">@ellitinskaya</a></p>
 </article>
 
@@ -145,7 +148,7 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
   <h2>Закон</h2>
   <p>Мы следуем Закону Республики Армения «О защите персональных данных».</p>
 
-  <a class="back" href="index.html?lang=ru">Вернуться на сайт</a>
+  <a class="back" href="./">Вернуться на сайт</a>
   <p class="credit">Создание сайта&nbsp;— <a href="https://t.me/ellitinskaya" target="_blank" rel="noopener">@ellitinskaya</a></p>
 </article>
 
@@ -181,7 +184,7 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
   <h2>Law</h2>
   <p>We follow the Law of the Republic of Armenia “On Protection of Personal Data”.</p>
 
-  <a class="back" href="index.html?lang=en">Back to the site</a>
+  <a class="back" href="en/">Back to the site</a>
   <p class="credit">Создание сайта&nbsp;— <a href="https://t.me/ellitinskaya" target="_blank" rel="noopener">@ellitinskaya</a></p>
 </article>
 
@@ -205,7 +208,7 @@ p{color:var(--wrap-soft);margin-top:var(--s1x)}
     document.title = TITLES[lang];
     document.querySelectorAll('[data-doc]').forEach(a => { a.hidden = a.dataset.doc !== lang; });
     document.querySelectorAll('.lang-b').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    document.querySelector('.logo').href = 'index.html?lang=' + lang;
+    document.querySelector('.logo').href = (lang === 'ru' ? './' : lang + '/');
     store.set('proring-lang', lang);
   }
   document.querySelectorAll('.lang-b').forEach(b => b.addEventListener('click', () => show(b.dataset.lang)));
