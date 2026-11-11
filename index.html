@@ -360,6 +360,8 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
 .footer-legal > .link{grid-column:9 / span 4;justify-self:start;color:var(--wrap-soft)}
 /* подпись автора сайта — последняя строка страницы */
 .f-credit{margin-top:var(--s3);font-size:var(--t-xs);color:var(--dust)}
+.f-credit a{color:var(--wrap-soft);text-underline-offset:3px}
+.f-credit a:hover{color:var(--led)}
 
 /* ===== Нижняя панель (телефон) ===== */
 .sticky{display:none}
@@ -529,7 +531,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
   .footer-grid > .f-col + .f-col{margin-top:var(--s3)}
   .f-col > * + *{margin-top:0}
   .f-small{margin-top:var(--s1)}
-  .f-links a,.f-col .link,.footer-legal > .link{display:inline-flex;align-items:center;min-height:44px}
+  .f-links a,.f-col .link,.footer-legal > .link,.f-credit a{display:inline-flex;align-items:center;min-height:44px}
 
   .sticky{display:block;position:fixed;left:0;right:0;bottom:0;z-index:45;background:var(--shade);padding:var(--s1x) var(--pad) calc(var(--s1x) + env(safe-area-inset-bottom));border-top:2px solid var(--led);box-shadow:0 -10px 24px -14px var(--led-glow);transform:translateY(110%);transition:transform .3s ease}
   .sticky.is-on{transform:none}
@@ -828,7 +830,7 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       <p><span data-i18n="foot.ip">ИП Александра Ежак</span> <span class="stub">налоговый номер (ՀՎՀՀ) — уточнить</span> <span class="stub">почта — уточнить</span></p>
       <a class="link" href="politika.html" data-policy data-i18n="foot.policy">Политика конфиденциальности</a>
     </div>
-    <p class="f-credit" data-i18n="foot.credit">Сайт сделала Елена Литинская</p>
+    <p class="f-credit">Создание сайта&nbsp;— <a href="https://t.me/ellitinskaya" target="_blank" rel="noopener">@ellitinskaya</a></p>
   </div>
 </footer>
 
@@ -1035,7 +1037,6 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       'foot.ip':'Ա/Ձ Ալեքսանդրա Եժակ','foot.tin':'ՀՎՀՀ','foot.phone':'Հեռախոս','foot.mail':'էլ. փոստ',
       'foot.hours':'Աշխատանքային ժամեր՝ երկուշաբթիից շաբաթ, ըստ ժամանակացույցի։ Կիրակին հանգստյան օր է։',
       'foot.policy':'Գաղտնիության քաղաքականություն','foot.hours.h':'Աշխատանքային ժամեր','foot.contact':'Կապ',
-      'foot.credit':'Կայքը պատրաստել է Ելենա Լիտինսկայան',
       'dlg.priv':'Թե ինչպես ենք վարվում քո տվյալների հետ, գրված է <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">գաղտնիության քաղաքականությունում</a>։',
       'dlg.h':'Որտե՞ղ գրել','dlg.first':'Սա իմ առաջին մարզումն է','dlg.ig':'Պատճենել և բացել Instagram-ը','dlg.ignote':'Instagram-ը տեքստը չի տեղադրում։ Սեղմիր «Պատճենել», հետո տեղադրիր դիրեքթում։'
     },
@@ -1092,7 +1093,6 @@ h1,h2,h3,summary,blockquote{text-wrap:balance}
       'foot.ip':'Sole proprietor Alexandra Ezhak','foot.tin':'tax ID (ՀՎՀՀ)','foot.phone':'Phone','foot.mail':'email',
       'foot.hours':'Opening hours: Monday to Saturday, as scheduled. Closed on Sundays.',
       'foot.policy':'Privacy policy','foot.hours.h':'Opening hours','foot.contact':'Contact',
-      'foot.credit':'Website by Elena Litinskaya',
       'dlg.priv':'How we handle your data is explained in our <a href="politika.html" data-policy class="link" target="_blank" rel="noopener">privacy policy</a>.',
       'dlg.h':'Where should we talk?','dlg.first':'This is my first class','dlg.ig':'Copy and open Instagram','dlg.ignote':'Instagram can’t prefill text. Tap “Copy”, then paste it into the DM.'
     }
